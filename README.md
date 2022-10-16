@@ -6,6 +6,7 @@ Team Members: Dominic Galiano, Ray Zhang, Hans Wang, Adrian Cruz
 Swift Version:
 Xcode Version
 Dependencies:
+iPhone Model: iPhone 14 Pro Max
 
 Testing Instructions
 
