@@ -10,7 +10,7 @@ Dependencies:
 Testing Instructions
 
 Features checklist:
-[]
-[]
-[]
-[]
+[ ]
+[ ]
+[ ]
+[ ]
