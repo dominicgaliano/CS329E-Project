@@ -31,7 +31,6 @@ class GroupSelectorViewController: UIViewController, UITableViewDelegate, UITabl
         let row = indexPath.row
         let cell = tableView.dequeueReusableCell(withIdentifier: "GroupCell", for: indexPath)
         cell.textLabel?.text = groups[row]
-        
         return cell
     }
 }
