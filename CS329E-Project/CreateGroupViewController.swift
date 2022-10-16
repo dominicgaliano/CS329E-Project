@@ -7,23 +7,44 @@
 
 import UIKit
 
-class CreateGroupViewController: UIViewController {
-
+class CreateGroupViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
+    
+    @IBOutlet weak var groupName: UITextField!
+    @IBOutlet weak var memberName: UITextField!
+    @IBOutlet weak var tableView: UITableView!
+    
+    //var addedMembers: [String] = []
+    var addedMembers = ["hans", "ray", "dominic", "cruz"]
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.dataSource = self
+        tableView.delegate = self
+        navigationBarPlus()
 
-        // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func navigationBarPlus(){
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            title: "Create Group", style: .plain, target: self, action: nil)
     }
-    */
-
+    
+    
+    @IBAction func addMemberButton(_ sender: Any) {
+        if memberName.text != ""{
+            addedMembers.append(memberName.text!)
+            self.tableView.reloadData()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        addedMembers.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let row = indexPath.row
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MemberCell", for: indexPath)
+        cell.textLabel?.text = addedMembers[row]
+        
+        return cell
+    }
 }
