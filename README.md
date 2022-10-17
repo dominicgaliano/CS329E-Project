@@ -3,10 +3,10 @@
 
 Team Members: Dominic Galiano, Ray Zhang, Hans Wang, Adrian Cruz
 
-Swift Version:
-Xcode Version
-Dependencies:
-iPhone Model: iPhone 14 Pro Max
+Swift Version: 5.7  
+Xcode Version: 14.0.1 (14A400)  
+Dependencies: Firebase 9.0.0  
+iPhone Model: iPhone 14 Pro Max  
 
 Testing Instructions
 
