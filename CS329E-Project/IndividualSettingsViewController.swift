@@ -6,24 +6,53 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class IndividualSettingsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    // Change Profile Picture Button
+    @IBAction func changePictureButtonPressed(_ sender: Any) {
+        // TODO: Implement
+        return
     }
-    */
-
+    
+    // Change Password Button
+    @IBAction func changePasswordButtonPressed(_ sender: Any) {
+        // TODO: Implement
+        return
+    }
+    
+    // Dark mode slider
+    @IBAction func darkModeSlider(_ sender: Any) {
+        // TODO: Implement
+        return
+    }
+    
+    // Logout button
+    @IBAction func logoutButtonPressed(_ sender: Any) {
+        let controller = UIAlertController(
+                        title: "Confirm Log Out",
+                        message: "Are you sure you want to log out?",
+                        preferredStyle: .actionSheet)
+        controller.addAction(UIAlertAction(title: "Log out", style: .destructive, handler: {
+            (action: UIAlertAction!) in (self.performLogout())
+        }))
+        controller.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        present(controller, animated: true)
+    }
+    
+    // Perform logout
+    func performLogout() {
+        let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
+            self.view.window!.rootViewController?.dismiss(animated: false, completion: nil)
+        } catch let signOutError as NSError {
+            print("Error signing out: %@", signOutError)
+        }
+    }
 }
