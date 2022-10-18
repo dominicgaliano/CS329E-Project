@@ -16,7 +16,7 @@ Features checklist:
 - [ ] Non-default fonts, colors and styles
 Major Elements:  
 - [ ] Use of Core Data/Firebase
-- [ ] Implementation of user profile path, incl. creation, taking a pic or selecting prexisting, and editing
+- [ ] Implementation of user profile path, incl. creation, taking a pic or selecting prexisting, and editing  
 Minor Elements:  
 - [ ] At least two of text views, sliders, segemented controlelrs, date or color pickers, steppers, switches, search fields, bars and bar buttons, etc.
 - [ ] Table View
