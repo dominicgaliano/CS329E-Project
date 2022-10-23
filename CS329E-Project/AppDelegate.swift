@@ -1,8 +1,5 @@
 //
-//  AppDelegate.swift
-//  CS329E-Project
-//
-//  Created by Dominic on 10/9/22.
+//  old
 //
 
 import UIKit
