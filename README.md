@@ -19,6 +19,7 @@ Features checklist:
 Major Elements:  
 
 - [ ] Use of Core Data/Firebase
+put setting data in core data
 - [ ] Implementation of user profile path, incl. creation, taking a pic or selecting prexisting, and editing  
 
 Minor Elements:  
@@ -29,4 +30,4 @@ Minor Elements:
 - [ ] Local notifications
 - [ ] Animation
 - [ ] Calendar
-- [ ] QR Code
+- [ ] QR Code * FOCUS ON THIS
