@@ -9,6 +9,9 @@ import UIKit
 
 class GroupSettingsViewController: UIViewController {
 
+    @IBOutlet weak var groupNameTextField: UITextField!
+    @IBOutlet weak var groupCodeLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

@@ -7,11 +7,18 @@
 
 import UIKit
 
-class InventoryViewController: UITableViewController {
+var subgroups = ["Kitchen", "Restroom", "Bedroom"]
 
+class InventoryViewController: UITableViewController {
+    
+    let inventorySubgroupSegueIdentifier = "inventorySubgroupSegueIdentifier"
+    let textCellIdentifier = "TextCell"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        tableView.delegate = self
+        tableView.dataSource = self
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -21,25 +28,44 @@ class InventoryViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return subgroups.count
     }
-
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        
+        let row = indexPath.row
+        let cell = tableView.dequeueReusableCell(withIdentifier: textCellIdentifier, for: indexPath)
 
-        // Configure the cell...
+        cell.textLabel?.text = subgroups[row]
 
         return cell
     }
-    */
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == inventorySubgroupSegueIdentifier,
+           let destination = segue.destination as? InventorySubgroupViewController,
+           let subgroupsIndex = tableView.indexPathForSelectedRow?.row {
+            destination.subgroupSelected = subgroups[subgroupsIndex]
+        }
+        
+    }
+    
+    /*
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 1
+    }
+     */
+
+    
+
 
     /*
     // Override to support conditional editing of the table view.
@@ -85,5 +111,5 @@ class InventoryViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    
 }
