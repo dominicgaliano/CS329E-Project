@@ -12,8 +12,8 @@ Testing Instructions
 
 Features checklist:  
 
-- [ ] Login/register path
-- [ ] Settings with three behaviors that can be modified by user
+- [X] Login/register path
+- [X] Settings with three behaviors that can be modified by user
 - [ ] Non-default fonts, colors and styles
 
 Major Elements:  
