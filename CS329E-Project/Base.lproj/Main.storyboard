@@ -408,6 +408,12 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Group Identifier" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="i0x-P2-fLo">
+                                <rect key="frame" x="83" y="238" width="264" height="37.333333333333336"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ybK-aZ-VsK"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -426,6 +432,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="groupIdentifier" destination="i0x-P2-fLo" id="Rbo-gq-XHf"/>
                         <outlet property="groupName" destination="jKI-hg-75D" id="rVL-2Y-ifs"/>
                         <outlet property="memberName" destination="PoA-wa-a4W" id="phQ-L4-6Wh"/>
                         <outlet property="tableView" destination="SHA-Ph-v9k" id="Zvb-cO-l4B"/>
