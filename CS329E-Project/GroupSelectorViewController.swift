@@ -18,6 +18,8 @@ class GroupSelectorViewController: UIViewController, UITableViewDelegate, UITabl
 
     @IBOutlet weak var tableView: UITableView!
     var delegate:UIViewController!
+    var userData:Dictionary<String, Any>!
+    var userGroups:[String]!
     
     // establish db connection
     let db = Firestore.firestore()
@@ -37,19 +39,26 @@ class GroupSelectorViewController: UIViewController, UITableViewDelegate, UITabl
         let userRef = db.collection("users").document(Auth.auth().currentUser!.uid)
         userRef.getDocument { (document, error) in
             if let document = document, document.exists {
-                let dataDescription = document.data().map(String.init(describing: )) ?? "nil"
-                print("User data: \(dataDescription)")
+//                let dataDescription = document.data().map(String.init(describing: )) ?? "nil"
+//                print("User data: \(dataDescription)")
+                
+                // set local userData variable to database values
+                // self.userData = document.data()
+                self.userGroups = document.data()!["groups"] as? [String]
+                
             } else {
-                print("User does not exist")
+                print("User does not exist, logging out")
+                self.performLogout()
             }
         }
-        
-        
-        
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return groups.count
+        if self.userGroups == nil {
+            return 0
+        } else {
+            return (self.userGroups).count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -70,5 +79,16 @@ class GroupSelectorViewController: UIViewController, UITableViewDelegate, UITabl
     func addGroup(newGroup: String) {
         groups.append(newGroup)
         //self.tableView.reloadData()
+    }
+    
+    // Perform logout
+    func performLogout() {
+        let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
+            self.view.window!.rootViewController?.dismiss(animated: false, completion: nil)
+        } catch let signOutError as NSError {
+            print("Error signing out: %@", signOutError)
+        }
     }
 }
