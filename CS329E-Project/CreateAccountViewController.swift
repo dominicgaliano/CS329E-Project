@@ -34,12 +34,6 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
         Auth.auth().addStateDidChangeListener() {
             auth, user in
             if user != nil {
-                // save new user to users db
-//                self.saveUser(uid: user!.uid,
-//                              firstName: self.firstNameField.text!,
-//                              lastName: self.lastNameField.text!,
-//                              email: self.emailField.text!)
-                
                 // performs segue from this VC
                 self.performSegue(withIdentifier: "loginSegue", sender: nil)
                 
@@ -88,7 +82,6 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
                                   lastName: self.lastNameField.text!,
                                   email: authResult!.user.email!)
                     
-                    
                     self.errorLabel.text = ""
                 }
             }
@@ -104,8 +97,20 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
     
     // Save user to database
     func saveUser(uid: String, firstName: String, lastName: String, email: String) -> Void {
-        var ref: DocumentReference? = nil
-        ref = db.collection("users").addDocument(data: [
+//        var ref: DocumentReference? = nil
+//        ref = db.collection("users").addDocument(data: [
+//            "uid": uid,
+//            "firstName": firstName,
+//            "lastName": lastName,
+//            "email": email
+//        ]) {err in
+//            if let err = err {
+//                print("Error adding documet: \(err)")
+//            } else {
+//                print("User document dded with ID: \(ref!.documentID)")
+//            }
+//        }
+        db.collection("users").document(uid).setData( [
             "uid": uid,
             "firstName": firstName,
             "lastName": lastName,
@@ -114,9 +119,8 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
             if let err = err {
                 print("Error adding documet: \(err)")
             } else {
-                print("User document dded with ID: \(ref!.documentID)")
+                print("User document added with id \(uid)")
             }
         }
-        
     }
 }

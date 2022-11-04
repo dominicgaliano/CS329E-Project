@@ -32,6 +32,20 @@ class GroupSelectorViewController: UIViewController, UITableViewDelegate, UITabl
         super.viewWillAppear(animated)
         
         print("User logged in with UID: \(Auth.auth().currentUser!.uid)")
+        
+        // Access users collection
+        let userRef = db.collection("users").document(Auth.auth().currentUser!.uid)
+        userRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                let dataDescription = document.data().map(String.init(describing: )) ?? "nil"
+                print("User data: \(dataDescription)")
+            } else {
+                print("User does not exist")
+            }
+        }
+        
+        
+        
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
