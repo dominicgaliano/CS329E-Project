@@ -30,7 +30,10 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
         Auth.auth().addStateDidChangeListener() {
             auth, user in
             if user != nil {
+                // performs segue from this VC
                 self.performSegue(withIdentifier: "loginSegue", sender: nil)
+                
+                // set textFields to empty
                 self.emailField.text = nil
                 self.passwordField.text = nil
             }
@@ -83,4 +86,9 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
         dismiss(animated: false, completion: nil)
     }
     
+    // Save user to database
+    func saveUser(firstName: String, lastName: String, email: String) -> Void {
+        // TODO: Implement database addition
+        
+    }
 }
