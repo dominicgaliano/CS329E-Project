@@ -62,16 +62,17 @@ class CreateGroupViewController: UIViewController, UITableViewDelegate, UITableV
                      groupName: groupName.text!,
                      currentUserUID: Auth.auth().currentUser!.uid)
             
-            performSegue(withIdentifier: "CreateGroupSegueBack", sender: nil)
+            // performSegue(withIdentifier: "CreateGroupSegueBack", sender: nil)
+            // dismiss(animated: true, completion: nil)
         }
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "CreateGroupSegueBack",
-            let nextVC = segue.destination as? GroupSelectorViewController{
-                nextVC.addGroup(newGroup: groupName.text!)
-        }
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "CreateGroupSegueBack",
+//            let nextVC = segue.destination as? GroupSelectorViewController{
+//                nextVC.addGroup(newGroup: groupName.text!)
+//        }
+//    }
     
     
     @IBAction func addMemberButton(_ sender: Any) {
@@ -114,7 +115,9 @@ class CreateGroupViewController: UIViewController, UITableViewDelegate, UITableV
                     print("Error adding documet: \(err)")
                 } else {
                     print("User document added with id \(groupIdentifier)")
-                    // TODO: Add group to user's database entry
+                    
+                    // Add group to user's database entry
+                    self.addGroupToUserDocument(currentUserUID: currentUserUID, groupIdentifier: groupIdentifier)
                 }
             }
         } else {
@@ -127,6 +130,16 @@ class CreateGroupViewController: UIViewController, UITableViewDelegate, UITableV
                 title: "OK", style: .default))
             present(controller, animated: true)
         }
+    }
+    
+    // Helper funciton, add group to user's group list
+    // This function should only be called upon sucessful creation of group
+    func addGroupToUserDocument(currentUserUID: String, groupIdentifier: String) {
+        let userRef = db.collection("users").document(currentUserUID)
+        
+        userRef.updateData([
+            "groups": FieldValue.arrayUnion([groupIdentifier])
+        ])
     }
     
     // Helper function, checks db for groupIdentifier

@@ -39,8 +39,8 @@ class GroupSelectorViewController: UIViewController, UITableViewDelegate, UITabl
         let userRef = db.collection("users").document(Auth.auth().currentUser!.uid)
         userRef.getDocument { (document, error) in
             if let document = document, document.exists {
-//                let dataDescription = document.data().map(String.init(describing: )) ?? "nil"
-//                print("User data: \(dataDescription)")
+                let dataDescription = document.data().map(String.init(describing: )) ?? "nil"
+                print("User current data: \(dataDescription)")
                 
                 // set local userData variable to database values
                 // self.userData = document.data()
