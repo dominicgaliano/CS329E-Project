@@ -29,7 +29,13 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
         // Create login listener
         Auth.auth().addStateDidChangeListener() {
             auth, user in
-            if user != nil {
+            if let user = user {
+                // save new user to db
+                self.saveUser(firstName: self.firstNameField.text!,
+                         lastName: self.lastNameField.text!,
+                         email: self.emailField.text!,
+                         uid: user.uid)
+                
                 // performs segue from this VC
                 self.performSegue(withIdentifier: "loginSegue", sender: nil)
                 
@@ -87,8 +93,8 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
     }
     
     // Save user to database
-    func saveUser(firstName: String, lastName: String, email: String) -> Void {
+    func saveUser(firstName: String, lastName: String, email: String, uid: String) -> Void {
         // TODO: Implement database addition
-        
+        print("Saving user \(firstName) \(lastName) with email: \(email) and auto-generated uid: \(uid)")
     }
 }
