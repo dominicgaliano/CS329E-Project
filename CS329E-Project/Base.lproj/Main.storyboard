@@ -166,6 +166,32 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="First Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bPw-NX-cye">
+                                <rect key="frame" x="20" y="292" width="83" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Last Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XKr-Ii-cVt">
+                                <rect key="frame" x="20" y="339" width="82" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ROk-xi-rEC">
+                                <rect key="frame" x="107" y="285" width="303" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pRv-UE-A8z">
+                                <rect key="frame" x="107" y="332" width="303" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Ano-fp-wYf"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -179,6 +205,8 @@
                     <connections>
                         <outlet property="emailField" destination="4PQ-f0-SCb" id="VOs-KS-UwM"/>
                         <outlet property="errorLabel" destination="hgX-hf-lze" id="PvE-d2-zDc"/>
+                        <outlet property="firstNameField" destination="ROk-xi-rEC" id="2XZ-Kk-k8u"/>
+                        <outlet property="lastNameField" destination="pRv-UE-A8z" id="CRN-WP-rHg"/>
                         <outlet property="passwordField" destination="Kf4-VA-yD1" id="g6x-wx-T9d"/>
                         <outlet property="repeatPasswordField" destination="lBh-29-FCy" id="7ZC-8g-QvK"/>
                         <segue destination="gRM-r3-voX" kind="presentation" identifier="loginSegue" animates="NO" modalPresentationStyle="fullScreen" id="Ue7-CJ-lyZ"/>
@@ -870,7 +898,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="Ue7-CJ-lyZ"/>
         <segue reference="9Ss-xs-1sF"/>
-        <segue reference="bvP-de-FY9"/>
+        <segue reference="egK-ci-3sh"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="person.circle" catalog="system" width="128" height="123"/>

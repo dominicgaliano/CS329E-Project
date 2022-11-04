@@ -11,7 +11,8 @@ import FirebaseAuth
 class CreateAccountViewController: UIViewController, UITextFieldDelegate {
     
     // Define outlets
-    
+    @IBOutlet weak var firstNameField: UITextField!
+    @IBOutlet weak var lastNameField: UITextField!
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var repeatPasswordField:UITextField!
@@ -55,12 +56,20 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
     
     // Create account button action
     @IBAction func createAccountButtonPressed(_ sender: Any) {
-        if passwordField.text! == repeatPasswordField.text! {
+        // check that name fields not empty
+        if !firstNameField.hasText || !lastNameField.hasText {
+            errorLabel.text = "Missing name field"
+        }
+        // check if password fields match
+        else if passwordField.text! == repeatPasswordField.text! {
+            // allow firebase api to verify if email is valid
             Auth.auth().createUser(withEmail: emailField.text!, password: passwordField.text!) {
                 authResult, error in
                 if let error = error as NSError? {
+                    // an error occured, alert the user
                     self.errorLabel.text = "\(error.localizedDescription)"
                 } else {
+                    // no error occured, continue
                     self.errorLabel.text = ""
                 }
             }
