@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseFirestore
 
 protocol groupAdder{
     func addGroup(newGroup:String)
@@ -18,6 +19,9 @@ class GroupSelectorViewController: UIViewController, UITableViewDelegate, UITabl
     @IBOutlet weak var tableView: UITableView!
     var delegate:UIViewController!
     
+    // establish db connection
+    let db = Firestore.firestore()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
@@ -27,7 +31,7 @@ class GroupSelectorViewController: UIViewController, UITableViewDelegate, UITabl
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        print(Auth.auth().currentUser!)
+        print("User logged in with UID: \(Auth.auth().currentUser!.uid)")
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

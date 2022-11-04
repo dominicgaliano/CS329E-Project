@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseFirestore
 
 class CreateAccountViewController: UIViewController, UITextFieldDelegate {
     
@@ -19,6 +20,9 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
     // TODO: Replace with alert
     @IBOutlet weak var errorLabel: UILabel!
     
+    // establish db connection
+    let db = Firestore.firestore()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,6 +34,12 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
         Auth.auth().addStateDidChangeListener() {
             auth, user in
             if user != nil {
+                // save new user to users db
+//                self.saveUser(uid: user!.uid,
+//                              firstName: self.firstNameField.text!,
+//                              lastName: self.lastNameField.text!,
+//                              email: self.emailField.text!)
+                
                 // performs segue from this VC
                 self.performSegue(withIdentifier: "loginSegue", sender: nil)
                 
@@ -73,6 +83,12 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
                     self.errorLabel.text = "\(error.localizedDescription)"
                 } else {
                     // no error occured, continue
+                    self.saveUser(uid: authResult!.user.uid,
+                                  firstName: self.firstNameField.text!,
+                                  lastName: self.lastNameField.text!,
+                                  email: authResult!.user.email!)
+                    
+                    
                     self.errorLabel.text = ""
                 }
             }
@@ -87,8 +103,20 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
     }
     
     // Save user to database
-    func saveUser(firstName: String, lastName: String, email: String) -> Void {
-        // TODO: Implement database addition
+    func saveUser(uid: String, firstName: String, lastName: String, email: String) -> Void {
+        var ref: DocumentReference? = nil
+        ref = db.collection("users").addDocument(data: [
+            "uid": uid,
+            "firstName": firstName,
+            "lastName": lastName,
+            "email": email
+        ]) {err in
+            if let err = err {
+                print("Error adding documet: \(err)")
+            } else {
+                print("User document dded with ID: \(ref!.documentID)")
+            }
+        }
         
     }
 }
