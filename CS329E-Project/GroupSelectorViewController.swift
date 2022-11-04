@@ -28,7 +28,6 @@ class GroupSelectorViewController: UIViewController, UITableViewDelegate, UITabl
         super.viewWillAppear(animated)
         
         print(Auth.auth().currentUser!)
-        print(Auth.auth().currentUser!.uid)
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
