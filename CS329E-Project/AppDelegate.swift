@@ -5,6 +5,7 @@
 import UIKit
 import CoreData
 import FirebaseCore
+import FirebaseFirestoreSwift
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
