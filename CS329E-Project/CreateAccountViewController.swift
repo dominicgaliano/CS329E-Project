@@ -7,16 +7,21 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseFirestore
 
 class CreateAccountViewController: UIViewController, UITextFieldDelegate {
     
     // Define outlets
-    
+    @IBOutlet weak var firstNameField: UITextField!
+    @IBOutlet weak var lastNameField: UITextField!
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var repeatPasswordField:UITextField!
     // TODO: Replace with alert
     @IBOutlet weak var errorLabel: UILabel!
+    
+    // establish db connection
+    let db = Firestore.firestore()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,11 +34,20 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
         Auth.auth().addStateDidChangeListener() {
             auth, user in
             if user != nil {
+                // performs segue from this VC
                 self.performSegue(withIdentifier: "loginSegue", sender: nil)
+                
+                // set textFields to empty
                 self.emailField.text = nil
                 self.passwordField.text = nil
             }
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        errorLabel.text = ""
     }
     
     // Called when 'return' key pressed
@@ -49,12 +63,25 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
     
     // Create account button action
     @IBAction func createAccountButtonPressed(_ sender: Any) {
-        if passwordField.text! == repeatPasswordField.text! {
+        // check that name fields not empty
+        if !firstNameField.hasText || !lastNameField.hasText {
+            errorLabel.text = "Missing name field"
+        }
+        // check if password fields match
+        else if passwordField.text! == repeatPasswordField.text! {
+            // allow firebase api to verify if email is valid
             Auth.auth().createUser(withEmail: emailField.text!, password: passwordField.text!) {
                 authResult, error in
                 if let error = error as NSError? {
+                    // an error occured, alert the user
                     self.errorLabel.text = "\(error.localizedDescription)"
                 } else {
+                    // no error occured, continue
+                    self.saveUser(uid: authResult!.user.uid,
+                                  firstName: self.firstNameField.text!,
+                                  lastName: self.lastNameField.text!,
+                                  email: authResult!.user.email!)
+                    
                     self.errorLabel.text = ""
                 }
             }
@@ -68,4 +95,33 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
         dismiss(animated: false, completion: nil)
     }
     
+    // Save user to database
+    func saveUser(uid: String, firstName: String, lastName: String, email: String) -> Void {
+//        var ref: DocumentReference? = nil
+//        ref = db.collection("users").addDocument(data: [
+//            "uid": uid,
+//            "firstName": firstName,
+//            "lastName": lastName,
+//            "email": email
+//        ]) {err in
+//            if let err = err {
+//                print("Error adding documet: \(err)")
+//            } else {
+//                print("User document dded with ID: \(ref!.documentID)")
+//            }
+//        }
+        db.collection("users").document(uid).setData( [
+            "uid": uid,
+            "firstName": firstName,
+            "lastName": lastName,
+            "email": email,
+            "groups": []
+        ]) {err in
+            if let err = err {
+                print("Error adding documet: \(err)")
+            } else {
+                print("User document added with id \(uid)")
+            }
+        }
+    }
 }
