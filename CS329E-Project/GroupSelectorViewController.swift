@@ -18,8 +18,7 @@ class GroupSelectorViewController: UIViewController, UITableViewDelegate, UITabl
 
     @IBOutlet weak var tableView: UITableView!
     var delegate:UIViewController!
-    var userData:Dictionary<String, Any>!
-    var userGroups:[String]!
+    var userGroups:[(String, String)]!
     
     // establish db connection
     let db = Firestore.firestore()
@@ -33,24 +32,25 @@ class GroupSelectorViewController: UIViewController, UITableViewDelegate, UITabl
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        print("User logged in with UID: \(Auth.auth().currentUser!.uid)")
+        // print("User logged in with UID: \(Auth.auth().currentUser!.uid)")
         
-        // Access users collection
-        let userRef = db.collection("users").document(Auth.auth().currentUser!.uid)
-        userRef.getDocument { (document, error) in
-            if let document = document, document.exists {
-                let dataDescription = document.data().map(String.init(describing: )) ?? "nil"
-                print("User current data: \(dataDescription)")
-                
-                // set local userData variable to database values
-                // self.userData = document.data()
-                self.userGroups = document.data()!["groups"] as? [String]
-                self.tableView.reloadData()
-            } else {
-                print("User does not exist, logging out")
-                self.performLogout()
+        // Access users groups
+        db.collection("users").document(Auth.auth().currentUser!.uid)
+            .collection("groups").getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                    self.performLogout()
+                } else {
+                    self.userGroups = []
+                    for document in querySnapshot!.documents {
+                        self.userGroups.append((document.documentID,
+                                           document.data()["groupName"] as! String))
+                    }
+                    self.tableView.reloadData()
+                    // for debugging
+                    print(self.userGroups!)
+                }
             }
-        }
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -58,7 +58,7 @@ class GroupSelectorViewController: UIViewController, UITableViewDelegate, UITabl
             print("Table found no groups, 0")
             return 0
         } else {
-            print("Table found \(self.userGroups.count) groups")
+            print("Table found \(self.userGroups.count) group(s)")
             return self.userGroups.count
         }
     }
@@ -66,7 +66,7 @@ class GroupSelectorViewController: UIViewController, UITableViewDelegate, UITabl
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let row = indexPath.row
         let cell = tableView.dequeueReusableCell(withIdentifier: "GroupCell", for: indexPath)
-        cell.textLabel?.text = groups[row]
+        cell.textLabel?.text = userGroups[row].1
         return cell
     }
 
@@ -74,7 +74,6 @@ class GroupSelectorViewController: UIViewController, UITableViewDelegate, UITabl
         if segue.identifier == "CreateGroupSegue",
             let nextVC = segue.destination as? CreateGroupViewController{
                 nextVC.delegate = self
-         
         }
     }
     

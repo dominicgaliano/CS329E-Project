@@ -107,7 +107,7 @@ class CreateGroupViewController: UIViewController, UITableViewDelegate, UITableV
         // validate identifier
         if isUnusedGroupIdentifier(groupIdentifier: groupIdentifier) {
             // create group
-            db.collection("groups").document("groupIdentifier").setData( [
+            db.collection("groups").document(groupIdentifier).setData( [
                 "groupName": groupName,
                 "users": [currentUserUID]
             ]) {err in
@@ -117,7 +117,7 @@ class CreateGroupViewController: UIViewController, UITableViewDelegate, UITableV
                     print("User document added with id \(groupIdentifier)")
                     
                     // Add group to user's database entry
-                    self.addGroupToUserDocument(currentUserUID: currentUserUID, groupIdentifier: groupIdentifier)
+                    self.addGroupToUserDocument(currentUserUID: currentUserUID, groupIdentifier: groupIdentifier, groupName: groupName)
                 }
             }
         } else {
@@ -134,17 +134,19 @@ class CreateGroupViewController: UIViewController, UITableViewDelegate, UITableV
     
     // Helper funciton, add group to user's group list
     // This function should only be called upon sucessful creation of group
-    func addGroupToUserDocument(currentUserUID: String, groupIdentifier: String) {
-        let userRef = db.collection("users").document(currentUserUID)
+    func addGroupToUserDocument(currentUserUID: String, groupIdentifier: String, groupName: String) {
+        let userGroupRef = db.collection("users").document(currentUserUID).collection("groups").document(groupIdentifier)
         
-        userRef.updateData([
-            "groups": FieldValue.arrayUnion([groupIdentifier])
-        ])
+        userGroupRef.setData(["groupName" : groupName])
+        
+//        userRef.updateData([
+//            "groups": FieldValue.arrayUnion([groupIdentifier])
+//        ])
     }
     
     // Helper function, checks db for groupIdentifier
     func isUnusedGroupIdentifier(groupIdentifier: String) -> Bool {
-        var docRef = db.collection("groups").document(groupIdentifier)
+        let docRef = db.collection("groups").document(groupIdentifier)
         
         var isUnused: Bool = true
         
