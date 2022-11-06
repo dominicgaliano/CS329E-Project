@@ -17,8 +17,8 @@ class IndividualSettingsViewController: UIViewController {
         super.viewDidLoad()
         
         profilePicture.layer.masksToBounds = true
-        profilePicture.layer.borderWidth = 2
-        profilePicture.layer.borderColor = UIColor.lightGray.cgColor
+        // profilePicture.layer.borderWidth = 2
+        // profilePicture.layer.borderColor = UIColor.lightGray.cgColor
     }
     
     // Change Profile Picture Button
