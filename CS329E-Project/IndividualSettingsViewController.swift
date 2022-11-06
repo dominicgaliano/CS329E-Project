@@ -33,8 +33,18 @@ class IndividualSettingsViewController: UIViewController {
     }
     
     // Dark mode slider
-    @IBAction func darkModeSlider(_ sender: Any) {
-        return
+    @IBAction func darkModeSlider(_ sender: UISwitch) {
+        if #available(iOS 13.0, *) {
+            let appDelegate = UIApplication.shared.windows.first
+            if sender.isOn {
+                appDelegate?.overrideUserInterfaceStyle = .dark
+                return
+            } else {
+                appDelegate?.overrideUserInterfaceStyle = .light
+            }
+            appDelegate?.overrideUserInterfaceStyle = .light
+            return
+        }
     }
     
     // Logout button
