@@ -45,7 +45,7 @@ class GroupSelectorViewController: UIViewController, UITableViewDelegate, UITabl
                 // set local userData variable to database values
                 // self.userData = document.data()
                 self.userGroups = document.data()!["groups"] as? [String]
-                
+                self.tableView.reloadData()
             } else {
                 print("User does not exist, logging out")
                 self.performLogout()
@@ -55,9 +55,11 @@ class GroupSelectorViewController: UIViewController, UITableViewDelegate, UITabl
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if self.userGroups == nil {
+            print("Table found no groups, 0")
             return 0
         } else {
-            return (self.userGroups).count
+            print("Table found \(self.userGroups.count) groups")
+            return self.userGroups.count
         }
     }
     
