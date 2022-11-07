@@ -524,7 +524,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Temporary button, to Group VC"/>
                                 <connections>
-                                    <segue destination="z8r-9q-zJC" kind="show" id="SVE-QA-W2C"/>
+                                    <segue destination="z8r-9q-zJC" kind="show" identifier="groupIdentifier" id="SVE-QA-W2C"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dRo-8l-fT4">
@@ -731,6 +731,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="ZhD-4i-B04"/>
+                    <connections>
+                        <outlet property="groupNameLabel" destination="q4V-cW-3cH" id="nQK-hX-yQW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WHs-M9-GYI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -903,7 +906,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="SAF-63-Of5"/>
-        <segue reference="t0M-ej-ytF"/>
+        <segue reference="SVE-QA-W2C"/>
         <segue reference="bvP-de-FY9"/>
     </inferredMetricsTieBreakers>
     <resources>
