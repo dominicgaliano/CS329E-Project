@@ -145,17 +145,21 @@ class CreateGroupViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     // Helper function, checks db for groupIdentifier
+    // TODO: Fix this, the closure is not running by the time the function returns
+    // TODO:    this results in the function always returning true, allowing group ids to be overwritten
     func isUnusedGroupIdentifier(groupIdentifier: String) -> Bool {
-        let docRef = db.collection("groups").document(groupIdentifier)
         
+        let docRef = db.collection("groups").document(groupIdentifier)
         var isUnused: Bool = true
         
         docRef.getDocument { (document, error) in
             if let document = document, document.exists {
+                print("Group with identifier \(groupIdentifier) exists")
                 isUnused = false
             }
         }
         
+        print(isUnused)
         return isUnused
     }
     
