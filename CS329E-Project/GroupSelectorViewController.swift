@@ -69,11 +69,20 @@ class GroupSelectorViewController: UIViewController, UITableViewDelegate, UITabl
         cell.textLabel?.text = userGroups[row].1
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "groupIdentifier",
+                             sender: indexPath.row)
+        tableView.deselectRow(at: indexPath, animated: false)
+    }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "CreateGroupSegue",
             let nextVC = segue.destination as? CreateGroupViewController{
                 nextVC.delegate = self
+        } else if segue.identifier == "groupIdentifier",
+                  let nextVC = segue.destination as? GroupViewController {
+            nextVC.groupIdentifier = userGroups[(sender as! Int)].0
         }
     }
     

@@ -506,9 +506,6 @@
                                             <rect key="frame" x="0.0" y="0.0" width="328" height="43.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="z8r-9q-zJC" kind="presentation" identifier="groupIdentifier" modalPresentationStyle="fullScreen" id="9Ss-xs-1sF"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -554,6 +551,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="SYj-mY-ngZ" id="Aca-yw-2Kz"/>
+                        <segue destination="z8r-9q-zJC" kind="show" identifier="groupIdentifier" id="t0M-ej-ytF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4ez-Lv-Jif" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -679,7 +677,7 @@
             <objects>
                 <viewController id="z8r-9q-zJC" customClass="GroupViewController" customModule="CS329E_Project" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jRR-jY-Z44">
-                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="869"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Group Name Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q4V-cW-3cH">
@@ -904,9 +902,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Ue7-CJ-lyZ"/>
-        <segue reference="9Ss-xs-1sF"/>
-        <segue reference="egK-ci-3sh"/>
+        <segue reference="SAF-63-Of5"/>
+        <segue reference="t0M-ej-ytF"/>
+        <segue reference="bvP-de-FY9"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="person.circle" catalog="system" width="128" height="123"/>
