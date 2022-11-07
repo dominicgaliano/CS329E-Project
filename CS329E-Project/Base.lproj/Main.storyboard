@@ -508,9 +508,6 @@
                                             <rect key="frame" x="0.0" y="0.0" width="328" height="43.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="z8r-9q-zJC" kind="presentation" identifier="groupIdentifier" modalPresentationStyle="fullScreen" id="9Ss-xs-1sF"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -529,7 +526,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Temporary button, to Group VC"/>
                                 <connections>
-                                    <segue destination="z8r-9q-zJC" kind="show" id="SVE-QA-W2C"/>
+                                    <segue destination="z8r-9q-zJC" kind="show" identifier="groupIdentifier" id="SVE-QA-W2C"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dRo-8l-fT4">
@@ -556,6 +553,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="SYj-mY-ngZ" id="Aca-yw-2Kz"/>
+                        <segue destination="z8r-9q-zJC" kind="show" identifier="groupIdentifier" id="t0M-ej-ytF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4ez-Lv-Jif" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -704,7 +702,7 @@
             <objects>
                 <viewController id="z8r-9q-zJC" customClass="GroupViewController" customModule="CS329E_Project" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jRR-jY-Z44">
-                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="869"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Group Name Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q4V-cW-3cH">
