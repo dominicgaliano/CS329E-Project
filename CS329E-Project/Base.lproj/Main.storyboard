@@ -222,7 +222,7 @@
             <objects>
                 <viewController id="gbD-p3-9Pd" customClass="IndividualSettingsViewController" customModule="CS329E_Project" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CM5-Nn-xvB">
-                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="869"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z3z-UK-HuT">
@@ -277,6 +277,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="nWf-ew-Zvw"/>
                     <connections>
+                        <outlet property="darkModeSwitch" destination="xGC-Ra-Ken" id="h7w-fx-p3p"/>
                         <outlet property="profilePicture" destination="FEt-NK-Is3" id="2sU-SD-IkK"/>
                     </connections>
                 </viewController>
@@ -289,7 +290,7 @@
             <objects>
                 <viewController id="xPr-PJ-GF7" customClass="GroupSettingsViewController" customModule="CS329E_Project" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KVw-d9-TGy">
-                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="869"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Group Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uxX-A8-qGb">
@@ -338,19 +339,24 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Leave Group"/>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gIR-jU-PzP">
+                                <rect key="frame" x="301" y="212" width="103" height="103"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ahM-cq-XPX"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="sUR-Vn-wgj"/>
+                    <navigationItem key="navigationItem" id="NCb-0P-pAH"/>
                     <connections>
                         <outlet property="groupCodeLabel" destination="UZw-PJ-1RB" id="9ZE-jq-uIF"/>
                         <outlet property="groupNameTextField" destination="w8M-Th-XuS" id="M6s-l7-6VT"/>
+                        <outlet property="qrCode" destination="gIR-jU-PzP" id="MxB-cM-9FK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CeE-zM-FdB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1693.953488372093" y="1357.7253218884121"/>
+            <point key="canvasLocation" x="1693.4579439252336" y="1357.4514038876891"/>
         </scene>
         <!--Create Group View Controller-->
         <scene sceneID="oJJ-dt-hcd">
@@ -423,7 +429,7 @@
                     <navigationItem key="navigationItem" id="5Ee-Aa-Jpc">
                         <barButtonItem key="rightBarButtonItem" title="Create Group" id="ilX-Ij-f7A">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="Yia-yh-Gs1">
-                                <rect key="frame" x="322" y="5" width="86" height="34.333333333333336"/>
+                                <rect key="frame" x="324" y="5" width="86" height="34.333333333333336"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
@@ -565,7 +571,7 @@
             <objects>
                 <tableViewController id="Hge-UK-yqp" customClass="ShoppingListViewController" customModule="CS329E_Project" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="W9h-Ng-vnw">
-                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="869"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
@@ -617,7 +623,7 @@
             <objects>
                 <tableViewController id="vSk-HK-gds" customClass="InventoryViewController" customModule="CS329E_Project" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="qsX-yY-GGR">
-                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="869"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
@@ -662,7 +668,7 @@
             <objects>
                 <tableViewController id="gxU-ux-ooD" customClass="InventorySubgroupViewController" customModule="CS329E_Project" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="owz-ub-AHz">
-                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="869"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
@@ -751,6 +757,15 @@
                                     <segue destination="PAw-tJ-I6Y" kind="show" identifier="choreSegue" id="P3q-Vd-kAJ"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UEi-Bn-IJb">
+                                <rect key="frame" x="93" y="827" width="245" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Temporary button to settings"/>
+                                <connections>
+                                    <segue destination="xPr-PJ-GF7" kind="show" id="6Fv-P4-ITV"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="nGO-0T-Kxt"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -774,7 +789,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WHs-M9-GYI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3212" y="706"/>
+            <point key="canvasLocation" x="3211.6822429906542" y="705.61555075593958"/>
         </scene>
         <!--Chores View Controller-->
         <scene sceneID="LP1-r0-beH">

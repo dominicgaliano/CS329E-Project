@@ -9,24 +9,29 @@ import UIKit
 
 class GroupSettingsViewController: UIViewController {
 
+    @IBOutlet weak var qrCode: UIImageView!
+    var qrcodeImage:CIImage! = nil
+    
     @IBOutlet weak var groupNameTextField: UITextField!
     @IBOutlet weak var groupCodeLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        makeQrCode(groupName: "ghdos")
 
-        // Do any additional setup after loading the view.
+
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func makeQrCode(groupName:String){
+        qrcodeImage = nil
+        if groupName.isEmpty {return}
+        guard let filter = CIFilter(name: "CIQRCodeGenerator") else {return}
+        guard let data = groupName.data(using: .isoLatin1, allowLossyConversion: false) else {return}
+        filter.setValue(data, forKey: "inputMessage")
+        filter.setValue("M", forKey: "inputCorrectionLevel")
+        qrcodeImage = filter.outputImage
+        if let qrcodeImage = qrcodeImage{
+            qrCode.image = UIImage(ciImage: qrcodeImage)
+        }
     }
-    */
-
 }
