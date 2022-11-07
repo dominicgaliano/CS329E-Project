@@ -42,14 +42,22 @@ class IndividualSettingsViewController: UIViewController {
     }
     
     // Dark mode slider
-    @IBAction func darkModeSlider(_ sender: Any) {
+    @IBAction func darkModeSlider(_ sender: UISwitch) {
         var defaults = UserDefaults.standard
-        if darkModeSwitch.isOn {
-            defaults.set(true, forKey: "state")
-        } else{
-            defaults.set(false, forKey: "state")
+        
+        if #available(iOS 13.0, *) {
+            let appDelegate = UIApplication.shared.windows.first
+            if sender.isOn {
+                defaults.set(true, forKey: "state")
+                appDelegate?.overrideUserInterfaceStyle = .dark
+                return
+            } else {
+                defaults.set(false, forKey: "state")
+                appDelegate?.overrideUserInterfaceStyle = .light
+            }
+            appDelegate?.overrideUserInterfaceStyle = .light
+            return
         }
-        return
     }
     
     

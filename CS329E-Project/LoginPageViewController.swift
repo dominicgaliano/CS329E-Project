@@ -33,6 +33,12 @@ class LoginPageViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        errorLabel.text = ""
+    }
+    
     // Called when 'return' key pressed
     func textFieldShouldReturn(_ textField:UITextField) -> Bool {
         textField.resignFirstResponder()

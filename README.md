@@ -8,7 +8,10 @@ Xcode Version: 14.0.1 (14A400)
 Dependencies: Firebase 9.0.0  
 iPhone Model: iPhone 14 Pro Max  
 
-Testing Instructions
+Testing Instructions:
+
+- Start by creating an account using your first and last name as well as email and chosen password.
+- Initially, you will not be a member of any group. You must first create a new group or join an existing group.
 
 Features checklist:  
 
@@ -18,9 +21,10 @@ Features checklist:
 
 Major Elements:  
 
-- [ ] Use of Core Data/Firebase
-put setting data in core data
-- [ ] Implementation of user profile path, incl. creation, taking a pic or selecting prexisting, and editing  
+- [X] Use of Core Data/Firebase 
+- (put settings data in core data)
+- [ ] Implementation of user profile path, incl. creation, taking a pic or selecting prexisting, and editing
+- Need to save profile picture to database
 
 Minor Elements:  
 
