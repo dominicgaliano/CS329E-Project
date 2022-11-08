@@ -128,4 +128,10 @@ class ShoppingListViewController: UITableViewController {
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // TODO: perform check off of something like that
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 }
