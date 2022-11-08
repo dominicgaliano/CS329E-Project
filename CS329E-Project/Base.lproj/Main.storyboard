@@ -486,8 +486,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="u08-4t-tRx"/>
                     <connections>
-                        <outlet property="joinGroupName" destination="g6i-Zi-j4J" id="N8Y-MB-Dcr"/>
-                        <segue destination="kP0-ch-bVs" kind="show" identifier="JoinGroupSegueBack" id="bvP-de-FY9"/>
+                        <outlet property="joinGroupID" destination="g6i-Zi-j4J" id="mp3-Uh-bow"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aoQ-KK-Mek" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -965,9 +964,9 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="Ue7-CJ-lyZ"/>
-        <segue reference="SVE-QA-W2C"/>
+        <segue reference="t0M-ej-ytF"/>
         <segue reference="Q6t-d2-ytf"/>
-        <segue reference="1BY-Ci-cbu"/>
+        <segue reference="tJ7-cd-60g"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="person.2" catalog="system" width="128" height="82"/>
