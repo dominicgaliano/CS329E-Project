@@ -115,7 +115,6 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
             "firstName": firstName,
             "lastName": lastName,
             "email": email,
-            "groups": []
         ]) {err in
             if let err = err {
                 print("Error adding documet: \(err)")

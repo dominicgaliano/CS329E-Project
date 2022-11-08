@@ -109,7 +109,10 @@ class CreateGroupViewController: UIViewController, UITableViewDelegate, UITableV
             // create group
             db.collection("groups").document(groupIdentifier).setData( [
                 "groupName": groupName,
-                "users": [currentUserUID]
+                "users": [currentUserUID],
+                "shoppingList": [],
+                "inventory": [],
+                "calendarEntries": []
             ]) {err in
                 if let err = err {
                     print("Error adding documet: \(err)")

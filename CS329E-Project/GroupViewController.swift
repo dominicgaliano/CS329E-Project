@@ -10,6 +10,9 @@ import FirebaseFirestore
 
 class GroupViewController: UIViewController {
     
+    // segue identifier
+    let shoppingListSegueIdentifier: String = "shoppingListSegueIdentifier"
+    
     // outlets
     @IBOutlet weak var groupNameLabel: UILabel!
     
@@ -43,6 +46,13 @@ class GroupViewController: UIViewController {
                 print("Document does not exist")
                 self.dismiss(animated: true)
             }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == shoppingListSegueIdentifier,
+           let nextVC = segue.destination as? ShoppingListViewController {
+            nextVC.groupIdentifier = groupIdentifier
         }
     }
     

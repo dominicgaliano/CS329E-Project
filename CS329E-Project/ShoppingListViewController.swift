@@ -6,12 +6,19 @@
 //
 
 import UIKit
+import FirebaseFirestore
 
 var items = ["Apples", "Toilet Paper", "Chicken Wings", "Oranges", "Tide Pods"]
 
 class ShoppingListViewController: UITableViewController {
-    
+
+    // define references
     let textCellIdentifier = "TextCell"
+    var groupIdentifier:String!
+    let db = Firestore.firestore()
+    
+    // define items list
+    var shoppingListItems:[String]!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,14 +27,33 @@ class ShoppingListViewController: UITableViewController {
         tableView.dataSource = self
         
         self.navigationItem.rightBarButtonItem = self.editButtonItem
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // get group shopping list data from database
+        let groupRef = db.collection("groups").document(groupIdentifier!)
+        
+        groupRef.getDocument { (document, error ) in
+            if let document = document, document.exists {
+                let groupDescription = document.data()
+                
+                // check if group has shopping list
+                if groupDescription!["shoppingList"] != nil {
+                    self.shoppingListItems = groupDescription!["shoppingList"] as? [String]
+                } else {
+                    // no shopping list, need to add
+                    print("Error, group has no shopping list yet")
+                }
+                self.tableView.reloadData()
+            } else {
+                print("Document does not exist")
+                self.dismiss(animated: true)
+            }
+        }
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -36,16 +62,20 @@ class ShoppingListViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return items.count
+        if self.shoppingListItems == nil {
+            print("Table found no shopping list items")
+            return 0
+        } else {
+            print("Table found \(self.shoppingListItems.count) items(s)")
+            return self.shoppingListItems.count
+        }
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let row = indexPath.row
         let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath)
-
-        cell.textLabel?.text = items[indexPath.row]
-        
+        cell.textLabel?.text = shoppingListItems![row]
         return cell
     }
     
@@ -84,7 +114,6 @@ class ShoppingListViewController: UITableViewController {
         alertController.addAction(cancelAction)
         alertController.addAction(saveAction)
         present(alertController, animated: true, completion: nil)
-        
     }
     
     /*

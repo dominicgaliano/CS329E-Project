@@ -222,7 +222,7 @@
             <objects>
                 <viewController id="gbD-p3-9Pd" customClass="IndividualSettingsViewController" customModule="CS329E_Project" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CM5-Nn-xvB">
-                        <rect key="frame" x="0.0" y="0.0" width="428" height="869"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z3z-UK-HuT">
@@ -290,7 +290,7 @@
             <objects>
                 <viewController id="xPr-PJ-GF7" customClass="GroupSettingsViewController" customModule="CS329E_Project" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KVw-d9-TGy">
-                        <rect key="frame" x="0.0" y="0.0" width="428" height="869"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Group Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uxX-A8-qGb">
@@ -429,7 +429,7 @@
                     <navigationItem key="navigationItem" id="5Ee-Aa-Jpc">
                         <barButtonItem key="rightBarButtonItem" title="Create Group" id="ilX-Ij-f7A">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="Yia-yh-Gs1">
-                                <rect key="frame" x="324" y="5" width="86" height="34.333333333333336"/>
+                                <rect key="frame" x="322" y="5" width="86" height="34.333333333333336"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
@@ -571,7 +571,7 @@
             <objects>
                 <tableViewController id="Hge-UK-yqp" customClass="ShoppingListViewController" customModule="CS329E_Project" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="W9h-Ng-vnw">
-                        <rect key="frame" x="0.0" y="0.0" width="428" height="869"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
@@ -623,7 +623,7 @@
             <objects>
                 <tableViewController id="vSk-HK-gds" customClass="InventoryViewController" customModule="CS329E_Project" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="qsX-yY-GGR">
-                        <rect key="frame" x="0.0" y="0.0" width="428" height="869"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
@@ -668,7 +668,7 @@
             <objects>
                 <tableViewController id="gxU-ux-ooD" customClass="InventorySubgroupViewController" customModule="CS329E_Project" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="owz-ub-AHz">
-                        <rect key="frame" x="0.0" y="0.0" width="428" height="869"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
@@ -736,7 +736,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Shopping List"/>
                                 <connections>
-                                    <segue destination="Hge-UK-yqp" kind="show" id="16C-CU-0E3"/>
+                                    <segue destination="Hge-UK-yqp" kind="show" identifier="shoppingListSegueIdentifier" id="16C-CU-0E3"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wJ2-Zo-v7a">
