@@ -96,11 +96,36 @@ class ShoppingListViewController: UITableViewController {
                 "shoppingList": FieldValue.arrayUnion([newItem!])
             ]) { _ in
                 print("Added \(String(describing: newItem!)) to group shopping list")
-                self.reloadTableData()
+                // self.reloadTableData()
+                
+                self.shoppingListItems.append(newItem!)
+                self.tableView.insertRows(at: [IndexPath(row: self.shoppingListItems.count-1,
+                                                    section: 0)],
+                                     with: .automatic)
             }
         }
         alertController.addAction(cancelAction)
         alertController.addAction(saveAction)
         present(alertController, animated: true, completion: nil)
+    }
+    
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            // remove from local list
+            self.shoppingListItems.remove(at: indexPath.row)
+            
+            // TODO: remove from database
+            let groupRef = db.collection("groups").document(self.groupIdentifier)
+            groupRef.updateData([
+                "shoppingList": shoppingListItems!
+            ])
+            
+            // update table
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
     }
 }
