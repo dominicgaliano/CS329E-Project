@@ -83,6 +83,9 @@ class GroupSelectorViewController: UIViewController, UITableViewDelegate, UITabl
         } else if segue.identifier == "groupIdentifier",
                   let nextVC = segue.destination as? GroupViewController {
             nextVC.groupIdentifier = userGroups[(sender as! Int)].0
+        } else if segue.identifier == "JoinGroupSegue",
+                  let nextVC = segue.destination as? JoinGroupViewController {
+            // do nothing lol
         }
     }
     
