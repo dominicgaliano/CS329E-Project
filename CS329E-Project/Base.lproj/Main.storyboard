@@ -3,6 +3,7 @@
     <device id="retina6_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -221,7 +222,7 @@
             <objects>
                 <viewController id="gbD-p3-9Pd" customClass="IndividualSettingsViewController" customModule="CS329E_Project" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CM5-Nn-xvB">
-                        <rect key="frame" x="0.0" y="0.0" width="428" height="869"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z3z-UK-HuT">
@@ -276,6 +277,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="nWf-ew-Zvw"/>
                     <connections>
+                        <outlet property="darkModeSwitch" destination="xGC-Ra-Ken" id="h7w-fx-p3p"/>
                         <outlet property="profilePicture" destination="FEt-NK-Is3" id="2sU-SD-IkK"/>
                     </connections>
                 </viewController>
@@ -337,18 +339,24 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Leave Group"/>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gIR-jU-PzP">
+                                <rect key="frame" x="301" y="212" width="103" height="103"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ahM-cq-XPX"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="NCb-0P-pAH"/>
                     <connections>
                         <outlet property="groupCodeLabel" destination="UZw-PJ-1RB" id="9ZE-jq-uIF"/>
                         <outlet property="groupNameTextField" destination="w8M-Th-XuS" id="M6s-l7-6VT"/>
+                        <outlet property="qrCode" destination="gIR-jU-PzP" id="MxB-cM-9FK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CeE-zM-FdB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1693.953488372093" y="1357.7253218884121"/>
+            <point key="canvasLocation" x="1693.4579439252336" y="1357.4514038876891"/>
         </scene>
         <!--Create Group View Controller-->
         <scene sceneID="oJJ-dt-hcd">
@@ -421,7 +429,7 @@
                     <navigationItem key="navigationItem" id="5Ee-Aa-Jpc">
                         <barButtonItem key="rightBarButtonItem" title="Create Group" id="ilX-Ij-f7A">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="Yia-yh-Gs1">
-                                <rect key="frame" x="324" y="5" width="86" height="34.333333333333336"/>
+                                <rect key="frame" x="322" y="5" width="86" height="34.333333333333336"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
@@ -447,7 +455,7 @@
             <objects>
                 <viewController id="8dK-h4-TBI" customClass="JoinGroupViewController" customModule="CS329E_Project" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IkO-KR-Mr2">
-                        <rect key="frame" x="0.0" y="0.0" width="428" height="869"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Enter Group name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Scq-VF-LKE">
@@ -478,8 +486,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="u08-4t-tRx"/>
                     <connections>
-                        <outlet property="joinGroupName" destination="g6i-Zi-j4J" id="N8Y-MB-Dcr"/>
-                        <segue destination="kP0-ch-bVs" kind="show" identifier="JoinGroupSegueBack" id="bvP-de-FY9"/>
+                        <outlet property="joinGroupID" destination="g6i-Zi-j4J" id="mp3-Uh-bow"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aoQ-KK-Mek" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -491,7 +498,7 @@
             <objects>
                 <viewController id="kP0-ch-bVs" customClass="GroupSelectorViewController" customModule="CS329E_Project" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Vtt-Xp-pof">
-                        <rect key="frame" x="0.0" y="0.0" width="428" height="869"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="SYj-mY-ngZ">
@@ -506,9 +513,6 @@
                                             <rect key="frame" x="0.0" y="0.0" width="328" height="43.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="z8r-9q-zJC" kind="presentation" identifier="groupIdentifier" modalPresentationStyle="fullScreen" id="9Ss-xs-1sF"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -527,7 +531,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Temporary button, to Group VC"/>
                                 <connections>
-                                    <segue destination="z8r-9q-zJC" kind="show" id="SVE-QA-W2C"/>
+                                    <segue destination="z8r-9q-zJC" kind="show" identifier="groupIdentifier" id="SVE-QA-W2C"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dRo-8l-fT4">
@@ -554,6 +558,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="SYj-mY-ngZ" id="Aca-yw-2Kz"/>
+                        <segue destination="z8r-9q-zJC" kind="show" identifier="groupIdentifier" id="t0M-ej-ytF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4ez-Lv-Jif" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -565,7 +570,7 @@
             <objects>
                 <tableViewController id="Hge-UK-yqp" customClass="ShoppingListViewController" customModule="CS329E_Project" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="W9h-Ng-vnw">
-                        <rect key="frame" x="0.0" y="0.0" width="428" height="869"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
@@ -586,7 +591,7 @@
                     <navigationItem key="navigationItem" id="AI0-LD-IDO">
                         <nil key="title"/>
                         <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="O38-ot-qTt">
-                            <rect key="frame" x="187.66666666666666" y="5" width="54.666666666666657" height="34.333333333333336"/>
+                            <rect key="frame" x="186.66666666666666" y="5" width="54.666666666666657" height="34.333333333333336"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="plain" title="Add"/>
@@ -594,6 +599,18 @@
                                 <action selector="addButton:" destination="Hge-UK-yqp" eventType="touchUpInside" id="dhs-44-QnW"/>
                             </connections>
                         </button>
+                        <barButtonItem key="rightBarButtonItem" id="JAG-1e-EGZ">
+                            <imageReference key="image" image="person.2.circle" catalog="system" variableValue="0.80000000000000004"/>
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="nua-iw-b0T">
+                                <rect key="frame" x="313" y="5" width="95" height="34.333333333333336"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                            </button>
+                            <connections>
+                                <segue destination="xPr-PJ-GF7" kind="show" id="tJ7-cd-60g"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dQt-t5-pZH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -605,7 +622,7 @@
             <objects>
                 <tableViewController id="vSk-HK-gds" customClass="InventoryViewController" customModule="CS329E_Project" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="qsX-yY-GGR">
-                        <rect key="frame" x="0.0" y="0.0" width="428" height="869"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
@@ -628,6 +645,17 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="LCc-Ke-KFT">
                         <nil key="title"/>
+                        <barButtonItem key="rightBarButtonItem" image="person.2" catalog="system" id="pQd-Hv-oHl">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="fTZ-BQ-CHc">
+                                <rect key="frame" x="313" y="5" width="95" height="34.333333333333336"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                            </button>
+                            <connections>
+                                <segue destination="xPr-PJ-GF7" kind="show" id="LgN-fl-UlA"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qvP-dh-HJa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -639,7 +667,7 @@
             <objects>
                 <tableViewController id="gxU-ux-ooD" customClass="InventorySubgroupViewController" customModule="CS329E_Project" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="owz-ub-AHz">
-                        <rect key="frame" x="0.0" y="0.0" width="428" height="869"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
@@ -660,7 +688,7 @@
                     <navigationItem key="navigationItem" id="cUA-gm-PWe">
                         <nil key="title"/>
                         <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="Z0c-4u-srj">
-                            <rect key="frame" x="187.66666666666666" y="5" width="54.666666666666657" height="34.333333333333336"/>
+                            <rect key="frame" x="186.66666666666666" y="5" width="54.666666666666657" height="34.333333333333336"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="plain" title="Add"/>
@@ -707,7 +735,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Shopping List"/>
                                 <connections>
-                                    <segue destination="Hge-UK-yqp" kind="show" id="16C-CU-0E3"/>
+                                    <segue destination="Hge-UK-yqp" kind="show" identifier="shoppingListSegueIdentifier" id="16C-CU-0E3"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wJ2-Zo-v7a">
@@ -716,7 +744,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Inventory"/>
                                 <connections>
-                                    <segue destination="vSk-HK-gds" kind="show" id="c8H-Sx-2kI"/>
+                                    <segue destination="vSk-HK-gds" kind="show" id="ca5-Pm-g9M"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="70l-Q9-mfS">
@@ -725,18 +753,42 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Chores Schedule"/>
                                 <connections>
-                                    <segue destination="PAw-tJ-I6Y" kind="presentation" identifier="choreSegue" modalPresentationStyle="fullScreen" id="P3q-Vd-kAJ"/>
+                                    <segue destination="PAw-tJ-I6Y" kind="show" identifier="choreSegue" id="P3q-Vd-kAJ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UEi-Bn-IJb">
+                                <rect key="frame" x="93" y="827" width="245" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Temporary button to settings"/>
+                                <connections>
+                                    <segue destination="xPr-PJ-GF7" kind="show" id="6Fv-P4-ITV"/>
                                 </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="nGO-0T-Kxt"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="ZhD-4i-B04"/>
+                    <navigationItem key="navigationItem" id="ZhD-4i-B04">
+                        <barButtonItem key="rightBarButtonItem" image="person.2" catalog="system" id="T94-fd-1u5">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="AWj-s8-Gda">
+                                <rect key="frame" x="313" y="5" width="95" height="34.333333333333336"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                            </button>
+                            <connections>
+                                <segue destination="xPr-PJ-GF7" kind="show" id="1BY-Ci-cbu"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="groupNameLabel" destination="q4V-cW-3cH" id="pk0-At-ZSu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WHs-M9-GYI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3212" y="706"/>
+            <point key="canvasLocation" x="3211.6822429906542" y="705.61555075593958"/>
         </scene>
         <!--Chores View Controller-->
         <scene sceneID="LP1-r0-beH">
@@ -747,7 +799,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="39" translatesAutoresizingMaskIntoConstraints="NO" id="IYe-C6-A95">
-                                <rect key="frame" x="142" y="634.33333333333337" width="144" height="107.66666666666663"/>
+                                <rect key="frame" x="142" y="585.33333333333337" width="144" height="107.66666666666663"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XsE-GO-B75">
                                         <rect key="frame" x="0.0" y="0.0" width="144" height="34.333333333333336"/>
@@ -773,7 +825,19 @@
                             <constraint firstItem="GTn-12-asC" firstAttribute="bottom" secondItem="IYe-C6-A95" secondAttribute="bottom" constant="150" id="rVU-2j-X1E"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="4w9-tz-xUH"/>
+                    <navigationItem key="navigationItem" id="4w9-tz-xUH">
+                        <barButtonItem key="rightBarButtonItem" image="person.2" catalog="system" id="3DJ-R8-qRA">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="Kfl-eC-Xo9">
+                                <rect key="frame" x="313" y="5" width="95" height="34.333333333333336"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                            </button>
+                            <connections>
+                                <segue destination="xPr-PJ-GF7" kind="show" id="bna-bM-UJW"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XuC-Fq-otQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -784,7 +848,7 @@
             <objects>
                 <viewController id="hEy-po-9Xr" customClass="ChoresSchedulerViewController" customModule="CS329E_Project" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rzh-R5-5X9">
-                        <rect key="frame" x="0.0" y="0.0" width="428" height="869"/>
+                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fnj-hB-E4d">
@@ -860,6 +924,7 @@
                                             </switch>
                                         </subviews>
                                     </stackView>
+
                                 </subviews>
                             </stackView>
                         </subviews>
@@ -906,11 +971,14 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="SAF-63-Of5"/>
-        <segue reference="9Ss-xs-1sF"/>
-        <segue reference="egK-ci-3sh"/>
+        <segue reference="Ue7-CJ-lyZ"/>
+        <segue reference="t0M-ej-ytF"/>
+        <segue reference="Q6t-d2-ytf"/>
+        <segue reference="tJ7-cd-60g"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="person.2" catalog="system" width="128" height="82"/>
+        <image name="person.2.circle" catalog="system" width="128" height="123"/>
         <image name="person.circle" catalog="system" width="128" height="123"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

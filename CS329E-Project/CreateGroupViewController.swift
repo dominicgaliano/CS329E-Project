@@ -38,6 +38,7 @@ class CreateGroupViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     @objc public func createButton(){
+        // check if groupName is empty
         if groupName.text == ""{
             let controller = UIAlertController(
                 title: "Error",
@@ -47,23 +48,11 @@ class CreateGroupViewController: UIViewController, UITableViewDelegate, UITableV
                 title: "OK", style: .default))
             present(controller, animated: true)
         }
-//        else if groups.contains(groupName.text!){
-//            let controller = UIAlertController(
-//                title: "Error",
-//                message: "Group name already in use",
-//                preferredStyle: .alert)
-//            controller.addAction(UIAlertAction(
-//                title: "OK", style: .default))
-//            present(controller, animated: true)
-//        }
         else{
             // create group in database
             addGroup(groupIdentifier: groupIdentifier.text!,
                      groupName: groupName.text!,
                      currentUserUID: Auth.auth().currentUser!.uid)
-            
-            // performSegue(withIdentifier: "CreateGroupSegueBack", sender: nil)
-            // dismiss(animated: true, completion: nil)
         }
     }
     
@@ -104,59 +93,58 @@ class CreateGroupViewController: UIViewController, UITableViewDelegate, UITableV
     
     // Adds group to database with unique group id
     func addGroup(groupIdentifier: String, groupName: String, currentUserUID: String) {
+        // define variables and db reference
+        let docRef = db.collection("groups").document(groupIdentifier)
+        
         // validate identifier
-        if isUnusedGroupIdentifier(groupIdentifier: groupIdentifier) {
-            // create group
-            db.collection("groups").document("groupIdentifier").setData( [
-                "groupName": groupName,
-                "users": [currentUserUID]
-            ]) {err in
-                if let err = err {
-                    print("Error adding documet: \(err)")
-                } else {
-                    print("User document added with id \(groupIdentifier)")
-                    
-                    // Add group to user's database entry
-                    self.addGroupToUserDocument(currentUserUID: currentUserUID, groupIdentifier: groupIdentifier)
+        docRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                // group identifier already used, alert the user
+                let controller = UIAlertController(
+                    title: "Error",
+                    message: "This groupIdentifier is already in use",
+                    preferredStyle: .alert)
+                controller.addAction(UIAlertAction(
+                    title: "OK", style: .default))
+                self.present(controller, animated: true)
+
+            } else {
+                // group not used, can create group
+                // create group
+                self.db.collection("groups").document(groupIdentifier).setData( [
+                    "groupName": groupName,
+                    "users": [currentUserUID],
+                    "shoppingList": [],
+                    "inventory": [],
+                    "calendarEntries": []
+                ]) {err in
+                    if let err = err {
+                        print("Error adding documet: \(err)")
+                    } else {
+                        print("User document added with id \(groupIdentifier)")
+                        
+                        // Add group to user's database entry
+                        self.addGroupToUserDocument(currentUserUID: currentUserUID, groupIdentifier: groupIdentifier, groupName: groupName)
+                    }
                 }
             }
-        } else {
-            // group identifier already used, alert the user
-            let controller = UIAlertController(
-                title: "Error",
-                message: "This groupIdentifier is already in use",
-                preferredStyle: .alert)
-            controller.addAction(UIAlertAction(
-                title: "OK", style: .default))
-            present(controller, animated: true)
         }
     }
     
     // Helper funciton, add group to user's group list
     // This function should only be called upon sucessful creation of group
-    func addGroupToUserDocument(currentUserUID: String, groupIdentifier: String) {
-        let userRef = db.collection("users").document(currentUserUID)
+    func addGroupToUserDocument(currentUserUID: String, groupIdentifier: String, groupName: String) {
+        let userGroupRef = db.collection("users").document(currentUserUID).collection("groups").document(groupIdentifier)
         
-        userRef.updateData([
-            "groups": FieldValue.arrayUnion([groupIdentifier])
-        ])
-    }
-    
-    // Helper function, checks db for groupIdentifier
-    func isUnusedGroupIdentifier(groupIdentifier: String) -> Bool {
-        var docRef = db.collection("groups").document(groupIdentifier)
+        userGroupRef.setData(["groupName" : groupName])
         
-        var isUnused: Bool = true
-        
-        docRef.getDocument { (document, error) in
-            if let document = document, document.exists {
-                isUnused = false
-            }
+        // exit VC
+        if let nav = self.navigationController {
+            nav.popViewController(animated: true)
+        } else {
+            self.dismiss(animated: true, completion: nil)
         }
-        
-        return isUnused
     }
-    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         addedMembers.count

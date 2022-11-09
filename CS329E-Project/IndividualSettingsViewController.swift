@@ -13,12 +13,21 @@ class IndividualSettingsViewController: UIViewController {
     // Profile picture outlet
     @IBOutlet weak var profilePicture: UIImageView!
     
+    // switch status outlet
+    @IBOutlet weak var darkModeSwitch: UISwitch!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         profilePicture.layer.masksToBounds = true
         profilePicture.layer.borderWidth = 2
         profilePicture.layer.borderColor = UIColor.lightGray.cgColor
+        
+        var defaults = UserDefaults.standard
+        if defaults.object(forKey: "state") != nil{
+            darkModeSwitch.isOn = defaults.bool(forKey: "state")
+        }
+        
     }
     
     // Change Profile Picture Button
@@ -33,9 +42,25 @@ class IndividualSettingsViewController: UIViewController {
     }
     
     // Dark mode slider
-    @IBAction func darkModeSlider(_ sender: Any) {
-        return
+    @IBAction func darkModeSlider(_ sender: UISwitch) {
+        var defaults = UserDefaults.standard
+        
+        if #available(iOS 13.0, *) {
+            let appDelegate = UIApplication.shared.windows.first
+            if sender.isOn {
+                defaults.set(true, forKey: "state")
+                appDelegate?.overrideUserInterfaceStyle = .dark
+                return
+            } else {
+                defaults.set(false, forKey: "state")
+                appDelegate?.overrideUserInterfaceStyle = .light
+            }
+            appDelegate?.overrideUserInterfaceStyle = .light
+            return
+        }
     }
+    
+    
     
     // Logout button
     @IBAction func logoutButtonPressed(_ sender: Any) {
