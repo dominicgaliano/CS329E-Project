@@ -306,15 +306,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Group Code:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RoC-aD-SL1">
-                                <rect key="frame" x="20" y="228" width="97" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Distinct Group Code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UZw-PJ-1RB">
-                                <rect key="frame" x="129" y="228" width="155" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Group Identifier:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RoC-aD-SL1">
+                                <rect key="frame" x="20" y="228" width="124" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -343,6 +336,13 @@
                                 <rect key="frame" x="301" y="212" width="103" height="103"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Distinct Group Identifer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UZw-PJ-1RB">
+                                <rect key="frame" x="98" y="253" width="177" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ahM-cq-XPX"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -458,14 +458,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Enter Group name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Scq-VF-LKE">
-                                <rect key="frame" x="118" y="150" width="200" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Enter Group Identifier:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Scq-VF-LKE">
+                                <rect key="frame" x="118" y="150" width="235" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Group name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="g6i-Zi-j4J">
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Group identifier" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="g6i-Zi-j4J">
                                 <rect key="frame" x="68" y="213" width="295" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
@@ -607,9 +607,6 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
                             </button>
-                            <connections>
-                                <segue destination="xPr-PJ-GF7" kind="show" id="tJ7-cd-60g"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
@@ -652,9 +649,6 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
                             </button>
-                            <connections>
-                                <segue destination="xPr-PJ-GF7" kind="show" id="LgN-fl-UlA"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
@@ -756,15 +750,6 @@
                                     <segue destination="PAw-tJ-I6Y" kind="show" identifier="choreSegue" id="P3q-Vd-kAJ"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UEi-Bn-IJb">
-                                <rect key="frame" x="93" y="827" width="245" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Temporary button to settings"/>
-                                <connections>
-                                    <segue destination="xPr-PJ-GF7" kind="show" id="6Fv-P4-ITV"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="nGO-0T-Kxt"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -776,10 +761,10 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <connections>
+                                    <segue destination="xPr-PJ-GF7" kind="show" identifier="groupSettingsSegueIdentifier" id="H4z-lI-OWa"/>
+                                </connections>
                             </button>
-                            <connections>
-                                <segue destination="xPr-PJ-GF7" kind="show" id="1BY-Ci-cbu"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -833,9 +818,6 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
                             </button>
-                            <connections>
-                                <segue destination="xPr-PJ-GF7" kind="show" id="bna-bM-UJW"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
                 </viewController>
@@ -852,7 +834,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fnj-hB-E4d">
-                                <rect key="frame" x="151.33333333333334" y="472.66666666666669" width="125.33333333333334" height="34.333333333333314"/>
+                                <rect key="frame" x="151.33333333333334" y="446.66666666666669" width="125.33333333333334" height="34.333333333333314"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Create Chore"/>
                                 <connections>
@@ -860,13 +842,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rMP-iG-n5x">
-                                <rect key="frame" x="214" y="546" width="0.0" height="0.0"/>
+                                <rect key="frame" x="214" y="603" width="0.0" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="yIp-1L-cDX">
-                                <rect key="frame" x="38" y="126" width="360" height="231.33333333333334"/>
+                                <rect key="frame" x="38" y="126.00000000000001" width="367.33333333333331" height="231.33333333333334"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="0nh-uc-se0">
                                         <rect key="frame" x="0.0" y="0.0" width="150" height="231.33333333333334"/>
@@ -898,10 +880,10 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="27" translatesAutoresizingMaskIntoConstraints="NO" id="SDC-w0-OmW">
-                                        <rect key="frame" x="150" y="0.6666666666666714" width="210" height="230"/>
+                                        <rect key="frame" x="150" y="0.6666666666666714" width="217.33333333333337" height="230"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wkb-OP-c47">
-                                                <rect key="frame" x="15" y="0.0" width="180" height="34"/>
+                                                <rect key="frame" x="18.666666666666657" y="0.0" width="180" height="34"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="180" id="6cE-ij-S9d"/>
                                                 </constraints>
@@ -909,10 +891,10 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="gxG-aC-ssS">
-                                                <rect key="frame" x="0.0" y="61" width="210" height="50"/>
+                                                <rect key="frame" x="0.0" y="61" width="217.33333333333334" height="50"/>
                                             </datePicker>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7nj-cV-LwI">
-                                                <rect key="frame" x="15" y="138" width="180" height="34"/>
+                                                <rect key="frame" x="18.666666666666657" y="138" width="180" height="34"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="180" id="htT-Da-xdO"/>
                                                 </constraints>
@@ -920,11 +902,10 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qrc-ab-hNj">
-                                                <rect key="frame" x="80.666666666666657" y="199" width="51" height="31"/>
+                                                <rect key="frame" x="84.333333333333343" y="199" width="51" height="31"/>
                                             </switch>
                                         </subviews>
                                     </stackView>
-
                                 </subviews>
                             </stackView>
                         </subviews>
@@ -974,7 +955,6 @@
         <segue reference="Ue7-CJ-lyZ"/>
         <segue reference="t0M-ej-ytF"/>
         <segue reference="Q6t-d2-ytf"/>
-        <segue reference="tJ7-cd-60g"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="person.2" catalog="system" width="128" height="82"/>

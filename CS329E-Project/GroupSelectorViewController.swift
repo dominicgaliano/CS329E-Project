@@ -85,7 +85,7 @@ class GroupSelectorViewController: UIViewController, UITableViewDelegate, UITabl
             nextVC.groupIdentifier = userGroups[(sender as! Int)].0
         } else if segue.identifier == "JoinGroupSegue",
                   let nextVC = segue.destination as? JoinGroupViewController {
-            // do nothing lol
+            // TODO: can put something here if needed, but might be able to delete this
         }
     }
     

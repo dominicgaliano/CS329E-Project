@@ -10,8 +10,9 @@ import FirebaseFirestore
 
 class GroupViewController: UIViewController {
     
-    // segue identifier
+    // segue identifiers
     let shoppingListSegueIdentifier: String = "shoppingListSegueIdentifier"
+    let groupSettingsSegueIdentifier: String = "groupSettingsSegueIdentifier"
     
     // outlets
     @IBOutlet weak var groupNameLabel: UILabel!
@@ -52,6 +53,9 @@ class GroupViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == shoppingListSegueIdentifier,
            let nextVC = segue.destination as? ShoppingListViewController {
+            nextVC.groupIdentifier = groupIdentifier
+        } else if segue.identifier == groupSettingsSegueIdentifier,
+             let nextVC = segue.destination as? GroupSettingsViewController {
             nextVC.groupIdentifier = groupIdentifier
         }
     }
