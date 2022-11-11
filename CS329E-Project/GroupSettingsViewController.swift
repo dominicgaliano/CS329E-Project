@@ -77,11 +77,11 @@ class GroupSettingsViewController: UIViewController, UITableViewDelegate, UITabl
                                     print("user has not first and last name")
                                     self.dismiss(animated: true, completion: nil)
                                 }
+                                // display users
+                                self.tableView.reloadData()
                             }
                         }
                     }
-                    // display users
-                    self.tableView.reloadData()
                 } else {
                     // no users, this is a bad error
                     print("Error, group has no users yet")
