@@ -9,7 +9,7 @@ import UIKit
 import FirebaseFirestore
 import FirebaseAuth
 
-class GroupSettingsViewController: UIViewController {
+class GroupSettingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     // define current group id (passed via segue) and db
     var groupIdentifier:String!
@@ -23,10 +23,14 @@ class GroupSettingsViewController: UIViewController {
     
     @IBOutlet weak var groupNameTextField: UITextField!
     @IBOutlet weak var groupCodeLabel: UILabel!
+    @IBOutlet weak var tableView: UITableView!
+    let textCellIdentifier = "MemberCell"
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        makeQrCode(groupName: "ghdos")
+        
+        tableView.delegate = self
+        tableView.dataSource = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -37,6 +41,9 @@ class GroupSettingsViewController: UIViewController {
             print("Must select a group, cannot use shortcut anymore")
             dismiss(animated: true)
         }
+        
+        // make QR code
+        makeQrCode(groupName: groupIdentifier)
         
         // get group data from database
         let groupRef = db.collection("groups").document(groupIdentifier!)
@@ -54,6 +61,7 @@ class GroupSettingsViewController: UIViewController {
                     let groupMemberIDs = groupDescription!["users"] as? [String]
                     
                     // Convert user IDs to first and last names
+                    self.groupUsers = []
                     for i in 0..<groupMemberIDs!.count {
                         // query db for user
                         let userRef = db.collection("users").document(groupMemberIDs![i] as String)
@@ -63,21 +71,17 @@ class GroupSettingsViewController: UIViewController {
                                 
                                 // check if user has first and last name (it should)
                                 if let firstName = userData!["firstName"], let lastName = userData!["lastName"] {
-                                    print("\(firstName) \(lastName)")
+                                    // add users to list
+                                    self.groupUsers.append("\(firstName) \(lastName)")
                                 } else {
                                     print("user has not first and last name")
                                     self.dismiss(animated: true, completion: nil)
                                 }
+                                // display users
+                                self.tableView.reloadData()
                             }
                         }
-                    
-                        // add user to list
-                        
                     }
-                    
-                    // TODO: display users
-                    
-                    
                 } else {
                     // no users, this is a bad error
                     print("Error, group has no users yet")
@@ -88,6 +92,23 @@ class GroupSettingsViewController: UIViewController {
                 self.dismiss(animated: true)
             }
         }
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if self.groupUsers == nil {
+            print("Table found no users")
+            return 0
+        } else {
+            print("Table found \(self.groupUsers.count) items(s)")
+            return self.groupUsers.count
+        }
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let row = indexPath.row
+        let cell = tableView.dequeueReusableCell(withIdentifier: textCellIdentifier, for: indexPath)
+        cell.textLabel?.text = groupUsers![row]
+        return cell
     }
     
     func makeQrCode(groupName:String){

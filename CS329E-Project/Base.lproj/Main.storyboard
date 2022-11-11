@@ -324,6 +324,16 @@
                                 <rect key="frame" x="20" y="351" width="390" height="393"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MemberCell" id="DWV-LL-Xja">
+                                        <rect key="frame" x="0.0" y="50" width="390" height="43.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DWV-LL-Xja" id="EDb-ng-zkC">
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tt8-cS-GaG">
                                 <rect key="frame" x="155" y="770" width="120" height="35"/>
@@ -352,6 +362,7 @@
                         <outlet property="groupCodeLabel" destination="UZw-PJ-1RB" id="9ZE-jq-uIF"/>
                         <outlet property="groupNameTextField" destination="w8M-Th-XuS" id="M6s-l7-6VT"/>
                         <outlet property="qrCode" destination="gIR-jU-PzP" id="MxB-cM-9FK"/>
+                        <outlet property="tableView" destination="z2r-5k-4Eq" id="pAx-GG-acO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CeE-zM-FdB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -952,9 +963,10 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="Gms-Sl-PHv"/>
         <segue reference="Ue7-CJ-lyZ"/>
         <segue reference="t0M-ej-ytF"/>
-        <segue reference="Q6t-d2-ytf"/>
+        <segue reference="egK-ci-3sh"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="person.2" catalog="system" width="128" height="82"/>
