@@ -601,15 +601,6 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="AI0-LD-IDO">
                         <nil key="title"/>
-                        <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="O38-ot-qTt">
-                            <rect key="frame" x="186.66666666666666" y="5" width="54.666666666666657" height="34.333333333333336"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" title="Button"/>
-                            <buttonConfiguration key="configuration" style="plain" title="Add"/>
-                            <connections>
-                                <action selector="addButton:" destination="Hge-UK-yqp" eventType="touchUpInside" id="dhs-44-QnW"/>
-                            </connections>
-                        </button>
                         <barButtonItem key="rightBarButtonItem" id="JAG-1e-EGZ">
                             <imageReference key="image" image="person.2.circle" catalog="system" variableValue="0.80000000000000004"/>
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="nua-iw-b0T">
@@ -653,6 +644,11 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="LCc-Ke-KFT">
                         <nil key="title"/>
+                        <button key="titleView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="Eqb-Id-TR0">
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="Add"/>
+                        </button>
                         <barButtonItem key="rightBarButtonItem" image="person.2" catalog="system" id="pQd-Hv-oHl">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="fTZ-BQ-CHc">
                                 <rect key="frame" x="313" y="5" width="95" height="34.333333333333336"/>
@@ -749,7 +745,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Inventory"/>
                                 <connections>
-                                    <segue destination="vSk-HK-gds" kind="show" id="ca5-Pm-g9M"/>
+                                    <segue destination="vSk-HK-gds" kind="show" identifier="inventorySegueIdentifier" id="ca5-Pm-g9M"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="70l-Q9-mfS">
@@ -963,10 +959,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Gms-Sl-PHv"/>
         <segue reference="Ue7-CJ-lyZ"/>
         <segue reference="t0M-ej-ytF"/>
-        <segue reference="egK-ci-3sh"/>
+        <segue reference="Q6t-d2-ytf"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="person.2" catalog="system" width="128" height="82"/>
