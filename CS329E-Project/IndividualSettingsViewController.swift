@@ -20,8 +20,10 @@ class IndividualSettingsViewController: UIViewController {
         super.viewDidLoad()
         
         profilePicture.layer.masksToBounds = true
-        profilePicture.layer.borderWidth = 2
+        profilePicture.layer.borderWidth = 1
         profilePicture.layer.borderColor = UIColor.lightGray.cgColor
+        profilePicture.layer.cornerRadius = profilePicture.frame.height / 2
+        profilePicture.clipsToBounds = true
         
         var defaults = UserDefaults.standard
         if defaults.object(forKey: "state") != nil{
