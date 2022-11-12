@@ -16,8 +16,8 @@ class IndividualSettingsViewController: UIViewController {
     // switch status outlet
     @IBOutlet weak var darkModeSwitch: UISwitch!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
         profilePicture.layer.masksToBounds = true
         profilePicture.layer.borderWidth = 1
@@ -28,6 +28,18 @@ class IndividualSettingsViewController: UIViewController {
         var defaults = UserDefaults.standard
         if defaults.object(forKey: "state") != nil{
             darkModeSwitch.isOn = defaults.bool(forKey: "state")
+        }
+        
+        if #available(iOS 13.0, *) {
+            let appDelegate = UIApplication.shared.windows.first
+            if darkModeSwitch.isOn == true {
+                appDelegate?.overrideUserInterfaceStyle = .dark
+                return
+            } else {
+                appDelegate?.overrideUserInterfaceStyle = .light
+            }
+            appDelegate?.overrideUserInterfaceStyle = .light
+            return
         }
         
     }

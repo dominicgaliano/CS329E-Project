@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		28D2AED12919FCEE0022F654 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D2AED02919FCEE0022F654 /* ScannerViewController.swift */; };
 		B600DC1928F9E6B2003DC276 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B600DC1828F9E6B2003DC276 /* GoogleService-Info.plist */; };
 		B600DC1C28F9E88E003DC276 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = B600DC1B28F9E88E003DC276 /* FirebaseAuth */; };
 		B6CFF39F29158B880074167D /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = B6CFF39E29158B880074167D /* FirebaseFirestore */; };
@@ -35,6 +36,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		28D2AED02919FCEE0022F654 /* ScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
 		B600DC1828F9E6B2003DC276 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B6E7F4BF28F333BE0004B6BF /* CS329E-Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CS329E-Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6E7F4C228F333BE0004B6BF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 				B6E7F4C428F333BE0004B6BF /* SceneDelegate.swift */,
 				B6E7F4C628F333BE0004B6BF /* ViewController.swift */,
 				B6E7F4C828F333BE0004B6BF /* Main.storyboard */,
+				28D2AED02919FCEE0022F654 /* ScannerViewController.swift */,
 				B6E7F4D928F3436C0004B6BF /* LoginPageViewController.swift */,
 				FE183F7C29180E71001E83FA /* loadingViewController.swift */,
 				B6E7F4DB28F343830004B6BF /* CreateAccountViewController.swift */,
@@ -213,6 +216,7 @@
 				B6E7F4DC28F343830004B6BF /* CreateAccountViewController.swift in Sources */,
 				B6E7F4C728F333BE0004B6BF /* ViewController.swift in Sources */,
 				B6E7F4C328F333BE0004B6BF /* AppDelegate.swift in Sources */,
+				28D2AED12919FCEE0022F654 /* ScannerViewController.swift in Sources */,
 				B6E7F4E828F344B00004B6BF /* GroupSettingsViewController.swift in Sources */,
 				B6E7F4E628F344970004B6BF /* GroupViewController.swift in Sources */,
 				B6E7F4F028F3452F0004B6BF /* InventoryViewController.swift in Sources */,
