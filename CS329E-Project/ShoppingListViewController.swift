@@ -9,6 +9,15 @@ import UIKit
 import FirebaseFirestore
 import FirebaseAuth
 
+class ShoppingListItem {
+    let itemName: String
+    var isChecked: Bool = false
+    
+    init(itemName: String) {
+        self.itemName = itemName
+    }
+}
+
 class ShoppingListViewController: UITableViewController {
 
     // define references
