@@ -14,8 +14,12 @@ protocol groupAdder{
 }
 
 public var groups = ["group1", "group2", "group3"]
+
 class GroupSelectorViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, groupAdder{
 
+    // dark mode
+    var darkMode = false
+    
     @IBOutlet weak var tableView: UITableView!
     var delegate:UIViewController!
     var userGroups:[(String, String)]!
@@ -51,6 +55,24 @@ class GroupSelectorViewController: UIViewController, UITableViewDelegate, UITabl
                     print(self.userGroups!)
                 }
             }
+        
+        // dark mode
+        var defaults = UserDefaults.standard
+        if defaults.object(forKey: "state") != nil{
+            darkMode = defaults.bool(forKey: "state")
+        }
+        
+        if #available(iOS 13.0, *) {
+            let appDelegate = UIApplication.shared.windows.first
+            if darkMode == true {
+                appDelegate?.overrideUserInterfaceStyle = .dark
+                return
+            } else {
+                appDelegate?.overrideUserInterfaceStyle = .light
+            }
+            appDelegate?.overrideUserInterfaceStyle = .light
+            return
+        }
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
