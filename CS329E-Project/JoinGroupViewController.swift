@@ -7,11 +7,24 @@
 
 import UIKit
 
-class JoinGroupViewController: UIViewController {
+protocol fillGroupCode{
+    func updateTextField(code:String)
+}
 
+class JoinGroupViewController: UIViewController, fillGroupCode {
+    
     @IBOutlet weak var joinGroupName: UITextField!
+    var delegate: UIViewController!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ScannerSegue",
+            let nextVC = segue.destination as? ScannerViewController{
+                nextVC.delegate = self
+        }
     }
     
     @IBAction func joinGroupButton(_ sender: Any) {
@@ -29,5 +42,7 @@ class JoinGroupViewController: UIViewController {
         }
     }
     
-
+    func updateTextField(code: String) {
+        joinGroupName.text = code
+    }
 }
