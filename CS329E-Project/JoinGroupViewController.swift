@@ -27,7 +27,6 @@ class JoinGroupViewController: UIViewController, fillGroupCode {
     
     @IBOutlet weak var joinGroupID: UITextField!
     
-    @IBOutlet weak var joinGroupName: UITextField!
     var delegate: UIViewController!
     
 
@@ -64,7 +63,7 @@ class JoinGroupViewController: UIViewController, fillGroupCode {
     
 
     func updateTextField(code: String) {
-        joinGroupName.text = code
+        joinGroupID.text = code
         }
 
     func joinGroup(groupIdentifier: String, currentUserUID: String) {
