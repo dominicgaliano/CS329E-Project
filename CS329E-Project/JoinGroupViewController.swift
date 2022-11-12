@@ -9,7 +9,12 @@ import UIKit
 import FirebaseFirestore
 import FirebaseAuth
 
-class JoinGroupViewController: UIViewController {
+
+protocol fillGroupCode{
+    func updateTextField(code:String)
+}
+
+class JoinGroupViewController: UIViewController, fillGroupCode {
     
     // Personal notes:
     // First need to get a group id from user from text entry or QR code
@@ -21,8 +26,20 @@ class JoinGroupViewController: UIViewController {
     var userGroups:[String]!
     
     @IBOutlet weak var joinGroupID: UITextField!
+    
+    @IBOutlet weak var joinGroupName: UITextField!
+    var delegate: UIViewController!
+    
+
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ScannerSegue",
+            let nextVC = segue.destination as? ScannerViewController{
+                nextVC.delegate = self
+        }
     }
     
     @IBAction func joinGroupButton(_ sender: Any) {
@@ -45,6 +62,11 @@ class JoinGroupViewController: UIViewController {
         }
     }
     
+
+    func updateTextField(code: String) {
+        joinGroupName.text = code
+        }
+
     func joinGroup(groupIdentifier: String, currentUserUID: String) {
         // define variables and db reference
         let groupRef = db.collection("groups").document(groupIdentifier)
@@ -114,5 +136,6 @@ class JoinGroupViewController: UIViewController {
                 self.dismiss(animated: true, completion: nil)
             }
         }
+
     }
 }
