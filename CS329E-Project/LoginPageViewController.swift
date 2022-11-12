@@ -9,7 +9,7 @@ import UIKit
 import FirebaseAuth
 
 class LoginPageViewController: UIViewController, UITextFieldDelegate {
-
+    
     // Define outlets
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
@@ -52,23 +52,59 @@ class LoginPageViewController: UIViewController, UITextFieldDelegate {
     
     // Login button actions
     @IBAction func loginButtonPressed(_ sender: Any) {
-        Auth.auth().signIn(withEmail: emailField.text!, password: passwordField.text!) {
-            authResult, error in
-            if let error = error as NSError? {
-                self.errorLabel.text = "\(error.localizedDescription)"
-            } else {
-                self.errorLabel.text = ""
+        let loadingVC = loadingViewController()
+
+        // Animate loadingVC over the existing views on screen
+        loadingVC.modalPresentationStyle = .overCurrentContext
+
+        // Animate loadingVC with a fade in animation
+        loadingVC.modalTransitionStyle = .crossDissolve
+               
+        present(loadingVC, animated: true, completion: nil)
+        loadingVC.dismiss(animated: true){
+            Auth.auth().signIn(withEmail: self.emailField.text!, password: self.passwordField.text!) {
+                authResult, error in
+                if let error = error as NSError? {
+                    self.errorLabel.text = "\(error.localizedDescription)"
+                } else {
+                    self.errorLabel.text = ""
+                }
             }
         }
+
     }
     
     // Create account button actions
     @IBAction func createAccountButtonPressed(_ sender: Any) {
-        self.performSegue(withIdentifier: "createAccountSegue", sender: nil)
+        //create and present loading animation
+        let loadingVC = loadingViewController()
+
+
+        loadingVC.modalPresentationStyle = .overCurrentContext
+
+
+        loadingVC.modalTransitionStyle = .crossDissolve
+               
+        present(loadingVC, animated: true, completion: nil)
+        loadingVC.dismiss(animated: true){
+            //only perform segue when the dismissal is complete
+            self.performSegue(withIdentifier: "createAccountSegue", sender: nil)
+        }
+
     }
     
     // Forgot password button actions
     @IBAction func forgotPasswordButtonPressed(_ sender: Any) {
+        //Buffers until the action is completed
+        let loadingVC = loadingViewController()
+
+
+        loadingVC.modalPresentationStyle = .overCurrentContext
+
+
+        loadingVC.modalTransitionStyle = .crossDissolve
+               
+        present(loadingVC, animated: true, completion: nil)
         // TODO: Implement forgot password features
         return
     }

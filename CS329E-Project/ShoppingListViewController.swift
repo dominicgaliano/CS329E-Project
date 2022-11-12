@@ -6,12 +6,18 @@
 //
 
 import UIKit
-
-var items = ["Apples", "Toilet Paper", "Chicken Wings", "Oranges", "Tide Pods"]
+import FirebaseFirestore
+import FirebaseAuth
 
 class ShoppingListViewController: UITableViewController {
-    
+
+    // define references
     let textCellIdentifier = "TextCell"
+    var groupIdentifier:String!
+    let db = Firestore.firestore()
+    
+    // define items list
+    var shoppingListItems:[String]!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,14 +26,13 @@ class ShoppingListViewController: UITableViewController {
         tableView.dataSource = self
         
         self.navigationItem.rightBarButtonItem = self.editButtonItem
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        reloadTableData()
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -36,38 +41,43 @@ class ShoppingListViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return items.count
+        if self.shoppingListItems == nil {
+            print("Table found no shopping list items")
+            return 0
+        } else {
+            print("Table found \(self.shoppingListItems.count) items(s)")
+            return self.shoppingListItems.count
+        }
     }
 
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let row = indexPath.row
         let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath)
-
-        cell.textLabel?.text = items[indexPath.row]
-        
+        cell.textLabel?.text = shoppingListItems![row]
         return cell
     }
     
-
-    
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    
-
-    
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            items.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        /*
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        */
-        }    
+    func reloadTableData() {
+        // get group shopping list data from database
+        let groupRef = db.collection("groups").document(groupIdentifier!)
+        
+        groupRef.getDocument { (document, error ) in
+            if let document = document, document.exists {
+                let groupDescription = document.data()
+                
+                // check if group has shopping list
+                if groupDescription!["shoppingList"] != nil {
+                    self.shoppingListItems = groupDescription!["shoppingList"] as? [String]
+                } else {
+                    // no shopping list, need to add
+                    print("Error, group has no shopping list yet")
+                }
+                self.tableView.reloadData()
+            } else {
+                print("Document does not exist")
+                self.dismiss(animated: true)
+            }
+        }
     }
     
     @IBAction func addButton(_ sender: Any) {
@@ -77,39 +87,51 @@ class ShoppingListViewController: UITableViewController {
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         let saveAction = UIAlertAction(title: "Save", style: .default) { [self] _ in
-            let inputName = alertController.textFields![0].text
-            items.append(inputName!)
-            tableView.insertRows(at: [IndexPath(row: items.count-1, section: 0)], with: .automatic)
+            let newItem = alertController.textFields![0].text
+            
+            // add to database
+            let groupRef = db.collection("groups").document(self.groupIdentifier)
+            
+            groupRef.updateData([
+                "shoppingList": FieldValue.arrayUnion([newItem!])
+            ]) { _ in
+                print("Added \(String(describing: newItem!)) to group shopping list")
+                // self.reloadTableData()
+                
+                self.shoppingListItems.append(newItem!)
+                self.tableView.insertRows(at: [IndexPath(row: self.shoppingListItems.count-1,
+                                                    section: 0)],
+                                     with: .automatic)
+            }
         }
         alertController.addAction(cancelAction)
         alertController.addAction(saveAction)
         present(alertController, animated: true, completion: nil)
-        
     }
     
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            // remove from local list
+            self.shoppingListItems.remove(at: indexPath.row)
+            
+            // TODO: remove from database
+            let groupRef = db.collection("groups").document(self.groupIdentifier)
+            groupRef.updateData([
+                "shoppingList": shoppingListItems!
+            ])
+            
+            // update table
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
     }
-    */
-
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // TODO: perform check off of something like that
+        
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 }
