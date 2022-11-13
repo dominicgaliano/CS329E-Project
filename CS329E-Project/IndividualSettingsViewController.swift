@@ -6,7 +6,10 @@
 //
 
 import UIKit
+import FirebaseFirestore
 import FirebaseAuth
+import FirebaseCore
+import FirebaseStorage
 
 class IndividualSettingsViewController: UIViewController {
 
@@ -16,8 +19,13 @@ class IndividualSettingsViewController: UIViewController {
     // switch status outlet
     @IBOutlet weak var darkModeSwitch: UISwitch!
     
+    // db connection
+    let db = Firestore.firestore()
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        getUserProfilePicture()
         
         profilePicture.layer.masksToBounds = true
         profilePicture.layer.borderWidth = 1
@@ -74,7 +82,23 @@ class IndividualSettingsViewController: UIViewController {
         }
     }
     
-    
+    // get user profile picture
+    func getUserProfilePicture() -> Void {
+        let userRef = db.collection("users").document(Auth.auth().currentUser!.uid)
+        userRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                var profilePictureURL = document.data()?["profilePictureURL"]
+                if profilePictureURL != nil {
+                    // TODO: replace profile picture with downloaded picture
+                    print("Profile picture URL: \(profilePictureURL)")
+                } else {
+                    profilePictureURL = ""
+                }
+            } else {
+                print("Document does not exist")
+            }
+        }
+    }
     
     // Logout button
     @IBAction func logoutButtonPressed(_ sender: Any) {
@@ -147,9 +171,43 @@ extension IndividualSettingsViewController: UIImagePickerControllerDelegate, UIN
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         picker.dismiss(animated: true, completion: nil)
+        
+        // save selected image
         guard let selectedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage else {
             return
         }
+        
+        // save to firestore
+        guard let uid = Auth.auth().currentUser?.uid else {return}
+        guard let imageData = selectedImage.jpegData(compressionQuality: 0.5) else {return}
+        let profilePictureReference = Storage.storage().reference().child("\(uid).jpg")
+        let uploadTask = profilePictureReference.putData(imageData, metadata: nil) {(metadata, error) in
+            profilePictureReference.downloadURL { (url, error ) in
+                guard let downloadURL = url else {
+                    // error occured
+                    return
+                }
+                // Save download URL to user's data
+                let userRef = self.db.collection("users").document(uid)
+                userRef.updateData([
+                    "profilePictureURL": downloadURL
+                ]) { err in
+                    if let err = err {
+                        print("Error updating document: \(err)")
+                    } else {
+                        print("Document successfully updated")
+                    }
+                }
+            }
+        }
+        
+        // can use this to implement a progress bar if we want
+        let observer = uploadTask.observe(.progress) { snapshot in
+            print(snapshot.progress?.fractionCompleted ?? "")
+        }
+        
+        
+        // finally, change image to newly selected image
         self.profilePicture.image = selectedImage
     }
     
