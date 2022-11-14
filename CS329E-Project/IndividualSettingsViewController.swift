@@ -123,6 +123,34 @@ class IndividualSettingsViewController: UIViewController {
             print("Error signing out: %@", signOutError)
         }
     }
+    
+    // delete account button
+    @IBAction func deleteAccountButtonPressed(_ sender: Any) {
+        let controller = UIAlertController(
+                        title: "Confirm Account Deletion",
+                        message: "Are you sure you want to delete your account? This action cannot be undone",
+                        preferredStyle: .actionSheet)
+        controller.addAction(UIAlertAction(title: "Delete Account", style: .destructive, handler: {
+            (action: UIAlertAction!) in (self.performAccountDeletion())
+        }))
+        controller.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        present(controller, animated: true)
+    }
+    
+    // deletion account
+    func performAccountDeletion() {
+        // get users groups
+        // let userRef = db
+        
+        // remove user from groups
+        
+        // delete users db document
+        
+        // delete user from firebase auth
+        
+        // sign out
+        
+    }
 }
 
 // User profile picture implemented here
