@@ -8,11 +8,8 @@
 import UIKit
 import FirebaseFirestore
 
-var subgroups = ["Kitchen", "Restroom", "Bedroom"]
-
 class InventoryViewController: UITableViewController {
     
-    let inventorySubgroupSegueIdentifier = "inventorySubgroupSegueIdentifier"
     let textCellIdentifier = "TextCell"
     var groupIdentifier:String!
     let db = Firestore.firestore()
@@ -104,6 +101,20 @@ class InventoryViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        let rowValue = inventoryItems[indexPath.row]
+        
+        let controller = UIAlertController(
+            title: rowValue,
+            message: "Would you like to add \(rowValue) to the shopping list?",
+            preferredStyle: .alert)
+        controller.addAction(UIAlertAction(
+            title: "No",
+            style: .cancel))
+        controller.addAction(UIAlertAction(
+            title: "Yes",
+            style: .default,
+            handler: {action in self.inventoryItems.append(rowValue)}))
+        present(controller, animated: true)
         // TODO: Cruz, implement adding stuff to shoppingList here
         
         
@@ -127,15 +138,6 @@ class InventoryViewController: UITableViewController {
             
             // update table
             tableView.deleteRows(at: [indexPath], with: .fade)
-        }
-    }
-    
-    // TODO: Remove
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == inventorySubgroupSegueIdentifier,
-           let destination = segue.destination as? InventorySubgroupViewController,
-           let subgroupsIndex = tableView.indexPathForSelectedRow?.row {
-            destination.subgroupSelected = subgroups[subgroupsIndex]
         }
     }
 }
