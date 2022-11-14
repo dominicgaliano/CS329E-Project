@@ -641,9 +641,6 @@
                                     <rect key="frame" x="0.0" y="0.0" width="397.66666666666669" height="43.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="gxU-ux-ooD" kind="show" identifier="inventorySubgroupSegueIdentifier" id="6jE-rZ-I9n"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -654,6 +651,7 @@
                     <navigationItem key="navigationItem" id="LCc-Ke-KFT">
                         <nil key="title"/>
                         <button key="titleView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="Eqb-Id-TR0">
+                            <rect key="frame" x="186.66666666666666" y="5" width="54.666666666666657" height="34.333333333333336"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="plain" title="Add"/>
@@ -671,46 +669,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qvP-dh-HJa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3966.9767441860463" y="-28.326180257510732"/>
-        </scene>
-        <!--Inventory Subgroup View Controller-->
-        <scene sceneID="gCa-3c-WPb">
-            <objects>
-                <tableViewController id="gxU-ux-ooD" customClass="InventorySubgroupViewController" customModule="CS329E_Project" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="owz-ub-AHz">
-                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TextCell" id="nbK-9F-y7X">
-                                <rect key="frame" x="0.0" y="50" width="428" height="43.666667938232422"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nbK-9F-y7X" id="cci-2L-GU9">
-                                    <rect key="frame" x="0.0" y="0.0" width="428" height="43.666667938232422"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="gxU-ux-ooD" id="xnx-L2-PYK"/>
-                            <outlet property="delegate" destination="gxU-ux-ooD" id="4Nw-4b-VR4"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="cUA-gm-PWe">
-                        <nil key="title"/>
-                        <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="Z0c-4u-srj">
-                            <rect key="frame" x="186.66666666666666" y="5" width="54.666666666666657" height="34.333333333333336"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" title="Button"/>
-                            <buttonConfiguration key="configuration" style="plain" title="Add"/>
-                            <connections>
-                                <action selector="addButton:" destination="gxU-ux-ooD" eventType="touchUpInside" id="XAo-P5-Ljz"/>
-                            </connections>
-                        </button>
-                    </navigationItem>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="aF6-fd-HOy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4768" y="-28"/>
         </scene>
         <!--Group View Controller-->
         <scene sceneID="bJq-HY-Kiv">
