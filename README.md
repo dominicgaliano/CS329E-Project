@@ -24,14 +24,13 @@ Major Elements:
 - [X] Use of Core Data/Firebase 
 - (put settings data in core data)
 - [ ] Implementation of user profile path, incl. creation, taking a pic or selecting prexisting, and editing
-- Need to save profile picture to database
 
 Minor Elements:  
 
-- [ ] At least two of text views, sliders, segemented controlelrs, date or color pickers, steppers, switches, search fields, bars and bar buttons, etc.
-- [ ] Table View
-- [ ] Two of the following: Alerts, Popovers, Stack Views, Scroll Views, Haptics, User Defaults
+- [X] At least two of text views, sliders, segemented controllers, date or color pickers, steppers, **switches**, search fields, **bars and bar buttons**, etc.
+- [X] Table View
+- [X] Two of the following: Alerts, Popovers, Stack Views, Scroll Views, Haptics, User Defaults
 - [ ] Local notifications
-- [ ] Animation
+- [X] Animation
 - [ ] Calendar
-- [ ] QR Code * FOCUS ON THIS
+- [X] QR Code
