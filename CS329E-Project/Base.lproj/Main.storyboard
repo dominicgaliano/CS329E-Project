@@ -311,12 +311,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="w8M-Th-XuS">
-                                <rect key="frame" x="129" y="160" width="281" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Group Identifier:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RoC-aD-SL1">
                                 <rect key="frame" x="20" y="228" width="124" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -367,6 +361,22 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Group name label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7u1-2L-1Sy">
+                                <rect key="frame" x="193" y="167" width="181" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nC6-kC-KuG">
+                                <rect key="frame" x="148" y="107" width="179" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Change group name"/>
+                                <connections>
+                                    <action selector="changeGroupNameButtonPressed:" destination="xPr-PJ-GF7" eventType="touchUpInside" id="2Jr-zo-U47"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ahM-cq-XPX"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -374,7 +384,7 @@
                     <navigationItem key="navigationItem" id="NCb-0P-pAH"/>
                     <connections>
                         <outlet property="groupCodeLabel" destination="UZw-PJ-1RB" id="9ZE-jq-uIF"/>
-                        <outlet property="groupNameTextField" destination="w8M-Th-XuS" id="M6s-l7-6VT"/>
+                        <outlet property="groupNameLabel" destination="7u1-2L-1Sy" id="eah-VL-Qm8"/>
                         <outlet property="qrCode" destination="gIR-jU-PzP" id="MxB-cM-9FK"/>
                         <outlet property="tableView" destination="z2r-5k-4Eq" id="pAx-GG-acO"/>
                     </connections>
