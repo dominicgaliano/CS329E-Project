@@ -129,7 +129,7 @@ class GroupSettingsViewController: UIViewController, UITableViewDelegate, UITabl
     @IBAction func leaveGroupButtonPressed(_ sender: Any) {
         let controller = UIAlertController(
                         title: "Confirm Action",
-                        message: "Are you sure you want to leave the group?",
+                        message: "Are you sure you want to leave the group? If you are the last member this group will be deleted.",
                         preferredStyle: .actionSheet)
         controller.addAction(UIAlertAction(title: "Confirm", style: .destructive, handler: {
             (action: UIAlertAction!) in (self.leaveGroup(Auth.auth().currentUser!.uid, self.groupIdentifier!))
