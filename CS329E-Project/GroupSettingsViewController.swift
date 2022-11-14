@@ -145,9 +145,6 @@ class GroupSettingsViewController: UIViewController, UITableViewDelegate, UITabl
         
         // remove group from user doc
         removeGroupFromUserDoc(uid, groupID)
-        
-        // return to groupSelector page
-        // TODO: go back two VCs somehow, I think unwind segue might work?
     }
     
     func removeUserFromGroup(_ uid: String, _ groupID: String) {
@@ -164,6 +161,10 @@ class GroupSettingsViewController: UIViewController, UITableViewDelegate, UITabl
             // user was the last one in the group
             deleteGroup(groupID)
         }
+        
+        // return to groupSelector page
+        // TODO: go back two VCs somehow, I think unwind segue might work?
+        
     }
     
     func removeGroupFromUserDoc(_ uid: String, _ groupID: String) {
