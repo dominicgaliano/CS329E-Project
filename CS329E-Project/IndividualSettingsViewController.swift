@@ -136,20 +136,135 @@ class IndividualSettingsViewController: UIViewController {
         controller.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         present(controller, animated: true)
     }
-    
+        
     // deletion account
     func performAccountDeletion() {
-        // get users groups
-        // let userRef = db
+        // get user info
+        guard let uid = Auth.auth().currentUser?.uid else {return}
         
-        // remove user from groups
+        // delete user data
+        deleteUserData(uid)
         
-        // delete users db document
+        // delete user
+        deleteUser()
         
-        // delete user from firebase auth
+//        // get users groups
+//        removeAllUserGroups(uid)
+//
+//        // delete users db document
+//        deleteUserDocument(uid)
+    }
+    
+    func deleteUserData(_ uid: String) {
+        // remove user from all groups
+        removeAllUserGroups(uid)
         
-        // sign out
+        // remove user document and logout
+        deleteUserDocument(uid)
+    }
+    
+    func deleteUser() {
+        Auth.auth().currentUser!.delete { error in
+            if let error = error {
+                if AuthErrorCode.Code(rawValue: error._code) == .requiresRecentLogin {
+                    // reauthenticate()
+                    print("need to reauthenticate")
+                } else {
+                    print("An unknown error has occured: \(error)")
+                }
+                return
+            }
+            
+            // logout
+            self.performLogout()
+        }
+    }
+    
+    // gets users groups and removes them from those groups
+    func removeAllUserGroups(_ uid: String) {
+        db.collection("users").document(uid)
+            .collection("groups").getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                    self.performLogout()
+                } else {
+                    for document in querySnapshot!.documents {
+                        let groupID = document.documentID
+                        
+                        // remove user from group
+                        self.removeUserFromGroup(uid, groupID)
+                    }
+                }
+            }
+    }
+    
+    // removes user from group
+    func removeUserFromGroup(_ uid: String, _ groupID: String) {
+        let groupRef = db.collection("groups").document(groupID)
         
+        groupRef.getDocument { [self] (document, error ) in
+            if let document = document, document.exists {
+                
+                
+                // check if group has users list (it should)
+                if document.data()!["users"] != nil {
+                    let oldUsersList:[String] = (document.data()!["users"] as? [String])!
+                    
+                    // filter uid from list and update
+                    let newUsersList:[String] = oldUsersList.filter { $0 != uid }
+                    
+                    if newUsersList != [] {
+                        groupRef.updateData([
+                            "users": newUsersList
+                        ])
+                    } else {
+                        // user was the last one in the group
+                        self.deleteGroup(groupID)
+                    }
+                }
+            }
+        }
+    }
+    
+    func deleteUserDocument(_ uid: String) {
+        db.collection("users").document(uid).delete() { err in
+            if let err = err {
+                print("Error removing document: \(err)")
+            } else {
+                print("User \(uid) document deleted!")
+            }
+        }
+    }
+    
+    func deleteGroup(_ groupID: String) {
+        // delete subcollection data
+        db.collection("users").document(Auth.auth().currentUser!.uid)
+            .collection("groups").getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                    self.performLogout()
+                } else {
+                    for document in querySnapshot!.documents {
+                        // delete document
+                        document.reference.delete() { err in
+                            if let err = err {
+                                print("Error removing document: \(err)")
+                            } else {
+                                print("Removed document: \(document.documentID)")
+                            }
+                        }
+                    }
+                }
+            }
+        
+        // delete document data
+        db.collection("groups").document(groupID).delete() { err in
+            if let err = err {
+                print("Error removing document \(err)")
+            } else {
+                print("Group documented deleted")
+            }
+        }
     }
 }
 
