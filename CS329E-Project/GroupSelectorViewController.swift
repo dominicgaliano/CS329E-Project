@@ -45,14 +45,25 @@ class GroupSelectorViewController: UIViewController, UITableViewDelegate, UITabl
                     print("Error getting documents: \(err)")
                     self.performLogout()
                 } else {
+                    // initialize userGroups array
                     self.userGroups = []
+                    
+                    // iterate through user's groups
                     for document in querySnapshot!.documents {
-                        self.userGroups.append((document.documentID,
-                                           document.data()["groupName"] as! String))
+                        // get groupId from user
+                        let groupID = document.documentID
+                        
+                        // get groupName from groups (since they can change)
+                        self.db.collection("groups").document(groupID).getDocument { (document, error ) in
+                            if let document = document, document.exists {
+                                let groupName:String = document.data()!["groupName"] as! String
+                                self.userGroups.append((groupID, groupName))
+                                self.tableView.reloadData()
+                            } else {
+                                print("Group does not exist")
+                            }
+                        }
                     }
-                    self.tableView.reloadData()
-                    // for debugging
-                    print(self.userGroups!)
                 }
             }
         

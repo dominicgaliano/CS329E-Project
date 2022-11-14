@@ -22,7 +22,7 @@ class GroupSettingsViewController: UIViewController, UITableViewDelegate, UITabl
     @IBOutlet weak var qrCode: UIImageView!
     var qrcodeImage:CIImage! = nil
     
-    @IBOutlet weak var groupNameTextField: UITextField!
+    @IBOutlet weak var groupNameLabel: UILabel!
     @IBOutlet weak var groupCodeLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     let textCellIdentifier = "MemberCell"
@@ -54,7 +54,7 @@ class GroupSettingsViewController: UIViewController, UITableViewDelegate, UITabl
                 let groupDescription = document.data()
                 
                 // set group name and id visuallly
-                self.groupNameTextField.text = (groupDescription!["groupName"] as! String)
+                self.groupNameLabel.text = (groupDescription!["groupName"] as! String)
                 self.groupCodeLabel.text = self.groupIdentifier
                 
                 // check if group has users list (it should)
@@ -185,6 +185,31 @@ class GroupSettingsViewController: UIViewController, UITableViewDelegate, UITabl
                 print("Group documented deleted")
             }
         }
+    }
+    
+    // change group name
+    @IBAction func changeGroupNameButtonPressed(_ sender: Any) {
+        let alertController = UIAlertController(title: "Change Group Name", message: "What would you like your group to be called?", preferredStyle: .alert)
+        alertController.addTextField() { (textField) in
+            textField.placeholder = "New Group Name"
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let saveAction = UIAlertAction(title: "Save", style: .default) { [self] _ in
+            let newGroupName:String = alertController.textFields![0].text!
+            
+            // add to database
+            let groupRef = db.collection("groups").document(self.groupIdentifier)
+            
+            groupRef.updateData([
+                "groupName": newGroupName
+            ]) { _ in
+                print("Group name changed to \(newGroupName)")
+                self.groupNameLabel.text = newGroupName
+            }
+        }
+        alertController.addAction(cancelAction)
+        alertController.addAction(saveAction)
+        present(alertController, animated: true, completion: nil)
     }
     
     // Perform logout
