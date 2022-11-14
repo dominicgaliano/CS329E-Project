@@ -16,6 +16,7 @@ class GroupSettingsViewController: UIViewController, UITableViewDelegate, UITabl
     let db = Firestore.firestore()
     
     // define users list
+    var groupUsersIDs:[String]!
     var groupUsers:[String]!
     
     @IBOutlet weak var qrCode: UIImageView!
@@ -58,13 +59,13 @@ class GroupSettingsViewController: UIViewController, UITableViewDelegate, UITabl
                 
                 // check if group has users list (it should)
                 if groupDescription!["users"] != nil {
-                    let groupMemberIDs = groupDescription!["users"] as? [String]
+                    self.groupUsersIDs = groupDescription!["users"] as? [String]
                     
                     // Convert user IDs to first and last names
                     self.groupUsers = []
-                    for i in 0..<groupMemberIDs!.count {
+                    for i in 0..<self.groupUsersIDs!.count {
                         // query db for user
-                        let userRef = db.collection("users").document(groupMemberIDs![i] as String)
+                        let userRef = db.collection("users").document(self.groupUsersIDs![i] as String)
                         userRef.getDocument { (document, error ) in
                             if let document = document, document.exists {
                                 let userData = document.data()
@@ -121,6 +122,79 @@ class GroupSettingsViewController: UIViewController, UITableViewDelegate, UITabl
         qrcodeImage = filter.outputImage
         if let qrcodeImage = qrcodeImage{
             qrCode.image = UIImage(ciImage: qrcodeImage)
+        }
+    }
+    
+    // leave group button
+    @IBAction func leaveGroupButtonPressed(_ sender: Any) {
+        let controller = UIAlertController(
+                        title: "Confirm Action",
+                        message: "Are you sure you want to leave the group?",
+                        preferredStyle: .actionSheet)
+        controller.addAction(UIAlertAction(title: "Confirm", style: .destructive, handler: {
+            (action: UIAlertAction!) in (self.leaveGroup(Auth.auth().currentUser!.uid, self.groupIdentifier!))
+        }))
+        controller.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        present(controller, animated: true)
+    }
+    
+    // leave group
+    func leaveGroup(_ uid: String, _ groupID: String) {
+        // remove user from group doc
+        removeUserFromGroup(uid, groupID)
+        
+        // remove group from user doc
+        removeGroupFromUserDoc(uid, groupID)
+    }
+    
+    func removeUserFromGroup(_ uid: String, _ groupID: String) {
+        let groupRef = db.collection("groups").document(groupID)
+        
+        let newUsersList:[String] = groupUsersIDs!.filter { $0 != uid }
+        print(newUsersList)
+        
+        if newUsersList != [] {
+            groupRef.updateData([
+                "users": newUsersList
+            ])
+        } else {
+            // user was the last one in the group
+            deleteGroup(groupID)
+        }
+        
+        // return to groupSelector page
+        // TODO: go back two VCs somehow, I think unwind segue might work?
+        
+    }
+    
+    func removeGroupFromUserDoc(_ uid: String, _ groupID: String) {
+        db.collection("users").document(uid).collection("groups").document(groupID).delete() { err in
+            if let err = err {
+                print("Error removing document \(err)")
+            } else {
+                print("Group documented deleted")
+            }
+        }
+    }
+    
+    func deleteGroup(_ groupID: String) {
+        db.collection("groups").document(groupID).delete() { err in
+            if let err = err {
+                print("Error removing document \(err)")
+            } else {
+                print("Group documented deleted")
+            }
+        }
+    }
+    
+    // Perform logout
+    func performLogout() {
+        let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
+            self.view.window!.rootViewController?.dismiss(animated: false, completion: nil)
+        } catch let signOutError as NSError {
+            print("Error signing out: %@", signOutError)
         }
     }
 }
