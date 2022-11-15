@@ -11,6 +11,8 @@ import FirebaseAuth
 import FirebaseCore
 import FirebaseStorage
 
+let imageCache = NSCache<NSString, UIImage>()
+
 class IndividualSettingsViewController: UIViewController {
 
     // Profile picture outlet
@@ -31,6 +33,7 @@ class IndividualSettingsViewController: UIViewController {
         profilePicture.layer.borderWidth = 1
         profilePicture.layer.borderColor = UIColor.lightGray.cgColor
         profilePicture.layer.cornerRadius = profilePicture.frame.height / 2
+        profilePicture.contentMode = .scaleAspectFill
         profilePicture.clipsToBounds = true
         
         var defaults = UserDefaults.standard
@@ -87,15 +90,37 @@ class IndividualSettingsViewController: UIViewController {
         let userRef = db.collection("users").document(Auth.auth().currentUser!.uid)
         userRef.getDocument { (document, error) in
             if let document = document, document.exists {
-                var profilePictureURL = document.data()?["profilePictureURL"]
+                let profilePictureURL = document.data()!["profilePictureURL"]
                 if profilePictureURL != nil {
-                    // TODO: replace profile picture with downloaded picture
-                    print("Profile picture URL: \(profilePictureURL)")
+                    self.loadImageUsingCache(urlString: profilePictureURL! as! String)
                 } else {
-                    profilePictureURL = ""
+                    // no profile picture, don't need to do anything
                 }
             } else {
                 print("Document does not exist")
+            }
+        }
+    }
+    
+    func loadImageUsingCache(urlString: String) {
+        // check cache for image first
+        if let cachedImage = imageCache.object(forKey: urlString as NSString) {
+            print("Profile picture retreived from cache")
+            self.profilePicture.image = cachedImage
+            return
+        }
+        
+        // otherwise download
+        let profilePictureRef = Storage.storage().reference(forURL: urlString )
+        profilePictureRef.getData(maxSize: 5*1024*1024) { data, error in
+            if let error = error {
+                print("Error getting photo: \(error)")
+            } else {
+                if let downloadedImage = UIImage(data: data!) {
+                    print("Profile picture retreived from API")
+                    imageCache.setObject(downloadedImage, forKey: urlString as NSString)
+                    self.profilePicture.image = downloadedImage
+                }
             }
         }
     }
@@ -325,33 +350,37 @@ extension IndividualSettingsViewController: UIImagePickerControllerDelegate, UIN
         guard let imageData = selectedImage.jpegData(compressionQuality: 0.5) else {return}
         let profilePictureReference = Storage.storage().reference().child("\(uid).jpg")
         let uploadTask = profilePictureReference.putData(imageData, metadata: nil) {(metadata, error) in
-            profilePictureReference.downloadURL { (url, error ) in
-                guard let downloadURL = url else {
-                    // error occured
-                    return
-                }
-                // Save download URL to user's data
-                let userRef = self.db.collection("users").document(uid)
-                userRef.updateData([
-                    "profilePictureURL": downloadURL
-                ]) { err in
-                    if let err = err {
-                        print("Error updating document: \(err)")
-                    } else {
-                        print("Document successfully updated")
+            if let error = error {
+                print("Error occured when creating uploadTask: \(error)")
+            } else {
+                profilePictureReference.downloadURL { (url, error ) in
+                    guard let downloadURL = url else {
+                        // error occured
+                        print("Error occured when obtaining downloadURL")
+                        return
+                    }
+                    
+                    // Save download URL to user's data
+                    let userRef = self.db.collection("users").document(uid)
+                    userRef.updateData([
+                        "profilePictureURL": downloadURL.absoluteString
+                    ]) { err in
+                        if let err = err {
+                            print("Error updating document: \(err)")
+                        } else {
+                            print("Document successfully updated")
+                            // finally, change image to newly selected image
+                            self.profilePicture.image = selectedImage
+                        }
                     }
                 }
             }
         }
         
         // can use this to implement a progress bar if we want
-        let observer = uploadTask.observe(.progress) { snapshot in
+        _ = uploadTask.observe(.progress) { snapshot in
             print(snapshot.progress?.fractionCompleted ?? "")
         }
-        
-        
-        // finally, change image to newly selected image
-        self.profilePicture.image = selectedImage
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
