@@ -10,6 +10,9 @@ import FirebaseAuth
 
 class LoginPageViewController: UIViewController, UITextFieldDelegate {
     
+    // dark mode
+    var darkMode = false
+    
     // Define outlets
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
@@ -37,6 +40,24 @@ class LoginPageViewController: UIViewController, UITextFieldDelegate {
         super.viewWillAppear(animated)
         
         errorLabel.text = ""
+        
+        // dark mode
+        var defaults = UserDefaults.standard
+        if defaults.object(forKey: "state") != nil{
+            darkMode = defaults.bool(forKey: "state")
+        }
+        
+        if #available(iOS 13.0, *) {
+            let appDelegate = UIApplication.shared.windows.first
+            if darkMode == true {
+                appDelegate?.overrideUserInterfaceStyle = .dark
+                return
+            } else {
+                appDelegate?.overrideUserInterfaceStyle = .light
+            }
+            appDelegate?.overrideUserInterfaceStyle = .light
+            return
+        }
     }
     
     // Called when 'return' key pressed

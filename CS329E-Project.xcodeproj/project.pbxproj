@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		28D2AED12919FCEE0022F654 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D2AED02919FCEE0022F654 /* ScannerViewController.swift */; };
 		B600DC1928F9E6B2003DC276 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B600DC1828F9E6B2003DC276 /* GoogleService-Info.plist */; };
 		B600DC1C28F9E88E003DC276 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = B600DC1B28F9E88E003DC276 /* FirebaseAuth */; };
+		B6B4A1B329218A8F000CD6DD /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = B6B4A1B229218A8F000CD6DD /* FirebaseStorage */; };
 		B6CFF39F29158B880074167D /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = B6CFF39E29158B880074167D /* FirebaseFirestore */; };
 		B6E7F4C328F333BE0004B6BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E7F4C228F333BE0004B6BF /* AppDelegate.swift */; };
 		B6E7F4C528F333BE0004B6BF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E7F4C428F333BE0004B6BF /* SceneDelegate.swift */; };
@@ -29,13 +31,13 @@
 		B6E7F4EC28F344FF0004B6BF /* ChoresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E7F4EB28F344FF0004B6BF /* ChoresViewController.swift */; };
 		B6E7F4EE28F345130004B6BF /* ChoresSchedulerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E7F4ED28F345130004B6BF /* ChoresSchedulerViewController.swift */; };
 		B6E7F4F028F3452F0004B6BF /* InventoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E7F4EF28F3452F0004B6BF /* InventoryViewController.swift */; };
-		B6E7F4F228F345470004B6BF /* InventorySubgroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E7F4F128F345470004B6BF /* InventorySubgroupViewController.swift */; };
 		B6E7F4F428F3455E0004B6BF /* ItemStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E7F4F328F3455E0004B6BF /* ItemStatusViewController.swift */; };
 		FE183F7D29180E71001E83FA /* loadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE183F7C29180E71001E83FA /* loadingViewController.swift */; };
 		FEB5593D2921A853009DE828 /* changePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB5593C2921A853009DE828 /* changePasswordViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		28D2AED02919FCEE0022F654 /* ScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
 		B600DC1828F9E6B2003DC276 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B6E7F4BF28F333BE0004B6BF /* CS329E-Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CS329E-Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6E7F4C228F333BE0004B6BF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -58,7 +60,6 @@
 		B6E7F4EB28F344FF0004B6BF /* ChoresViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoresViewController.swift; sourceTree = "<group>"; };
 		B6E7F4ED28F345130004B6BF /* ChoresSchedulerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoresSchedulerViewController.swift; sourceTree = "<group>"; };
 		B6E7F4EF28F3452F0004B6BF /* InventoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryViewController.swift; sourceTree = "<group>"; };
-		B6E7F4F128F345470004B6BF /* InventorySubgroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventorySubgroupViewController.swift; sourceTree = "<group>"; };
 		B6E7F4F328F3455E0004B6BF /* ItemStatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemStatusViewController.swift; sourceTree = "<group>"; };
 		FE183F7C29180E71001E83FA /* loadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loadingViewController.swift; sourceTree = "<group>"; };
 		FEB5593C2921A853009DE828 /* changePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = changePasswordViewController.swift; sourceTree = "<group>"; };
@@ -71,6 +72,7 @@
 			files = (
 				B600DC1C28F9E88E003DC276 /* FirebaseAuth in Frameworks */,
 				B6CFF39F29158B880074167D /* FirebaseFirestore in Frameworks */,
+				B6B4A1B329218A8F000CD6DD /* FirebaseStorage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,6 +103,7 @@
 				B6E7F4C428F333BE0004B6BF /* SceneDelegate.swift */,
 				B6E7F4C628F333BE0004B6BF /* ViewController.swift */,
 				B6E7F4C828F333BE0004B6BF /* Main.storyboard */,
+				28D2AED02919FCEE0022F654 /* ScannerViewController.swift */,
 				B6E7F4D928F3436C0004B6BF /* LoginPageViewController.swift */,
 				FEB5593C2921A853009DE828 /* changePasswordViewController.swift */,
 				B6E7F4DB28F343830004B6BF /* CreateAccountViewController.swift */,
@@ -115,7 +118,6 @@
 				B6E7F4EB28F344FF0004B6BF /* ChoresViewController.swift */,
 				B6E7F4ED28F345130004B6BF /* ChoresSchedulerViewController.swift */,
 				B6E7F4EF28F3452F0004B6BF /* InventoryViewController.swift */,
-				B6E7F4F128F345470004B6BF /* InventorySubgroupViewController.swift */,
 				B6E7F4F328F3455E0004B6BF /* ItemStatusViewController.swift */,
 				B600DC1828F9E6B2003DC276 /* GoogleService-Info.plist */,
 				B6E7F4CE28F333C30004B6BF /* Assets.xcassets */,
@@ -152,6 +154,7 @@
 			packageProductDependencies = (
 				B600DC1B28F9E88E003DC276 /* FirebaseAuth */,
 				B6CFF39E29158B880074167D /* FirebaseFirestore */,
+				B6B4A1B229218A8F000CD6DD /* FirebaseStorage */,
 			);
 			productName = "CS329E-Project";
 			productReference = B6E7F4BF28F333BE0004B6BF /* CS329E-Project.app */;
@@ -216,6 +219,7 @@
 				B6E7F4DC28F343830004B6BF /* CreateAccountViewController.swift in Sources */,
 				B6E7F4C728F333BE0004B6BF /* ViewController.swift in Sources */,
 				B6E7F4C328F333BE0004B6BF /* AppDelegate.swift in Sources */,
+				28D2AED12919FCEE0022F654 /* ScannerViewController.swift in Sources */,
 				B6E7F4E828F344B00004B6BF /* GroupSettingsViewController.swift in Sources */,
 				FEB5593D2921A853009DE828 /* changePasswordViewController.swift in Sources */,
 				B6E7F4E628F344970004B6BF /* GroupViewController.swift in Sources */,
@@ -223,7 +227,6 @@
 				B6E7F4E028F344330004B6BF /* GroupSelectorViewController.swift in Sources */,
 				B6E7F4CD28F333BF0004B6BF /* CS329E_Project.xcdatamodeld in Sources */,
 				B6E7F4E228F344580004B6BF /* CreateGroupViewController.swift in Sources */,
-				B6E7F4F228F345470004B6BF /* InventorySubgroupViewController.swift in Sources */,
 				B6E7F4DA28F3436C0004B6BF /* LoginPageViewController.swift in Sources */,
 				B6E7F4F428F3455E0004B6BF /* ItemStatusViewController.swift in Sources */,
 				B6E7F4EE28F345130004B6BF /* ChoresSchedulerViewController.swift in Sources */,
@@ -466,6 +469,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B600DC1A28F9E88E003DC276 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAuth;
+		};
+		B6B4A1B229218A8F000CD6DD /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B600DC1A28F9E88E003DC276 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
 		};
 		B6CFF39E29158B880074167D /* FirebaseFirestore */ = {
 			isa = XCSwiftPackageProductDependency;

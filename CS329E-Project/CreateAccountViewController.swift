@@ -115,6 +115,7 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
             "firstName": firstName,
             "lastName": lastName,
             "email": email,
+            "profilePictureURL": "",
         ]) {err in
             if let err = err {
                 print("Error adding document: \(err)")

@@ -9,6 +9,15 @@ import UIKit
 import FirebaseFirestore
 import FirebaseAuth
 
+class ShoppingListItem {
+    let itemName: String
+    var isChecked: Bool = false
+    
+    init(itemName: String) {
+        self.itemName = itemName
+    }
+}
+
 class ShoppingListViewController: UITableViewController {
 
     // define references
@@ -17,7 +26,7 @@ class ShoppingListViewController: UITableViewController {
     let db = Firestore.firestore()
     
     // define items list
-    var shoppingListItems:[String]!
+    var shoppingListItems:[ShoppingListItem]!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,7 +62,8 @@ class ShoppingListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let row = indexPath.row
         let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath)
-        cell.textLabel?.text = shoppingListItems![row]
+        cell.textLabel?.text = shoppingListItems![row].itemName
+        cell.accessoryType = shoppingListItems![row].isChecked ? .checkmark : .none
         return cell
     }
     
@@ -67,7 +77,11 @@ class ShoppingListViewController: UITableViewController {
                 
                 // check if group has shopping list
                 if groupDescription!["shoppingList"] != nil {
-                    self.shoppingListItems = groupDescription!["shoppingList"] as? [String]
+                    let currShoppingListItems = (groupDescription!["shoppingList"] as? [String])
+                    self.shoppingListItems = []
+                    for i in 0..<currShoppingListItems!.count {
+                        self.shoppingListItems.append(ShoppingListItem(itemName: currShoppingListItems![i]))
+                    }
                 } else {
                     // no shopping list, need to add
                     print("Error, group has no shopping list yet")
@@ -80,6 +94,7 @@ class ShoppingListViewController: UITableViewController {
         }
     }
     
+    // TODO: Connect to a storyboard button
     @IBAction func addButton(_ sender: Any) {
         let alertController = UIAlertController(title: "Add New Item", message: "Add a new item to Shopping List.", preferredStyle: .alert)
         alertController.addTextField() { (textField) in
@@ -98,7 +113,8 @@ class ShoppingListViewController: UITableViewController {
                 print("Added \(String(describing: newItem!)) to group shopping list")
                 // self.reloadTableData()
                 
-                self.shoppingListItems.append(newItem!)
+                // self.shoppingListItems.append(newItem!)
+                self.shoppingListItems.append(ShoppingListItem(itemName: newItem!))
                 self.tableView.insertRows(at: [IndexPath(row: self.shoppingListItems.count-1,
                                                     section: 0)],
                                      with: .automatic)
@@ -107,6 +123,12 @@ class ShoppingListViewController: UITableViewController {
         alertController.addAction(cancelAction)
         alertController.addAction(saveAction)
         present(alertController, animated: true, completion: nil)
+    }
+    
+    @IBAction func deleteChecked(_ sender: Any) {
+        // TODO: alert controller to confirm action
+        // TODO: Implement
+        
     }
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -118,10 +140,16 @@ class ShoppingListViewController: UITableViewController {
             // remove from local list
             self.shoppingListItems.remove(at: indexPath.row)
             
-            // TODO: remove from database
+            // create string version of new list
+            var shoppingListItemsString:[String] = []
+            for i in 0..<self.shoppingListItems.count {
+                shoppingListItemsString.append(self.shoppingListItems[i].itemName)
+            }
+            
+            // remove from database
             let groupRef = db.collection("groups").document(self.groupIdentifier)
             groupRef.updateData([
-                "shoppingList": shoppingListItems!
+                "shoppingList": shoppingListItemsString
             ])
             
             // update table
@@ -130,8 +158,9 @@ class ShoppingListViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // TODO: perform check off of something like that
-        
         tableView.deselectRow(at: indexPath, animated: true)
+        let item = shoppingListItems[indexPath.row]
+        item.isChecked = !item.isChecked
+        tableView.reloadRows(at: [indexPath], with: .automatic)
     }
 }

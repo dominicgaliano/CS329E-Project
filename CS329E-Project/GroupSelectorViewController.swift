@@ -14,8 +14,12 @@ protocol groupAdder{
 }
 
 public var groups = ["group1", "group2", "group3"]
+
 class GroupSelectorViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, groupAdder{
 
+    // dark mode
+    var darkMode = false
+    
     @IBOutlet weak var tableView: UITableView!
     var delegate:UIViewController!
     var userGroups:[(String, String)]!
@@ -41,16 +45,45 @@ class GroupSelectorViewController: UIViewController, UITableViewDelegate, UITabl
                     print("Error getting documents: \(err)")
                     self.performLogout()
                 } else {
+                    // initialize userGroups array
                     self.userGroups = []
+                    
+                    // iterate through user's groups
                     for document in querySnapshot!.documents {
-                        self.userGroups.append((document.documentID,
-                                           document.data()["groupName"] as! String))
+                        // get groupId from user
+                        let groupID = document.documentID
+                        
+                        // get groupName from groups (since they can change)
+                        self.db.collection("groups").document(groupID).getDocument { (document, error ) in
+                            if let document = document, document.exists {
+                                let groupName:String = document.data()!["groupName"] as! String
+                                self.userGroups.append((groupID, groupName))
+                                self.tableView.reloadData()
+                            } else {
+                                print("Group does not exist")
+                            }
+                        }
                     }
-                    self.tableView.reloadData()
-                    // for debugging
-                    print(self.userGroups!)
                 }
             }
+        
+        // dark mode
+        var defaults = UserDefaults.standard
+        if defaults.object(forKey: "state") != nil{
+            darkMode = defaults.bool(forKey: "state")
+        }
+        
+        if #available(iOS 13.0, *) {
+            let appDelegate = UIApplication.shared.windows.first
+            if darkMode == true {
+                appDelegate?.overrideUserInterfaceStyle = .dark
+                return
+            } else {
+                appDelegate?.overrideUserInterfaceStyle = .light
+            }
+            appDelegate?.overrideUserInterfaceStyle = .light
+            return
+        }
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -85,7 +118,7 @@ class GroupSelectorViewController: UIViewController, UITableViewDelegate, UITabl
             nextVC.groupIdentifier = userGroups[(sender as! Int)].0
         } else if segue.identifier == "JoinGroupSegue",
                   let nextVC = segue.destination as? JoinGroupViewController {
-            // do nothing lol
+            // TODO: can put something here if needed, but might be able to delete this
         }
     }
     
