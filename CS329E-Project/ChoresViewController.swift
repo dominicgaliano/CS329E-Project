@@ -10,6 +10,7 @@ var choreList: [Chore] = []
 
 class ChoresViewController: UIViewController, UICalendarSelectionSingleDateDelegate, sendChore{
     func dateSelection(_ selection: UICalendarSelectionSingleDate, didSelectDate dateComponents: DateComponents?) {
+        print(choreList)
         return 
     }
     override func viewDidLoad() {
@@ -30,7 +31,6 @@ class ChoresViewController: UIViewController, UICalendarSelectionSingleDateDeleg
         //make the selection single selection
         let dateSelection = UICalendarSelectionSingleDate(delegate: self)
         calendarView.selectionBehavior = dateSelection
-        
         
         view.addSubview(calendarView)
 
@@ -53,7 +53,6 @@ extension ChoresViewController: UICalendarViewDelegate{
         let font = UIFont.systemFont(ofSize: 10)
         let configuration = UIImage.SymbolConfiguration(font: font)
         let image = UIImage(systemName: "circle.fill", withConfiguration: configuration)?.withRenderingMode(.alwaysOriginal)
-        
-       return nil
+        return .image(image)
     }
 }
