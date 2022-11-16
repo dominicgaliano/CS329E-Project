@@ -32,6 +32,7 @@
 		B6E7F4F228F345470004B6BF /* InventorySubgroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E7F4F128F345470004B6BF /* InventorySubgroupViewController.swift */; };
 		B6E7F4F428F3455E0004B6BF /* ItemStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E7F4F328F3455E0004B6BF /* ItemStatusViewController.swift */; };
 		FE183F7D29180E71001E83FA /* loadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE183F7C29180E71001E83FA /* loadingViewController.swift */; };
+		FEB5593D2921A853009DE828 /* changePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB5593C2921A853009DE828 /* changePasswordViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +61,7 @@
 		B6E7F4F128F345470004B6BF /* InventorySubgroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventorySubgroupViewController.swift; sourceTree = "<group>"; };
 		B6E7F4F328F3455E0004B6BF /* ItemStatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemStatusViewController.swift; sourceTree = "<group>"; };
 		FE183F7C29180E71001E83FA /* loadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loadingViewController.swift; sourceTree = "<group>"; };
+		FEB5593C2921A853009DE828 /* changePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = changePasswordViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,8 +102,9 @@
 				B6E7F4C628F333BE0004B6BF /* ViewController.swift */,
 				B6E7F4C828F333BE0004B6BF /* Main.storyboard */,
 				B6E7F4D928F3436C0004B6BF /* LoginPageViewController.swift */,
-				FE183F7C29180E71001E83FA /* loadingViewController.swift */,
+				FEB5593C2921A853009DE828 /* changePasswordViewController.swift */,
 				B6E7F4DB28F343830004B6BF /* CreateAccountViewController.swift */,
+				FE183F7C29180E71001E83FA /* loadingViewController.swift */,
 				B6E7F4DD28F343D70004B6BF /* IndividualSettingsViewController.swift */,
 				B6E7F4DF28F344330004B6BF /* GroupSelectorViewController.swift */,
 				B6E7F4E128F344580004B6BF /* CreateGroupViewController.swift */,
@@ -214,6 +217,7 @@
 				B6E7F4C728F333BE0004B6BF /* ViewController.swift in Sources */,
 				B6E7F4C328F333BE0004B6BF /* AppDelegate.swift in Sources */,
 				B6E7F4E828F344B00004B6BF /* GroupSettingsViewController.swift in Sources */,
+				FEB5593D2921A853009DE828 /* changePasswordViewController.swift in Sources */,
 				B6E7F4E628F344970004B6BF /* GroupViewController.swift in Sources */,
 				B6E7F4F028F3452F0004B6BF /* InventoryViewController.swift in Sources */,
 				B6E7F4E028F344330004B6BF /* GroupSelectorViewController.swift in Sources */,
