@@ -126,7 +126,8 @@ class LoginPageViewController: UIViewController, UITextFieldDelegate {
         loadingVC.modalTransitionStyle = .crossDissolve
                
         present(loadingVC, animated: true, completion: nil)
-        // TODO: Implement forgot password features
-        return
+        loadingVC.dismiss(animated: true){
+            self.performSegue(withIdentifier: "changePasswordSegue", sender: nil)
+        }
     }
 }
