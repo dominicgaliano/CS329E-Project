@@ -29,10 +29,12 @@
 		B6E7F4E828F344B00004B6BF /* GroupSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E7F4E728F344B00004B6BF /* GroupSettingsViewController.swift */; };
 		B6E7F4EA28F344CE0004B6BF /* ShoppingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E7F4E928F344CE0004B6BF /* ShoppingListViewController.swift */; };
 		B6E7F4EC28F344FF0004B6BF /* ChoresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E7F4EB28F344FF0004B6BF /* ChoresViewController.swift */; };
-		B6E7F4EE28F345130004B6BF /* ChoresSchedulerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E7F4ED28F345130004B6BF /* ChoresSchedulerViewController.swift */; };
 		B6E7F4F028F3452F0004B6BF /* InventoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E7F4EF28F3452F0004B6BF /* InventoryViewController.swift */; };
 		B6E7F4F428F3455E0004B6BF /* ItemStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E7F4F328F3455E0004B6BF /* ItemStatusViewController.swift */; };
 		FE183F7D29180E71001E83FA /* loadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE183F7C29180E71001E83FA /* loadingViewController.swift */; };
+		FEB5599529256231009DE828 /* changePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB5599429256231009DE828 /* changePasswordViewController.swift */; };
+		FEB559BC2925F8FF009DE828 /* EKWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB559BB2925F8FF009DE828 /* EKWrapper.swift */; };
+		FEB559BF2925F971009DE828 /* CalendarKit in Frameworks */ = {isa = PBXBuildFile; productRef = FEB559BE2925F971009DE828 /* CalendarKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,10 +59,11 @@
 		B6E7F4E728F344B00004B6BF /* GroupSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupSettingsViewController.swift; sourceTree = "<group>"; };
 		B6E7F4E928F344CE0004B6BF /* ShoppingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListViewController.swift; sourceTree = "<group>"; };
 		B6E7F4EB28F344FF0004B6BF /* ChoresViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoresViewController.swift; sourceTree = "<group>"; };
-		B6E7F4ED28F345130004B6BF /* ChoresSchedulerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoresSchedulerViewController.swift; sourceTree = "<group>"; };
 		B6E7F4EF28F3452F0004B6BF /* InventoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryViewController.swift; sourceTree = "<group>"; };
 		B6E7F4F328F3455E0004B6BF /* ItemStatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemStatusViewController.swift; sourceTree = "<group>"; };
 		FE183F7C29180E71001E83FA /* loadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loadingViewController.swift; sourceTree = "<group>"; };
+		FEB5599429256231009DE828 /* changePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = changePasswordViewController.swift; sourceTree = "<group>"; };
+		FEB559BB2925F8FF009DE828 /* EKWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKWrapper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +72,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B600DC1C28F9E88E003DC276 /* FirebaseAuth in Frameworks */,
+				FEB559BF2925F971009DE828 /* CalendarKit in Frameworks */,
 				B6CFF39F29158B880074167D /* FirebaseFirestore in Frameworks */,
 				B6B4A1B329218A8F000CD6DD /* FirebaseStorage in Frameworks */,
 			);
@@ -101,6 +105,7 @@
 				B6E7F4C428F333BE0004B6BF /* SceneDelegate.swift */,
 				B6E7F4C628F333BE0004B6BF /* ViewController.swift */,
 				B6E7F4C828F333BE0004B6BF /* Main.storyboard */,
+				FEB5599429256231009DE828 /* changePasswordViewController.swift */,
 				28D2AED02919FCEE0022F654 /* ScannerViewController.swift */,
 				B6E7F4D928F3436C0004B6BF /* LoginPageViewController.swift */,
 				FE183F7C29180E71001E83FA /* loadingViewController.swift */,
@@ -113,7 +118,7 @@
 				B6E7F4E728F344B00004B6BF /* GroupSettingsViewController.swift */,
 				B6E7F4E928F344CE0004B6BF /* ShoppingListViewController.swift */,
 				B6E7F4EB28F344FF0004B6BF /* ChoresViewController.swift */,
-				B6E7F4ED28F345130004B6BF /* ChoresSchedulerViewController.swift */,
+				FEB559BB2925F8FF009DE828 /* EKWrapper.swift */,
 				B6E7F4EF28F3452F0004B6BF /* InventoryViewController.swift */,
 				B6E7F4F328F3455E0004B6BF /* ItemStatusViewController.swift */,
 				B600DC1828F9E6B2003DC276 /* GoogleService-Info.plist */,
@@ -152,6 +157,7 @@
 				B600DC1B28F9E88E003DC276 /* FirebaseAuth */,
 				B6CFF39E29158B880074167D /* FirebaseFirestore */,
 				B6B4A1B229218A8F000CD6DD /* FirebaseStorage */,
+				FEB559BE2925F971009DE828 /* CalendarKit */,
 			);
 			productName = "CS329E-Project";
 			productReference = B6E7F4BF28F333BE0004B6BF /* CS329E-Project.app */;
@@ -183,6 +189,7 @@
 			mainGroup = B6E7F4B628F333BE0004B6BF;
 			packageReferences = (
 				B600DC1A28F9E88E003DC276 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				FEB559BD2925F970009DE828 /* XCRemoteSwiftPackageReference "CalendarKit" */,
 			);
 			productRefGroup = B6E7F4C028F333BE0004B6BF /* Products */;
 			projectDirPath = "";
@@ -217,6 +224,8 @@
 				B6E7F4C728F333BE0004B6BF /* ViewController.swift in Sources */,
 				B6E7F4C328F333BE0004B6BF /* AppDelegate.swift in Sources */,
 				28D2AED12919FCEE0022F654 /* ScannerViewController.swift in Sources */,
+				FEB5599529256231009DE828 /* changePasswordViewController.swift in Sources */,
+				FEB559BC2925F8FF009DE828 /* EKWrapper.swift in Sources */,
 				B6E7F4E828F344B00004B6BF /* GroupSettingsViewController.swift in Sources */,
 				B6E7F4E628F344970004B6BF /* GroupViewController.swift in Sources */,
 				B6E7F4F028F3452F0004B6BF /* InventoryViewController.swift in Sources */,
@@ -225,7 +234,6 @@
 				B6E7F4E228F344580004B6BF /* CreateGroupViewController.swift in Sources */,
 				B6E7F4DA28F3436C0004B6BF /* LoginPageViewController.swift in Sources */,
 				B6E7F4F428F3455E0004B6BF /* ItemStatusViewController.swift in Sources */,
-				B6E7F4EE28F345130004B6BF /* ChoresSchedulerViewController.swift in Sources */,
 				B6E7F4DE28F343D70004B6BF /* IndividualSettingsViewController.swift in Sources */,
 				B6E7F4EC28F344FF0004B6BF /* ChoresViewController.swift in Sources */,
 				B6E7F4EA28F344CE0004B6BF /* ShoppingListViewController.swift in Sources */,
@@ -380,6 +388,9 @@
 				DEVELOPMENT_TEAM = 3HXAFU4VU6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "CS329E-Project/Info.plist";
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "In order to open the calendar app, you must first give persmission";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Please allow access to take a profile picture";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Please allow access to select a profile picture";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -408,6 +419,9 @@
 				DEVELOPMENT_TEAM = 3HXAFU4VU6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "CS329E-Project/Info.plist";
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "In order to open the calendar app, you must first give persmission";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Please allow access to take a profile picture";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Please allow access to select a profile picture";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -458,6 +472,14 @@
 				minimumVersion = 9.0.0;
 			};
 		};
+		FEB559BD2925F970009DE828 /* XCRemoteSwiftPackageReference "CalendarKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/richardtop/CalendarKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.8;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -475,6 +497,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B600DC1A28F9E88E003DC276 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
+		};
+		FEB559BE2925F971009DE828 /* CalendarKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FEB559BD2925F970009DE828 /* XCRemoteSwiftPackageReference "CalendarKit" */;
+			productName = CalendarKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 
