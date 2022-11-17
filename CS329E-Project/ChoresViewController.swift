@@ -16,6 +16,7 @@ class ChoresViewController: UIViewController, UICalendarSelectionSingleDateDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         createCalendar()
+        self.navigationItem.rightBarButtonItem = nil
     }
     func createCalendar(){
         //create calendar

@@ -163,4 +163,5 @@ class ShoppingListViewController: UITableViewController {
         item.isChecked = !item.isChecked
         tableView.reloadRows(at: [indexPath], with: .automatic)
     }
+    
 }
