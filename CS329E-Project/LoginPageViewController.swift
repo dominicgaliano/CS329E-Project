@@ -95,6 +95,8 @@ class LoginPageViewController: UIViewController, UITextFieldDelegate {
 
     }
     
+
+    
     // Create account button actions
     @IBAction func createAccountButtonPressed(_ sender: Any) {
         //create and present loading animation
@@ -116,7 +118,7 @@ class LoginPageViewController: UIViewController, UITextFieldDelegate {
     
     // Forgot password button actions
     @IBAction func forgotPasswordButtonPressed(_ sender: Any) {
-        //Buffers until the action is completed
+        //create and present loading animation
         let loadingVC = loadingViewController()
 
 
@@ -126,7 +128,9 @@ class LoginPageViewController: UIViewController, UITextFieldDelegate {
         loadingVC.modalTransitionStyle = .crossDissolve
                
         present(loadingVC, animated: true, completion: nil)
-        // TODO: Implement forgot password features
-        return
+        loadingVC.dismiss(animated: true){
+            //only perform segue when the dismissal is complete
+            self.performSegue(withIdentifier: "forgotPasswordSegue", sender: nil)
+        }
     }
 }
