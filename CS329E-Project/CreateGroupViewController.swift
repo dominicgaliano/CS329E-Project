@@ -9,25 +9,17 @@ import UIKit
 import FirebaseFirestore
 import FirebaseAuth
 
-public var users = ["hans", "ray", "dominic", "cruz"]
-
-class CreateGroupViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
+class CreateGroupViewController: UIViewController{
     
     @IBOutlet weak var groupName: UITextField!
     @IBOutlet weak var groupIdentifier: UITextField!
-    @IBOutlet weak var memberName: UITextField!
-    @IBOutlet weak var tableView: UITableView!
     var delegate:UIViewController!
     
     // establish db connection
     let db = Firestore.firestore()
     
-    //var addedMembers: [String] = []
-    var addedMembers = ["hans", "ray"]
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.dataSource = self
-        tableView.delegate = self
         navigationBarPlus()
 
     }
@@ -62,34 +54,6 @@ class CreateGroupViewController: UIViewController, UITableViewDelegate, UITableV
 //                nextVC.addGroup(newGroup: groupName.text!)
 //        }
 //    }
-    
-    
-    @IBAction func addMemberButton(_ sender: Any) {
-        if memberName.text != ""{
-            if addedMembers.contains(memberName.text!){
-                let controller = UIAlertController(
-                    title: "Error",
-                    message: "This user is already added",
-                    preferredStyle: .alert)
-                controller.addAction(UIAlertAction(
-                    title: "OK", style: .default))
-                present(controller, animated: true)
-            }
-            else if users.contains(memberName.text!){
-                addedMembers.append(memberName.text!)
-                self.tableView.reloadData()
-            }
-            else{
-                let controller = UIAlertController(
-                    title: "Error",
-                    message: "This user does not exist",
-                    preferredStyle: .alert)
-                controller.addAction(UIAlertAction(
-                    title: "OK", style: .default))
-                present(controller, animated: true)
-            }
-        }
-    }
     
     // Adds group to database with unique group id
     func addGroup(groupIdentifier: String, groupName: String, currentUserUID: String) {
@@ -144,17 +108,5 @@ class CreateGroupViewController: UIViewController, UITableViewDelegate, UITableV
         } else {
             self.dismiss(animated: true, completion: nil)
         }
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        addedMembers.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let row = indexPath.row
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MemberCell", for: indexPath)
-        cell.textLabel?.text = addedMembers[row]
-        
-        return cell
     }
 }
