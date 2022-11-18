@@ -9,13 +9,8 @@ import UIKit
 import FirebaseAuth
 import FirebaseFirestore
 
-protocol groupAdder{
-    func addGroup(newGroup:String)
-}
 
-public var groups = ["group1", "group2", "group3"]
-
-class GroupSelectorViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, groupAdder{
+class GroupSelectorViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
 
     // dark mode
     var darkMode = false
@@ -100,6 +95,7 @@ class GroupSelectorViewController: UIViewController, UITableViewDelegate, UITabl
         let row = indexPath.row
         let cell = tableView.dequeueReusableCell(withIdentifier: "GroupCell", for: indexPath)
         cell.textLabel?.text = userGroups[row].1
+        cell.textLabel?.numberOfLines = 0
         return cell
     }
     
@@ -122,10 +118,6 @@ class GroupSelectorViewController: UIViewController, UITableViewDelegate, UITabl
         }
     }
     
-    func addGroup(newGroup: String) {
-        groups.append(newGroup)
-        //self.tableView.reloadData()
-    }
     
     // Perform logout
     func performLogout() {
