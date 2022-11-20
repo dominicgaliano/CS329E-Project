@@ -669,11 +669,14 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="AI0-LD-IDO">
                         <nil key="title"/>
-                        <button key="titleView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="04W-sJ-Sn3">
+                        <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="04W-sJ-Sn3">
                             <rect key="frame" x="187.66666666666666" y="5" width="54.666666666666657" height="34.333333333333336"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="plain" title="Add"/>
+                            <connections>
+                                <action selector="addButton:" destination="Hge-UK-yqp" eventType="touchUpInside" id="EWt-mS-MIG"/>
+                            </connections>
                         </button>
                         <barButtonItem key="rightBarButtonItem" id="JAG-1e-EGZ">
                             <imageReference key="image" image="person.2.circle" catalog="system" variableValue="0.80000000000000004"/>
@@ -720,6 +723,9 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="plain" title="Add"/>
+                            <connections>
+                                <action selector="addButton:" destination="vSk-HK-gds" eventType="touchUpInside" id="FGg-Nz-yLD"/>
+                            </connections>
                         </button>
                         <barButtonItem key="rightBarButtonItem" image="person.2" catalog="system" id="pQd-Hv-oHl">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="fTZ-BQ-CHc">
