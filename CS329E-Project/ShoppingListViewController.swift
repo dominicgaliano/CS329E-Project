@@ -16,6 +16,10 @@ class ShoppingListItem {
     init(itemName: String) {
         self.itemName = itemName
     }
+    
+    static func == (lhs: ShoppingListItem, rhs: ShoppingListItem) -> Bool {
+        return lhs.itemName == rhs.itemName
+    }
 }
 
 class ShoppingListViewController: UITableViewController {
@@ -35,6 +39,7 @@ class ShoppingListViewController: UITableViewController {
         tableView.dataSource = self
         
         self.navigationItem.rightBarButtonItem = self.editButtonItem
+        self.shoppingListItems = []
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -78,9 +83,11 @@ class ShoppingListViewController: UITableViewController {
                 // check if group has shopping list
                 if groupDescription!["shoppingList"] != nil {
                     let currShoppingListItems = (groupDescription!["shoppingList"] as? [String])
-                    self.shoppingListItems = []
                     for i in 0..<currShoppingListItems!.count {
-                        self.shoppingListItems.append(ShoppingListItem(itemName: currShoppingListItems![i]))
+                        if !self.shoppingListItems.contains(where: { $0.itemName == currShoppingListItems![i] } ) {
+                            print("\(currShoppingListItems![i]) not found in ShoppingListItems, adding")
+                            self.shoppingListItems.append(ShoppingListItem(itemName: currShoppingListItems![i]))
+                        }
                     }
                 } else {
                     // no shopping list, need to add
