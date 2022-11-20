@@ -24,6 +24,11 @@ class InventoryViewController: UITableViewController {
         
         self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        reloadTableData()
+    }
 
     // MARK: - Data manipulation
     
@@ -113,10 +118,8 @@ class InventoryViewController: UITableViewController {
         controller.addAction(UIAlertAction(
             title: "Yes",
             style: .default,
-            handler: {action in self.inventoryItems.append(rowValue)}))
+            handler: {_ in self.addToShoppingList(newItem: rowValue)}))
         present(controller, animated: true)
-        // TODO: Cruz, implement adding stuff to shoppingList here
-        
         
         tableView.deselectRow(at: indexPath, animated: true)
     }
@@ -138,6 +141,17 @@ class InventoryViewController: UITableViewController {
             
             // update table
             tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
+    
+    func addToShoppingList(newItem: String) {
+        // add to database
+        let groupRef = db.collection("groups").document(self.groupIdentifier)
+        
+        groupRef.updateData([
+            "shoppingList": FieldValue.arrayUnion([newItem])
+        ]) { _ in
+            print("Added \(newItem) to group shopping list")
         }
     }
 }
