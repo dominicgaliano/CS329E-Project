@@ -133,7 +133,7 @@ class GroupSettingsViewController: UIViewController, UITableViewDelegate, UITabl
                         preferredStyle: .actionSheet)
         controller.addAction(UIAlertAction(title: "Confirm", style: .destructive, handler: {
             (action: UIAlertAction!) in (self.leaveGroup(Auth.auth().currentUser!.uid, self.groupIdentifier!))
-            self.performSegue(withIdentifier: "UnwindSegue", sender: nil)
+            self.performSegue(withIdentifier: "LeaveGroupSegue", sender: nil)
         }))
         controller.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         present(controller, animated: true)
