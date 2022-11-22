@@ -468,10 +468,11 @@
                         <outlet property="groupNameLabel" destination="7u1-2L-1Sy" id="eah-VL-Qm8"/>
                         <outlet property="qrCode" destination="gIR-jU-PzP" id="MxB-cM-9FK"/>
                         <outlet property="tableView" destination="z2r-5k-4Eq" id="pAx-GG-acO"/>
-                        <segue destination="kP0-ch-bVs" kind="show" identifier="LeaveGroupSegue" id="2sQ-sq-cl0"/>
+                        <segue destination="fpX-df-Ncr" kind="unwind" identifier="UnwindSegue" unwindAction="myUnwindActionWithUnwindSegue:" id="IRC-EA-Afh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CeE-zM-FdB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="fpX-df-Ncr" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1693.4579439252336" y="1357.4514038876891"/>
         </scene>
@@ -668,6 +669,15 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="AI0-LD-IDO">
                         <nil key="title"/>
+                        <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="04W-sJ-Sn3">
+                            <rect key="frame" x="187.66666666666666" y="5" width="54.666666666666657" height="34.333333333333336"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="Add"/>
+                            <connections>
+                                <action selector="addButton:" destination="Hge-UK-yqp" eventType="touchUpInside" id="EWt-mS-MIG"/>
+                            </connections>
+                        </button>
                         <barButtonItem key="rightBarButtonItem" id="JAG-1e-EGZ">
                             <imageReference key="image" image="person.2.circle" catalog="system" variableValue="0.80000000000000004"/>
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="nua-iw-b0T">
@@ -713,6 +723,9 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="plain" title="Add"/>
+                            <connections>
+                                <action selector="addButton:" destination="vSk-HK-gds" eventType="touchUpInside" id="FGg-Nz-yLD"/>
+                            </connections>
                         </button>
                         <barButtonItem key="rightBarButtonItem" image="person.2" catalog="system" id="pQd-Hv-oHl">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="fTZ-BQ-CHc">
@@ -736,8 +749,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Group Name Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q4V-cW-3cH">
-                                <rect key="frame" x="20" y="112" width="142" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Group Name Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q4V-cW-3cH">
+                                <rect key="frame" x="20" y="103" width="390" height="57"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -788,11 +801,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="ZhD-4i-B04">
                         <barButtonItem key="rightBarButtonItem" image="person.2" catalog="system" id="T94-fd-1u5">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="AWj-s8-Gda">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="AWj-s8-Gda">
                                 <rect key="frame" x="315" y="5" width="95" height="34.333333333333336"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="gearshape" catalog="system" title=" " titleAlignment="center"/>
+                                <buttonConfiguration key="configuration" style="plain" image="gearshape" catalog="system"/>
                                 <connections>
                                     <segue destination="xPr-PJ-GF7" kind="show" identifier="groupSettingsSegueIdentifier" id="H4z-lI-OWa"/>
                                 </connections>
@@ -808,7 +821,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WHs-M9-GYI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3211.6822429906542" y="705.61555075593958"/>
+            <point key="canvasLocation" x="3210.6976744186045" y="705.57939914163092"/>
         </scene>
         <!--Chores View Controller-->
         <scene sceneID="LP1-r0-beH">
@@ -817,6 +830,24 @@
                     <view key="view" contentMode="scaleToFill" id="gGL-hV-h4X">
                         <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" spacing="39" translatesAutoresizingMaskIntoConstraints="NO" id="IYe-C6-A95">
+                                <rect key="frame" x="142" y="562.33333333333348" width="144" height="107.66666666666667"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XsE-GO-B75">
+                                        <rect key="frame" x="0.0" y="0.0" width="144" height="34.333333333333336"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Add Chores"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tyJ-R0-oxR" colorLabel="IBBuiltInLabel-Yellow">
+                                        <rect key="frame" x="0.0" y="73.333333333333329" width="144" height="34.333333333333329"/>
+                                        <color key="tintColor" systemColor="systemRedColor"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Remove Chores"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="GTn-12-asC"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>

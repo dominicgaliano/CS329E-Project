@@ -65,5 +65,8 @@ class GroupViewController: UIViewController {
         }
     }
     
+    @IBAction func myUnwindAction(unwindSegue: UIStoryboardSegue){
+    }
+    
     // geat
 }
