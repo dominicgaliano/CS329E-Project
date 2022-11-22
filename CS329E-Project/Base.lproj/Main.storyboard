@@ -338,7 +338,7 @@
                                 <buttonConfiguration key="configuration" style="filled" title="Change Password"/>
                                 <connections>
                                     <action selector="changePasswordButtonPressed:" destination="gbD-p3-9Pd" eventType="touchUpInside" id="NDL-rF-lKS"/>
-                                    <segue destination="4fh-Ql-Pbd" kind="presentation" modalPresentationStyle="fullScreen" id="bMx-qZ-Mq2"/>
+                                    <action selector="changePasswordPressed:" destination="gbD-p3-9Pd" eventType="touchUpInside" id="gU8-Tg-NdN"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Dark Mode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GVl-cV-oGN">
@@ -810,6 +810,9 @@
                                     <segue destination="xPr-PJ-GF7" kind="show" identifier="groupSettingsSegueIdentifier" id="H4z-lI-OWa"/>
                                 </connections>
                             </button>
+                            <connections>
+                                <action selector="settingButtonPressed:" destination="z8r-9q-zJC" id="TW1-Qx-iqn"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -943,7 +946,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="SAF-63-Of5"/>
         <segue reference="Q6t-d2-ytf"/>
-        <segue reference="V0s-bJ-qcS"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrowshape.backward.fill" catalog="system" width="128" height="104"/>

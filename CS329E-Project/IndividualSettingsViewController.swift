@@ -149,17 +149,56 @@ class IndividualSettingsViewController: UIViewController {
         }
     }
     
+    @IBAction func changePasswordPressed(_ sender: Any) {
+        Auth.auth().sendPasswordReset(withEmail: Auth.auth().currentUser!.email!)
+        let confirmAlertController = UIAlertController(
+            title: "Success!",
+            message: "Please check your email for further instructions to reset your password",
+            preferredStyle: .alert
+        )
+        confirmAlertController.addAction(UIAlertAction(
+            title: "OK",
+            style: .default))
+        self.present(confirmAlertController, animated: true)
+    }
+
+                                         
+                                        
+                                         
     // delete account button
     @IBAction func deleteAccountButtonPressed(_ sender: Any) {
-        let controller = UIAlertController(
+        let resignController = UIAlertController(
+            title: "Login to Account",
+            message: "In order to confirm account deletion, re-login to  your account",
+            preferredStyle: .alert
+        )
+        resignController.addTextField { (emailField) in
+            emailField.placeholder = "Enter Email"
+        }
+        resignController.addTextField { (passField) in
+            passField.placeholder = "Enter Password"
+        }
+        resignController.addAction(UIAlertAction(
+            title: "OK",
+            style: .default,
+            handler: {_ in
+                let emailField = resignController.textFields![0]
+                let passField = resignController.textFields![1]
+                Auth.auth().signIn(withEmail: emailField.text!, password: passField.text!)
+            }))
+        
+        resignController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        
+        present(resignController,animated: true)
+        let deleteController = UIAlertController(
                         title: "Confirm Account Deletion",
                         message: "Are you sure you want to delete your account? This action cannot be undone",
                         preferredStyle: .actionSheet)
-        controller.addAction(UIAlertAction(title: "Delete Account", style: .destructive, handler: {
+        deleteController.addAction(UIAlertAction(title: "Delete Account", style: .destructive, handler: {
             (action: UIAlertAction!) in (self.performAccountDeletion())
         }))
-        controller.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-        present(controller, animated: true)
+        deleteController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        present(deleteController, animated: true)
     }
         
     // deletion account
