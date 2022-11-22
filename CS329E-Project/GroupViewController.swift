@@ -51,6 +51,7 @@ class GroupViewController: UIViewController {
         }
     }
     
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == shoppingListSegueIdentifier,
            let nextVC = segue.destination as? ShoppingListViewController {

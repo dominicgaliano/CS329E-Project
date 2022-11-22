@@ -48,8 +48,19 @@ class changePasswordViewController: UIViewController {
                 self.errorLab.text = error.localizedDescription
             }else{
                 self.errorLab.text = ""
-                self.dismiss(animated: true, completion: nil)
+                let confirmAlertController = UIAlertController(
+                    title: "Success!",
+                    message: "Please check your email for further instructions to reset your password",
+                    preferredStyle: .alert
+                )
+                confirmAlertController.addAction(UIAlertAction(
+                    title: "OK",
+                    style: .default){ (action:UIAlertAction!) in
+                        self.dismiss(animated: true, completion: nil)
+                    })
+                self.present(confirmAlertController,animated:true)
             }
+            
 
         }
     }
