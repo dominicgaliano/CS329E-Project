@@ -189,6 +189,12 @@ class ShoppingListViewController: UITableViewController {
         reloadTableData()
     }
     
+    // TODO: connect to a button
+    @IBAction func deleteAll(_ sender: Any) {
+        // I can implement the functionality
+        return
+    }
+    
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
