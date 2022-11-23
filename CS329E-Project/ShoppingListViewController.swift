@@ -171,23 +171,25 @@ class ShoppingListViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
+            
+            let item = shoppingListItems[indexPath.row]
+            
             // remove from local list
             self.shoppingListItems.remove(at: indexPath.row)
             
-            // create string version of new list
-            var shoppingListItemsString:[String] = []
-            for i in 0..<self.shoppingListItems.count {
-                shoppingListItemsString.append(self.shoppingListItems[i].itemName)
-            }
-            
             // remove from database
-            let groupRef = db.collection("groups").document(self.groupIdentifier)
-            groupRef.updateData([
-                "shoppingList": shoppingListItemsString
-            ])
-            
-            // update table
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            db.collection("groups").document(groupIdentifier!)
+                .collection("shoppingList").document(item.itemName)
+                .delete() { err in
+                    if let err = err {
+                        print("Error removing document: \(err)")
+                    } else {
+                        print("Document removed from database")
+                        
+                        // update table
+                        tableView.deleteRows(at: [indexPath], with: .fade)
+                    }
+            }
         }
     }
     
