@@ -13,8 +13,9 @@ class ShoppingListItem {
     let itemName: String
     var isChecked: Bool = false
     
-    init(itemName: String) {
+    init(itemName: String, isChecked: Bool = false) {
         self.itemName = itemName
+        self.isChecked = isChecked
     }
     
     static func == (lhs: ShoppingListItem, rhs: ShoppingListItem) -> Bool {
@@ -76,32 +77,58 @@ class ShoppingListViewController: UITableViewController {
         // get group shopping list data from database
         let groupRef = db.collection("groups").document(groupIdentifier!)
         
-        groupRef.getDocument { (document, error ) in
-            if let document = document, document.exists {
-                let groupDescription = document.data()
-                
-                // check if group has shopping list
-                if groupDescription!["shoppingList"] != nil {
-                    let currShoppingListItems = (groupDescription!["shoppingList"] as? [String])
-                    for i in 0..<currShoppingListItems!.count {
-                        if !self.shoppingListItems.contains(where: { $0.itemName == currShoppingListItems![i] } ) {
-                            print("\(currShoppingListItems![i]) not found in ShoppingListItems, adding")
-                            self.shoppingListItems.append(ShoppingListItem(itemName: currShoppingListItems![i]))
-                        }
-                    }
-                } else {
-                    // no shopping list, need to add
-                    print("Error, group has no shopping list yet")
-                }
-                self.tableView.reloadData()
+        groupRef.collection("shoppingList").getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+                // throw error message?
+                self.navigationController?.popToRootViewController(animated: true)
             } else {
-                print("Document does not exist")
-                self.dismiss(animated: true)
+                // initialize shoppingLit
+                self.shoppingListItems = []
+                
+                // iterate through user's groups
+                for document in querySnapshot!.documents {
+                    // get itemName from shopping list
+                    let itemName = document.documentID
+                    
+                    // get item status
+                    let itemIsChecked = document.data()["isChecked"] as! Bool
+                    
+                    // add to list
+                    self.shoppingListItems.append(ShoppingListItem(itemName: itemName, isChecked: itemIsChecked))
+                    print("Added \(itemName) with status \(itemIsChecked) to list")
+                }
+                
+                self.tableView.reloadData()
             }
         }
+        
+        // Old method
+//        groupRef.getDocument { (document, error ) in
+//            if let document = document, document.exists {
+//                let groupDescription = document.data()
+//
+//                // check if group has shopping list
+//                if groupDescription!["shoppingList"] != nil {
+//                    let currShoppingListItems = (groupDescription!["shoppingList"] as? [String])
+//                    for i in 0..<currShoppingListItems!.count {
+//                        if !self.shoppingListItems.contains(where: { $0.itemName == currShoppingListItems![i] } ) {
+//                            print("\(currShoppingListItems![i]) not found in ShoppingListItems, adding")
+//                            self.shoppingListItems.append(ShoppingListItem(itemName: currShoppingListItems![i]))
+//                        }
+//                    }
+//                } else {
+//                    // no shopping list, need to add
+//                    print("Error, group has no shopping list yet")
+//                }
+//                self.tableView.reloadData()
+//            } else {
+//                print("Document does not exist")
+//                self.dismiss(animated: true)
+//            }
+//        }
     }
     
-    // TODO: Connect to a storyboard button
     @IBAction func addButton(_ sender: Any) {
         let alertController = UIAlertController(title: "Add New Item", message: "Add a new item to Shopping List.", preferredStyle: .alert)
         alertController.addTextField() { (textField) in
@@ -166,9 +193,23 @@ class ShoppingListViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
         let item = shoppingListItems[indexPath.row]
-        item.isChecked = !item.isChecked
-        tableView.reloadRows(at: [indexPath], with: .automatic)
+        
+        // update database
+        db.collection("groups").document(groupIdentifier!).collection("shoppingList").document(item.itemName).updateData([
+            "isChecked": !item.isChecked
+        ]) { err in
+            if let err = err {
+                print("Error updating document: \(err)")
+            } else {
+                print("Document updated sucessfully")
+                // update local copy
+                item.isChecked = !item.isChecked
+                
+                // reload row
+                tableView.reloadRows(at: [indexPath], with: .automatic)
+            }
+        }
     }
-    
 }
