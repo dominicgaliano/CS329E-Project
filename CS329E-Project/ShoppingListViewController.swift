@@ -138,21 +138,45 @@ class ShoppingListViewController: UITableViewController {
         let saveAction = UIAlertAction(title: "Save", style: .default) { [self] _ in
             let newItem = alertController.textFields![0].text
             
-            // add to database
-            let groupRef = db.collection("groups").document(self.groupIdentifier)
-            
-            groupRef.updateData([
-                "shoppingList": FieldValue.arrayUnion([newItem!])
-            ]) { _ in
-                print("Added \(String(describing: newItem!)) to group shopping list")
-                // self.reloadTableData()
-                
-                // self.shoppingListItems.append(newItem!)
-                self.shoppingListItems.append(ShoppingListItem(itemName: newItem!))
-                self.tableView.insertRows(at: [IndexPath(row: self.shoppingListItems.count-1,
-                                                    section: 0)],
-                                     with: .automatic)
+            // check if item already on list
+            let docRef = db.collection("groups").document(self.groupIdentifier)
+                .collection("shoppingList").document(newItem!)
+            docRef.getDocument { (document, error) in
+                if document?.exists ?? false {
+                    // item already in list
+                    // TODO: make this an alert
+                    print("item already in list")
+                } else {
+                    // item not already in list
+                    // add item to database
+                    docRef.setData([
+                        "isChecked": false
+                    ])
+                    
+                    // add to local list
+                    self.shoppingListItems.append(ShoppingListItem(itemName: newItem!))
+                    
+                    // add to table
+                    self.tableView.insertRows(at: [IndexPath(row: self.shoppingListItems.count-1, section: 0)], with: .automatic)
+                }
             }
+            
+            // old adding method
+//            // add to database
+//            let groupRef = db.collection("groups").document(self.groupIdentifier)
+//
+//            groupRef.updateData([
+//                "shoppingList": FieldValue.arrayUnion([newItem!])
+//            ]) { _ in
+//                print("Added \(String(describing: newItem!)) to group shopping list")
+//                // self.reloadTableData()
+//
+//                // self.shoppingListItems.append(newItem!)
+//                self.shoppingListItems.append(ShoppingListItem(itemName: newItem!))
+//                self.tableView.insertRows(at: [IndexPath(row: self.shoppingListItems.count-1,
+//                                                    section: 0)],
+//                                     with: .automatic)
+//            }
         }
         alertController.addAction(cancelAction)
         alertController.addAction(saveAction)

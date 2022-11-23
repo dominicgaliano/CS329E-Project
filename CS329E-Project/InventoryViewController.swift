@@ -133,25 +133,38 @@ class InventoryViewController: UITableViewController {
             // remove from local list
             self.inventoryItems.remove(at: indexPath.row)
             
-            // TODO: remove from database
+            // remove from database
             let groupRef = db.collection("groups").document(self.groupIdentifier)
             groupRef.updateData([
                 "inventory": inventoryItems!
-            ])
-            
-            // update table
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            ]) { err in
+                if let err = err {
+                    print("Error updating document: \(err)")
+                } else {
+                    // update table
+                    tableView.deleteRows(at: [indexPath], with: .fade)
+                }
+                
+            }
         }
     }
     
     func addToShoppingList(newItem: String) {
-        // add to database
-        let groupRef = db.collection("groups").document(self.groupIdentifier)
-        
-        groupRef.updateData([
-            "shoppingList": FieldValue.arrayUnion([newItem])
-        ]) { _ in
-            print("Added \(newItem) to group shopping list")
+        // check if item already on list
+        let docRef = db.collection("groups").document(self.groupIdentifier)
+            .collection("shoppingList").document(newItem)
+        docRef.getDocument { (document, error) in
+            if document?.exists ?? false {
+                // item already in list
+                // TODO: make this an alert
+                print("item already in list")
+            } else {
+                // item not already in list
+                // add item to database
+                docRef.setData([
+                    "isChecked": false
+                ])
+            }
         }
     }
 }

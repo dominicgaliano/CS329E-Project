@@ -78,7 +78,6 @@ class CreateGroupViewController: UIViewController{
                 self.db.collection("groups").document(groupIdentifier).setData( [
                     "groupName": groupName,
                     "users": [currentUserUID],
-                    "shoppingList": [],
                     "inventory": [],
                     "calendarEntries": []
                 ]) {err in
