@@ -92,7 +92,10 @@ class IndividualSettingsViewController: UIViewController {
             if let document = document, document.exists {
                 let profilePictureURL = document.data()!["profilePictureURL"]
                 if profilePictureURL != nil {
-                    self.loadImageUsingCache(urlString: profilePictureURL! as! String)
+                    let stringURL = profilePictureURL! as! String
+                    if stringURL != "" {
+                        self.loadImageUsingCache(urlString: profilePictureURL! as! String)
+                    }
                 } else {
                     // no profile picture, don't need to do anything
                 }
