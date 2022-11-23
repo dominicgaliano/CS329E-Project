@@ -160,23 +160,6 @@ class ShoppingListViewController: UITableViewController {
                     self.tableView.insertRows(at: [IndexPath(row: self.shoppingListItems.count-1, section: 0)], with: .automatic)
                 }
             }
-            
-            // old adding method
-//            // add to database
-//            let groupRef = db.collection("groups").document(self.groupIdentifier)
-//
-//            groupRef.updateData([
-//                "shoppingList": FieldValue.arrayUnion([newItem!])
-//            ]) { _ in
-//                print("Added \(String(describing: newItem!)) to group shopping list")
-//                // self.reloadTableData()
-//
-//                // self.shoppingListItems.append(newItem!)
-//                self.shoppingListItems.append(ShoppingListItem(itemName: newItem!))
-//                self.tableView.insertRows(at: [IndexPath(row: self.shoppingListItems.count-1,
-//                                                    section: 0)],
-//                                     with: .automatic)
-//            }
         }
         alertController.addAction(cancelAction)
         alertController.addAction(saveAction)
@@ -185,8 +168,25 @@ class ShoppingListViewController: UITableViewController {
     
     @IBAction func deleteChecked(_ sender: Any) {
         // TODO: alert controller to confirm action
-        // TODO: Implement
         
+        for item in self.shoppingListItems {
+            if item.isChecked {
+                
+                // remove from database
+                db.collection("groups").document(groupIdentifier!)
+                    .collection("shoppingList").document(item.itemName)
+                    .delete() { err in
+                        if let err = err {
+                            print("Error removing document: \(err)")
+                        } else {
+                            print("Document removed from database")
+                        }
+                    }
+            }
+        }
+        
+        // reload table
+        reloadTableData()
     }
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
