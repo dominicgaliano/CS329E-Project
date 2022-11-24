@@ -9,7 +9,7 @@ import UIKit
 import FirebaseFirestore
 import FirebaseAuth
 
-class GroupViewController: UIViewController {
+class GroupViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     // segue identifiers
     let shoppingListSegueIdentifier: String = "shoppingListSegueIdentifier"
@@ -18,12 +18,15 @@ class GroupViewController: UIViewController {
     
     // outlets
     @IBOutlet weak var groupNameLabel: UILabel!
+    @IBOutlet weak var tableView: UITableView!
     
     var groupIdentifier:String!
     let db = Firestore.firestore()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.delegate = self
+        tableView.dataSource = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -106,4 +109,17 @@ class GroupViewController: UIViewController {
                 }
             }
     }
+    
+    // MARK: - Table functions
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 3
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        cell.textLabel?.text = "Test"
+        return cell
+    }
+    
 }

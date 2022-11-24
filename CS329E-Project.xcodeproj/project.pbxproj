@@ -11,6 +11,7 @@
 		B600DC1928F9E6B2003DC276 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B600DC1828F9E6B2003DC276 /* GoogleService-Info.plist */; };
 		B600DC1C28F9E88E003DC276 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = B600DC1B28F9E88E003DC276 /* FirebaseAuth */; };
 		B6B4A1B329218A8F000CD6DD /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = B6B4A1B229218A8F000CD6DD /* FirebaseStorage */; };
+		B6BCAB4829300686007C7764 /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6BCAB4729300686007C7764 /* MessageTableViewCell.swift */; };
 		B6CFF39F29158B880074167D /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = B6CFF39E29158B880074167D /* FirebaseFirestore */; };
 		B6E7F4C328F333BE0004B6BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E7F4C228F333BE0004B6BF /* AppDelegate.swift */; };
 		B6E7F4C528F333BE0004B6BF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E7F4C428F333BE0004B6BF /* SceneDelegate.swift */; };
@@ -40,6 +41,7 @@
 /* Begin PBXFileReference section */
 		28D2AED02919FCEE0022F654 /* ScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
 		B600DC1828F9E6B2003DC276 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B6BCAB4729300686007C7764 /* MessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
 		B6E7F4BF28F333BE0004B6BF /* CS329E-Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CS329E-Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6E7F4C228F333BE0004B6BF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B6E7F4C428F333BE0004B6BF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 				FEB559BB2925F8FF009DE828 /* EKWrapper.swift */,
 				B6E7F4EF28F3452F0004B6BF /* InventoryViewController.swift */,
 				B6E7F4F328F3455E0004B6BF /* ItemStatusViewController.swift */,
+				B6BCAB4729300686007C7764 /* MessageTableViewCell.swift */,
 				B600DC1828F9E6B2003DC276 /* GoogleService-Info.plist */,
 				B6E7F4CE28F333C30004B6BF /* Assets.xcassets */,
 				B6E7F4D028F333C30004B6BF /* LaunchScreen.storyboard */,
@@ -233,6 +236,7 @@
 				B6E7F4CD28F333BF0004B6BF /* CS329E_Project.xcdatamodeld in Sources */,
 				B6E7F4E228F344580004B6BF /* CreateGroupViewController.swift in Sources */,
 				B6E7F4DA28F3436C0004B6BF /* LoginPageViewController.swift in Sources */,
+				B6BCAB4829300686007C7764 /* MessageTableViewCell.swift in Sources */,
 				B6E7F4F428F3455E0004B6BF /* ItemStatusViewController.swift in Sources */,
 				B6E7F4DE28F343D70004B6BF /* IndividualSettingsViewController.swift in Sources */,
 				B6E7F4EC28F344FF0004B6BF /* ChoresViewController.swift in Sources */,
