@@ -73,6 +73,9 @@ class GroupViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 self.dismiss(animated: true)
             }
         }
+        
+        // reload messages
+        self.reloadMessages(groupIdentifier: groupIdentifier!)
     }
     
     @IBAction func addMessageButtonPressed(_ sender: Any) {
@@ -92,6 +95,36 @@ class GroupViewController: UIViewController, UITableViewDelegate, UITableViewDat
         alertController.addAction(cancelAction)
         alertController.addAction(saveAction)
         present(alertController, animated: true, completion: nil)
+    }
+    
+    func reloadMessages(groupIdentifier: String) {
+        let messagesRef = db.collection("groups").document(groupIdentifier).collection("messages")
+        messagesRef.order(by: "time", descending: true).limit(to: 100)
+        messagesRef.getDocuments() { (querySnapshot, err) in
+            if let err = err {
+                print("Error getting documents: \(err)")
+                // throw error message?
+                self.navigationController?.popToRootViewController(animated: true)
+            } else {
+                // initialize message lsit
+                self.groupMessages = []
+                
+                // iterate through user's groups
+                for document in querySnapshot!.documents {
+                    // parse content
+                    let displayName:String = document.data()["displayName"] as! String
+                    let messageContent:String = document.data()["messageContent"] as! String
+                    let messageTimestamp:Date = (document.data()["time"] as! Timestamp).dateValue()
+                    
+                    // add to list
+                    self.groupMessages.append(GroupMessage(displayName: displayName,
+                                                           messageContent: messageContent,
+                                                           messageTimestamp: messageTimestamp))
+                }
+                
+                self.tableView.reloadData()
+            }
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -114,29 +147,28 @@ class GroupViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func postMessage(messageContent: String, groupIdentifier: String, uid: String) {
         let now = Date()
         
-        // Add to database
-        db.collection("groups").document(groupIdentifier)
-            .collection("messages").addDocument(data: [
-                "uid": uid,
-                "time": now,
-                "messageContent": messageContent
-            ]) { err in
-                if let err = err {
-                    print("Error adding message: \(err)")
-                } else {
-                    print("Added message")
+        // get users display name
+        self.db.collection("users").document(uid)
+            .getDocument { (document, error ) in
+                if let document = document, document.exists {
+                    let userData = document.data()
                     
-                    // get user name from uid
-                    self.db.collection("users").document(uid)
-                        .getDocument { (document, error ) in
-                            if let document = document, document.exists {
-                                let userData = document.data()
-                                
-                                // check if user has first and last name (it should)
-                                if let firstName = userData!["firstName"], let lastName = userData!["lastName"] {
-                                    // add users to list
-                                    let displayName = "\(firstName) \(lastName)"
-                                    
+                    // check if user has first and last name (it should)
+                    if let firstName = userData!["firstName"], let lastName = userData!["lastName"] {
+                        // add users to list
+                        let displayName = "\(firstName) \(lastName)"
+                        
+                        // Add to database
+                        self.db.collection("groups").document(groupIdentifier)
+                            .collection("messages").addDocument(data: [
+                                "displayName": displayName,
+                                "uid": uid,
+                                "time": now,
+                                "messageContent": messageContent
+                            ]) { err in
+                                if let err = err {
+                                    print("Error: \(err)")
+                                } else {
                                     // add to local copy of messages
                                     let newMessage = GroupMessage(displayName: displayName, messageContent: messageContent, messageTimestamp: now)
                                     self.groupMessages.insert(newMessage, at: 0)
@@ -144,12 +176,9 @@ class GroupViewController: UIViewController, UITableViewDelegate, UITableViewDat
                                     // reload tableView
                                     // TODO: make this an add
                                     self.tableView.reloadData()
-                                } else {
-                                    print("user has not first and last name")
-                                    self.dismiss(animated: true, completion: nil)
                                 }
                             }
-                        }
+                    }
                 }
             }
     }
@@ -166,6 +195,10 @@ class GroupViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let currMessage:GroupMessage = groupMessages[row]
         cell.textLabel?.text = currMessage.displayAsString()
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
 }
