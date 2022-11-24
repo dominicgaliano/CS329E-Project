@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseFirestore
+import FirebaseAuth
 
 class GroupViewController: UIViewController {
     
@@ -51,7 +52,25 @@ class GroupViewController: UIViewController {
         }
     }
     
-
+    @IBAction func addMessageButtonPressed(_ sender: Any) {
+        let alertController = UIAlertController(title: "Add New Message", message: "Add a new message to group message board.", preferredStyle: .alert)
+        alertController.addTextField() { (textField) in
+            textField.placeholder = "Message"
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let saveAction = UIAlertAction(title: "Save", style: .default) { [self] _ in
+            let messageContent = alertController.textFields![0].text
+            
+            // post message
+            self.postMessage(messageContent: messageContent!,
+                             groupIdentifier: self.groupIdentifier,
+                             uid: Auth.auth().currentUser!.uid)
+        }
+        alertController.addAction(cancelAction)
+        alertController.addAction(saveAction)
+        present(alertController, animated: true, completion: nil)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == shoppingListSegueIdentifier,
            let nextVC = segue.destination as? ShoppingListViewController {
@@ -68,5 +87,23 @@ class GroupViewController: UIViewController {
     @IBAction func myUnwindAction(unwindSegue: UIStoryboardSegue){
     }
     
-    // geat
+    // Adds message to database and local copy of messages
+    func postMessage(messageContent: String, groupIdentifier: String, uid: String) {
+        // Add to database
+        db.collection("groups").document(groupIdentifier)
+            .collection("messages").addDocument(data: [
+                "uid": uid,
+                "time": Timestamp(date: Date()),
+                "messageContent": messageContent
+            ]) { err in
+                if let err = err {
+                    print("Error adding message: \(err)")
+                } else {
+                    print("Added message")
+                    
+                    // TODO: Add to local copy of messages
+                    
+                }
+            }
+    }
 }
