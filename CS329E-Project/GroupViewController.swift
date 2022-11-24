@@ -8,6 +8,25 @@
 import UIKit
 import FirebaseFirestore
 import FirebaseAuth
+import Foundation
+
+class GroupMessage {
+    let displayName: String
+    let messageContent: String
+    let messageTimestamp: Date
+    let dateFormatter = DateFormatter()
+    
+    init(displayName: String, messageContent: String, messageTimestamp: Date) {
+        self.displayName = displayName
+        self.messageContent = messageContent
+        self.messageTimestamp = messageTimestamp
+        dateFormatter.dateFormat = "MMM d, hh:mm"
+    }
+    
+    func displayAsString() -> String {
+        return "\(self.displayName) said: \(self.messageContent) at \(self.dateFormatter.string(from: self.messageTimestamp))"
+    }
+}
 
 class GroupViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -22,6 +41,7 @@ class GroupViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     var groupIdentifier:String!
     let db = Firestore.firestore()
+    var groupMessages:[GroupMessage] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -92,11 +112,13 @@ class GroupViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     // Adds message to database and local copy of messages
     func postMessage(messageContent: String, groupIdentifier: String, uid: String) {
+        let now = Date()
+        
         // Add to database
         db.collection("groups").document(groupIdentifier)
             .collection("messages").addDocument(data: [
                 "uid": uid,
-                "time": Timestamp(date: Date()),
+                "time": now,
                 "messageContent": messageContent
             ]) { err in
                 if let err = err {
@@ -104,21 +126,45 @@ class GroupViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 } else {
                     print("Added message")
                     
-                    // TODO: Add to local copy of messages
-                    
+                    // get user name from uid
+                    self.db.collection("users").document(uid)
+                        .getDocument { (document, error ) in
+                            if let document = document, document.exists {
+                                let userData = document.data()
+                                
+                                // check if user has first and last name (it should)
+                                if let firstName = userData!["firstName"], let lastName = userData!["lastName"] {
+                                    // add users to list
+                                    let displayName = "\(firstName) \(lastName)"
+                                    
+                                    // add to local copy of messages
+                                    let newMessage = GroupMessage(displayName: displayName, messageContent: messageContent, messageTimestamp: now)
+                                    self.groupMessages.insert(newMessage, at: 0)
+                                    
+                                    // reload tableView
+                                    // TODO: make this an add
+                                    self.tableView.reloadData()
+                                } else {
+                                    print("user has not first and last name")
+                                    self.dismiss(animated: true, completion: nil)
+                                }
+                            }
+                        }
                 }
             }
     }
-    
+                
     // MARK: - Table functions
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return groupMessages.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let row = indexPath.row
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = "Test"
+        let currMessage:GroupMessage = groupMessages[row]
+        cell.textLabel?.text = currMessage.displayAsString()
         return cell
     }
     
