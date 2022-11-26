@@ -24,7 +24,7 @@ class ShoppingListItem {
 }
 
 class ShoppingListViewController: UITableViewController {
-
+    
     // define references
     let textCellIdentifier = "TextCell"
     var groupIdentifier:String!
@@ -32,7 +32,7 @@ class ShoppingListViewController: UITableViewController {
     
     // define items list
     var shoppingListItems:[ShoppingListItem]!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -49,28 +49,38 @@ class ShoppingListViewController: UITableViewController {
     }
     
     // MARK: - Table view data source
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if self.shoppingListItems == nil {
             print("Table found no shopping list items")
             return 0
         } else {
             print("Table found \(self.shoppingListItems.count) items(s)")
-            return self.shoppingListItems.count
+            return self.shoppingListItems.count + 2
         }
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let row = indexPath.row
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath)
-        cell.textLabel?.text = shoppingListItems![row].itemName
-        cell.accessoryType = shoppingListItems![row].isChecked ? .checkmark : .none
-        return cell
+        if indexPath.row <= shoppingListItems.count - 1 {
+            let row = indexPath.row
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath)
+            cell.textLabel?.text = shoppingListItems![row].itemName
+            cell.accessoryType = shoppingListItems![row].isChecked ? .checkmark : .none
+            return cell
+        }
+        if indexPath.row == shoppingListItems.count {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "CheckmarkCell", for: indexPath)
+            return cell
+        }
+        else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ClearCell", for: indexPath)
+            return cell
+        }
     }
     
     func reloadTableData() {
@@ -104,29 +114,29 @@ class ShoppingListViewController: UITableViewController {
         }
         
         // Old method
-//        groupRef.getDocument { (document, error ) in
-//            if let document = document, document.exists {
-//                let groupDescription = document.data()
-//
-//                // check if group has shopping list
-//                if groupDescription!["shoppingList"] != nil {
-//                    let currShoppingListItems = (groupDescription!["shoppingList"] as? [String])
-//                    for i in 0..<currShoppingListItems!.count {
-//                        if !self.shoppingListItems.contains(where: { $0.itemName == currShoppingListItems![i] } ) {
-//                            print("\(currShoppingListItems![i]) not found in ShoppingListItems, adding")
-//                            self.shoppingListItems.append(ShoppingListItem(itemName: currShoppingListItems![i]))
-//                        }
-//                    }
-//                } else {
-//                    // no shopping list, need to add
-//                    print("Error, group has no shopping list yet")
-//                }
-//                self.tableView.reloadData()
-//            } else {
-//                print("Document does not exist")
-//                self.dismiss(animated: true)
-//            }
-//        }
+        //        groupRef.getDocument { (document, error ) in
+        //            if let document = document, document.exists {
+        //                let groupDescription = document.data()
+        //
+        //                // check if group has shopping list
+        //                if groupDescription!["shoppingList"] != nil {
+        //                    let currShoppingListItems = (groupDescription!["shoppingList"] as? [String])
+        //                    for i in 0..<currShoppingListItems!.count {
+        //                        if !self.shoppingListItems.contains(where: { $0.itemName == currShoppingListItems![i] } ) {
+        //                            print("\(currShoppingListItems![i]) not found in ShoppingListItems, adding")
+        //                            self.shoppingListItems.append(ShoppingListItem(itemName: currShoppingListItems![i]))
+        //                        }
+        //                    }
+        //                } else {
+        //                    // no shopping list, need to add
+        //                    print("Error, group has no shopping list yet")
+        //                }
+        //                self.tableView.reloadData()
+        //            } else {
+        //                print("Document does not exist")
+        //                self.dismiss(animated: true)
+        //            }
+        //        }
     }
     
     @IBAction func addButton(_ sender: Any) {
@@ -167,23 +177,39 @@ class ShoppingListViewController: UITableViewController {
     }
     
     @IBAction func deleteChecked(_ sender: Any) {
-        // TODO: alert controller to confirm action
         
-        for item in self.shoppingListItems {
-            if item.isChecked {
-                
-                // remove from database
-                db.collection("groups").document(groupIdentifier!)
-                    .collection("shoppingList").document(item.itemName)
-                    .delete() { err in
-                        if let err = err {
-                            print("Error removing document: \(err)")
-                        } else {
-                            print("Document removed from database")
-                        }
+        let controller = UIAlertController (
+            title: "Remove All Checkmarks",
+            message: "Would you like to remove all checkmarks on the shopping list?",
+            preferredStyle: .alert)
+        controller.addAction(UIAlertAction(
+            title: "No",
+            style: .cancel))
+        controller.addAction(UIAlertAction(
+            title: "Yes",
+            style: .default,
+            // TODO: Deleting All Checkmarks method goes here. (In handler)
+            handler: { action in
+                /*
+                for item in self.shoppingListItems {
+                    if item.isChecked {
+                        // remove from database
+                        db.collection("groups").document(groupIdentifier!)
+                            .collection("shoppingList").document(item.itemName)
+                            .delete() { err in
+                                if let err = err {
+                                    print("Error removing document: \(err)")
+                                } else {
+                                    print("Document removed from database")
+                                }
+                            }
                     }
-            }
-        }
+                }
+                */
+                self.tableView.reloadData()}))
+        present(controller, animated: true)
+        
+       
         
         // reload table
         reloadTableData()
@@ -192,7 +218,20 @@ class ShoppingListViewController: UITableViewController {
     // TODO: connect to a button
     @IBAction func deleteAll(_ sender: Any) {
         // I can implement the functionality
-        return
+        let controller = UIAlertController (
+            title: "Clear Shopping List",
+            message: "Would you like to delete all items off the shopping list?",
+            preferredStyle: .alert)
+        controller.addAction(UIAlertAction(
+            title: "No",
+            style: .cancel))
+        controller.addAction(UIAlertAction(
+            title: "Yes",
+            style: .default,
+            // TODO: Clearing Shopping List method goes here. (In handler)
+            handler: {action in self.shoppingListItems = []
+                self.tableView.reloadData()}))
+        present(controller, animated: true)
     }
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
