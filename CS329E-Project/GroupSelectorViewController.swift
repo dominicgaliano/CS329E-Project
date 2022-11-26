@@ -30,6 +30,7 @@ class GroupSelectorViewController: UIViewController, UITableViewDelegate, UITabl
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationItem.setHidesBackButton(true, animated: true)
         
         // print("User logged in with UID: \(Auth.auth().currentUser!.uid)")
         
