@@ -34,6 +34,7 @@ class LoginPageViewController: UIViewController, UITextFieldDelegate {
                 self.passwordField.text = nil
             }
         }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {

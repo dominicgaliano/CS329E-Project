@@ -38,7 +38,6 @@ class loadingViewController: UIViewController {
         // The indicator should be animating when
         // the view appears.
         loadingIndicator.startAnimating()
-            
         // Setting the autoresizing mask to flexible for all
         // directions will keep the indicator in the center
         // of the view and properly handle rotation.
