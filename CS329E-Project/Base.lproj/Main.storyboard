@@ -622,6 +622,15 @@
                                     <segue destination="8dK-h4-TBI" kind="show" identifier="JoinGroupSegue" id="4UE-u7-yuH"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zhu-9y-z8u">
+                                <rect key="frame" x="132" y="804" width="166" height="53"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Event Schedule" titleAlignment="center"/>
+                                <connections>
+                                    <segue destination="PAw-tJ-I6Y" kind="show" id="c8j-LN-TX3"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="CBT-1s-lXs"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -642,7 +651,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4ez-Lv-Jif" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2407" y="-28"/>
+            <point key="canvasLocation" x="2405.5813953488373" y="-28.326180257510732"/>
         </scene>
         <!--Shopping List View Controller-->
         <scene sceneID="r1T-SM-RTb">
@@ -786,15 +795,6 @@
                                     <segue destination="vSk-HK-gds" kind="show" identifier="inventorySegueIdentifier" id="ca5-Pm-g9M"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="70l-Q9-mfS">
-                                <rect key="frame" x="20" y="591" width="154" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Chores Schedule"/>
-                                <connections>
-                                    <segue destination="PAw-tJ-I6Y" kind="show" identifier="choreSegue" id="P3q-Vd-kAJ"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="nGO-0T-Kxt"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -807,6 +807,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="gearshape" catalog="system"/>
                                 <connections>
+                                    <action selector="groupSettingsPressed:" destination="z8r-9q-zJC" eventType="touchUpInside" id="Nis-ei-aI8"/>
                                     <segue destination="xPr-PJ-GF7" kind="show" identifier="groupSettingsSegueIdentifier" id="H4z-lI-OWa"/>
                                 </connections>
                             </button>
@@ -830,31 +831,27 @@
                     <view key="view" contentMode="scaleToFill" id="gGL-hV-h4X">
                         <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" spacing="39" translatesAutoresizingMaskIntoConstraints="NO" id="IYe-C6-A95">
-                                <rect key="frame" x="142" y="562.33333333333348" width="144" height="107.66666666666667"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XsE-GO-B75">
-                                        <rect key="frame" x="0.0" y="0.0" width="144" height="34.333333333333336"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" title="Add Chores"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tyJ-R0-oxR" colorLabel="IBBuiltInLabel-Yellow">
-                                        <rect key="frame" x="0.0" y="73.333333333333329" width="144" height="34.333333333333329"/>
-                                        <color key="tintColor" systemColor="systemRedColor"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" title="Remove Chores"/>
-                                    </button>
-                                </subviews>
-                            </stackView>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="GTn-12-asC"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="Dzq-Bk-xHy">
+                        <nil key="title"/>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="Vj6-5E-lEQ">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="rlS-Mh-Ctf">
+                                <rect key="frame" x="308.33333333333331" y="5" width="101.66666666666669" height="34.333333333333336"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Add Event"/>
+                                <connections>
+                                    <action selector="addEventPress:" destination="PAw-tJ-I6Y" eventType="touchUpInside" id="9Vl-SR-Ruf"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XuC-Fq-otQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3990" y="706"/>
+            <point key="canvasLocation" x="2406" y="-697"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="zRF-DH-hI1">

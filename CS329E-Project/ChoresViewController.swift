@@ -25,6 +25,14 @@ final class ChoresViewController: DayViewController, EKEventEditViewDelegate {
 
     }
     
+    
+    @IBAction func addEventPress(_ sender: Any) {
+        let event = EKEvent(eventStore: self.eventStore)
+        event.title = "New Event"
+        event.startDate = Date()
+        presentEditingViewForEvent(event)
+
+    }
     private func requestAccessToCalendar() {
         // Request access to the events
         eventStore.requestAccess(to: .event) { [weak self] granted, error in
