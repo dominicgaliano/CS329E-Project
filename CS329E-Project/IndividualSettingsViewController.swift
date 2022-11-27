@@ -30,8 +30,8 @@ class IndividualSettingsViewController: UIViewController {
         getUserProfilePicture()
         
         profilePicture.layer.masksToBounds = true
-        profilePicture.layer.borderWidth = 1
-        profilePicture.layer.borderColor = UIColor.lightGray.cgColor
+        // profilePicture.layer.borderWidth = 1
+        // profilePicture.layer.borderColor = UIColor.lightGray.cgColor
         profilePicture.layer.cornerRadius = profilePicture.frame.height / 2
         profilePicture.contentMode = .scaleAspectFill
         profilePicture.clipsToBounds = true
