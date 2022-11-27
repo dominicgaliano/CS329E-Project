@@ -385,30 +385,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Group Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uxX-A8-qGb">
-                                <rect key="frame" x="20" y="167" width="101" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Group Identifier:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RoC-aD-SL1">
-                                <rect key="frame" x="20" y="228" width="124" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Members" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ywh-BP-85p">
-                                <rect key="frame" x="179" y="322" width="72" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="z2r-5k-4Eq">
-                                <rect key="frame" x="20" y="351" width="390" height="393"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="z2r-5k-4Eq">
+                                <rect key="frame" x="20" y="387" width="390" height="401.66666666666674"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MemberCell" id="DWV-LL-Xja">
@@ -421,61 +399,97 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tt8-cS-GaG">
-                                <rect key="frame" x="155" y="770" width="120" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gIR-jU-PzP">
+                                <rect key="frame" x="125" y="166.66666666666663" width="180" height="180"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="gIR-jU-PzP" secondAttribute="height" multiplier="1:1" id="AM0-OE-Yoo"/>
+                                    <constraint firstAttribute="height" constant="180" id="JZC-mR-W3N"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Distinct Group Identifer" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UZw-PJ-1RB">
+                                <rect key="frame" x="20" y="144" width="184" height="22"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tt8-cS-GaG">
+                                <rect key="frame" x="20" y="789" width="390" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="UdU-nM-KPd"/>
+                                </constraints>
                                 <color key="tintColor" systemColor="systemRedColor"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Leave Group"/>
+                                <buttonConfiguration key="configuration" style="gray" title="Leave Group"/>
                                 <connections>
                                     <action selector="leaveGroupButtonPressed:" destination="xPr-PJ-GF7" eventType="touchUpInside" id="Egf-tI-87N"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gIR-jU-PzP">
-                                <rect key="frame" x="301" y="212" width="103" height="103"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Distinct Group Identifer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UZw-PJ-1RB">
-                                <rect key="frame" x="98" y="253" width="177" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Group name label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7u1-2L-1Sy">
+                                <rect key="frame" x="20" y="103" width="340" height="33.666666666666657"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Group name label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7u1-2L-1Sy">
-                                <rect key="frame" x="193" y="167" width="181" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nC6-kC-KuG">
-                                <rect key="frame" x="148" y="107" width="179" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Change group name"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pGZ-Rs-5qh">
+                                <rect key="frame" x="380" y="105" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="Dcj-0P-tfX"/>
+                                    <constraint firstAttribute="height" constant="30" id="gFw-HS-jVG"/>
+                                </constraints>
+                                <state key="normal" title="Button" backgroundImage="pencil" catalog="system"/>
+                                <buttonConfiguration key="configuration" style="plain" title=""/>
                                 <connections>
-                                    <action selector="changeGroupNameButtonPressed:" destination="xPr-PJ-GF7" eventType="touchUpInside" id="2Jr-zo-U47"/>
+                                    <action selector="changeGroupNameButtonPressed:" destination="xPr-PJ-GF7" eventType="touchUpInside" id="7ga-6W-PGr"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Members" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ywh-BP-85p">
+                                <rect key="frame" x="20" y="355.66666666666669" width="390" height="23"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ahM-cq-XPX"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ahM-cq-XPX" firstAttribute="trailing" secondItem="z2r-5k-4Eq" secondAttribute="trailing" constant="20" id="4bg-YP-Yj2"/>
+                            <constraint firstItem="UZw-PJ-1RB" firstAttribute="firstBaseline" secondItem="7u1-2L-1Sy" secondAttribute="baseline" constant="24" symbolType="layoutAnchor" id="8a8-8O-9dk"/>
+                            <constraint firstItem="ahM-cq-XPX" firstAttribute="trailing" secondItem="pGZ-Rs-5qh" secondAttribute="trailing" constant="20" id="9ND-na-UB8"/>
+                            <constraint firstItem="UZw-PJ-1RB" firstAttribute="leading" secondItem="ahM-cq-XPX" secondAttribute="leading" constant="20" id="Cr1-47-8ke"/>
+                            <constraint firstItem="z2r-5k-4Eq" firstAttribute="leading" secondItem="ahM-cq-XPX" secondAttribute="leading" constant="20" id="Dih-Q2-F7W"/>
+                            <constraint firstItem="ahM-cq-XPX" firstAttribute="trailing" secondItem="UZw-PJ-1RB" secondAttribute="trailing" constant="20" id="ILI-eO-A7w"/>
+                            <constraint firstItem="Tt8-cS-GaG" firstAttribute="firstBaseline" secondItem="z2r-5k-4Eq" secondAttribute="baseline" constant="31.333333333333332" symbolType="layoutAnchor" id="LLt-sF-PWJ"/>
+                            <constraint firstItem="Ywh-BP-85p" firstAttribute="firstBaseline" secondItem="gIR-jU-PzP" secondAttribute="baseline" constant="27" symbolType="layoutAnchor" id="Lz0-oz-U6f"/>
+                            <constraint firstItem="ahM-cq-XPX" firstAttribute="bottom" secondItem="Tt8-cS-GaG" secondAttribute="bottom" constant="10" id="NOW-s1-UHg"/>
+                            <constraint firstItem="7u1-2L-1Sy" firstAttribute="leading" secondItem="ahM-cq-XPX" secondAttribute="leading" constant="20" id="OTw-su-KVY"/>
+                            <constraint firstItem="gIR-jU-PzP" firstAttribute="firstBaseline" secondItem="UZw-PJ-1RB" secondAttribute="baseline" constant="13" symbolType="layoutAnchor" id="Wo6-pS-IiX"/>
+                            <constraint firstItem="z2r-5k-4Eq" firstAttribute="trailing" secondItem="Tt8-cS-GaG" secondAttribute="trailing" id="XZV-Wp-YFG"/>
+                            <constraint firstItem="7u1-2L-1Sy" firstAttribute="top" secondItem="ahM-cq-XPX" secondAttribute="top" id="aY5-Lc-apB"/>
+                            <constraint firstItem="ahM-cq-XPX" firstAttribute="trailing" secondItem="Ywh-BP-85p" secondAttribute="trailing" constant="20" id="cKa-wL-cNE"/>
+                            <constraint firstItem="z2r-5k-4Eq" firstAttribute="firstBaseline" secondItem="Ywh-BP-85p" secondAttribute="baseline" constant="13.333333333333334" symbolType="layoutAnchor" id="f4h-Id-Zlc"/>
+                            <constraint firstItem="gIR-jU-PzP" firstAttribute="centerX" secondItem="ahM-cq-XPX" secondAttribute="centerX" id="i3R-mj-XeB"/>
+                            <constraint firstItem="Tt8-cS-GaG" firstAttribute="leading" secondItem="ahM-cq-XPX" secondAttribute="leading" constant="20" id="n9o-6C-Wfl"/>
+                            <constraint firstItem="Ywh-BP-85p" firstAttribute="leading" secondItem="ahM-cq-XPX" secondAttribute="leading" constant="20" id="nTy-ye-bxW"/>
+                            <constraint firstItem="z2r-5k-4Eq" firstAttribute="leading" secondItem="Tt8-cS-GaG" secondAttribute="leading" id="oax-3E-Qbh"/>
+                            <constraint firstItem="pGZ-Rs-5qh" firstAttribute="leading" secondItem="7u1-2L-1Sy" secondAttribute="trailing" constant="20" id="pfp-Oe-84V"/>
+                            <constraint firstItem="ahM-cq-XPX" firstAttribute="trailing" secondItem="Tt8-cS-GaG" secondAttribute="trailing" constant="20" id="vPu-4E-nGZ"/>
+                            <constraint firstItem="pGZ-Rs-5qh" firstAttribute="centerY" secondItem="7u1-2L-1Sy" secondAttribute="centerY" id="yfA-8I-bhv"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="NCb-0P-pAH"/>
                     <connections>
+                        <outlet property="editButton" destination="pGZ-Rs-5qh" id="ZHc-Gb-Bcc"/>
                         <outlet property="groupCodeLabel" destination="UZw-PJ-1RB" id="9ZE-jq-uIF"/>
                         <outlet property="groupNameLabel" destination="7u1-2L-1Sy" id="eah-VL-Qm8"/>
                         <outlet property="qrCode" destination="gIR-jU-PzP" id="MxB-cM-9FK"/>
                         <outlet property="tableView" destination="z2r-5k-4Eq" id="pAx-GG-acO"/>
                         <segue destination="fpX-df-Ncr" kind="unwind" identifier="UnwindSegue" unwindAction="myUnwindActionWithUnwindSegue:" id="IRC-EA-Afh"/>
-                        <segue destination="kP0-ch-bVs" kind="show" identifier="LeaveGroupSegue" id="0Re-t7-S2X"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CeE-zM-FdB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="fpX-df-Ncr" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1693.4579439252336" y="1357.4514038876891"/>
+            <point key="canvasLocation" x="1692.5581395348836" y="1357.0815450643777"/>
         </scene>
         <!--Create Group View Controller-->
         <scene sceneID="oJJ-dt-hcd">
@@ -516,9 +530,6 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
                             </button>
-                            <connections>
-                                <segue destination="kP0-ch-bVs" kind="show" identifier="CreateGroupSegueBack" id="egK-ci-3sh"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -1025,11 +1036,11 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="SAF-63-Of5"/>
-        <segue reference="Q6t-d2-ytf"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrowshape.backward.fill" catalog="system" width="128" height="104"/>
         <image name="gearshape" catalog="system" width="128" height="123"/>
+        <image name="pencil" catalog="system" width="128" height="113"/>
         <image name="person.2" catalog="system" width="128" height="82"/>
         <image name="person.2.circle" catalog="system" width="128" height="123"/>
         <image name="person.circle" catalog="system" width="128" height="123"/>

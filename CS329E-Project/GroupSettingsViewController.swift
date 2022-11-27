@@ -11,6 +11,9 @@ import FirebaseAuth
 
 class GroupSettingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    // define button
+    @IBOutlet weak var editButton: UIButton!
+    
     // define current group id (passed via segue) and db
     var groupIdentifier:String!
     let db = Firestore.firestore()
@@ -32,6 +35,8 @@ class GroupSettingsViewController: UIViewController, UITableViewDelegate, UITabl
         
         tableView.delegate = self
         tableView.dataSource = self
+        
+        editButton.setImage(UIImage(systemName: "pencil"), for: .normal)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -55,7 +60,7 @@ class GroupSettingsViewController: UIViewController, UITableViewDelegate, UITabl
                 
                 // set group name and id visuallly
                 self.groupNameLabel.text = (groupDescription!["groupName"] as! String)
-                self.groupCodeLabel.text = self.groupIdentifier
+                self.groupCodeLabel.text = "Group ID: \(self.groupIdentifier ?? "")"
                 
                 // check if group has users list (it should)
                 if groupDescription!["users"] != nil {
