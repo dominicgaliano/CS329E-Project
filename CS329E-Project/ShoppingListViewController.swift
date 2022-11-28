@@ -23,11 +23,11 @@ class ShoppingListItem {
     }
 }
 
-class ShoppingListViewController: UITableViewController {
+class ShoppingListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     // define references
-    let textCellIdentifier = "TextCell"
     var groupIdentifier:String!
+    @IBOutlet weak var tableView: UITableView!
     let db = Firestore.firestore()
     
     // define items list
@@ -50,37 +50,27 @@ class ShoppingListViewController: UITableViewController {
     
     // MARK: - Table view data source
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if self.shoppingListItems == nil {
             print("Table found no shopping list items")
             return 0
         } else {
             print("Table found \(self.shoppingListItems.count) items(s)")
-            return self.shoppingListItems.count + 2
+            return self.shoppingListItems.count
         }
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row <= shoppingListItems.count - 1 {
-            let row = indexPath.row
-            let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath)
-            cell.textLabel?.text = shoppingListItems![row].itemName
-            cell.accessoryType = shoppingListItems![row].isChecked ? .checkmark : .none
-            return cell
-        }
-        if indexPath.row == shoppingListItems.count {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "CheckmarkCell", for: indexPath)
-            return cell
-        }
-        else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ClearCell", for: indexPath)
-            return cell
-        }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let row = indexPath.row
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath)
+        cell.textLabel?.text = shoppingListItems![row].itemName
+        cell.accessoryType = shoppingListItems![row].isChecked ? .checkmark : .none
+        return cell
     }
     
     func reloadTableData() {
@@ -234,11 +224,11 @@ class ShoppingListViewController: UITableViewController {
         present(controller, animated: true)
     }
     
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             
             let item = shoppingListItems[indexPath.row]
@@ -262,7 +252,7 @@ class ShoppingListViewController: UITableViewController {
         }
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
         let item = shoppingListItems[indexPath.row]
