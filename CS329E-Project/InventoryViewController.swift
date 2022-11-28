@@ -8,10 +8,11 @@
 import UIKit
 import FirebaseFirestore
 
-class InventoryViewController: UITableViewController {
+class InventoryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     let textCellIdentifier = "TextCell"
     var groupIdentifier:String!
+    @IBOutlet weak var tableView: UITableView!
     let db = Firestore.firestore()
     
     // define items list
@@ -87,7 +88,7 @@ class InventoryViewController: UITableViewController {
     
     // MARK: - Table view data source
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if self.inventoryItems == nil {
             print("Table found no shopping list items")
             return 0
@@ -97,14 +98,14 @@ class InventoryViewController: UITableViewController {
         }
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let row = indexPath.row
         let cell = tableView.dequeueReusableCell(withIdentifier: textCellIdentifier, for: indexPath)
         cell.textLabel?.text = inventoryItems![row]
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let rowValue = inventoryItems[indexPath.row]
         
@@ -124,11 +125,11 @@ class InventoryViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
     }
 
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // remove from local list
             self.inventoryItems.remove(at: indexPath.row)
