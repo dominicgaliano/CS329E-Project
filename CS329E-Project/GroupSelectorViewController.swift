@@ -26,6 +26,7 @@ class GroupSelectorViewController: UIViewController, UITableViewDelegate, UITabl
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        addIcon()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -95,6 +96,7 @@ class GroupSelectorViewController: UIViewController, UITableViewDelegate, UITabl
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let row = indexPath.row
         let cell = tableView.dequeueReusableCell(withIdentifier: "GroupCell", for: indexPath)
+        cell.textLabel?.font = UIFont.systemFont(ofSize: 20)
         cell.textLabel?.text = userGroups[row].1
         cell.textLabel?.numberOfLines = 0
         return cell
@@ -129,5 +131,16 @@ class GroupSelectorViewController: UIViewController, UITableViewDelegate, UITabl
         } catch let signOutError as NSError {
             print("Error signing out: %@", signOutError)
         }
+    }
+    //Add icon to the top and center of the view controller
+    func addIcon(){
+        let icon = UIImage(named: "icon.png")
+        let image = UIImageView(image: icon)
+        
+        image.contentMode = .scaleAspectFit
+        let title = UIView(frame:CGRect(x: 0, y: 0, width: 44, height: 44))
+        image.frame = title.bounds
+        title.addSubview(image)
+        navigationItem.titleView = title
     }
 }

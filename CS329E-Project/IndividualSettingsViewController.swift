@@ -142,6 +142,7 @@ class IndividualSettingsViewController: UIViewController {
     }
     
     // Perform logout
+    //Check why there is an error when deleting account
     func performLogout() {
         let firebaseAuth = Auth.auth()
         do {
@@ -188,20 +189,21 @@ class IndividualSettingsViewController: UIViewController {
                 let emailField = resignController.textFields![0]
                 let passField = resignController.textFields![1]
                 Auth.auth().signIn(withEmail: emailField.text!, password: passField.text!)
+                let deleteController = UIAlertController(
+                                title: "Confirm Account Deletion",
+                                message: "Are you sure you want to delete your account? This action cannot be undone",
+                                preferredStyle: .actionSheet)
+                deleteController.addAction(UIAlertAction(title: "Delete Account", style: .destructive, handler: {
+                    (action: UIAlertAction!) in (self.performAccountDeletion())
+                }))
+                deleteController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+                self.present(deleteController, animated: true)
             }))
         
         resignController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         
         present(resignController,animated: true)
-        let deleteController = UIAlertController(
-                        title: "Confirm Account Deletion",
-                        message: "Are you sure you want to delete your account? This action cannot be undone",
-                        preferredStyle: .actionSheet)
-        deleteController.addAction(UIAlertAction(title: "Delete Account", style: .destructive, handler: {
-            (action: UIAlertAction!) in (self.performAccountDeletion())
-        }))
-        deleteController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-        present(deleteController, animated: true)
+
     }
         
     // deletion account
