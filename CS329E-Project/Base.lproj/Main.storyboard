@@ -634,9 +634,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="SYj-mY-ngZ">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="SYj-mY-ngZ">
                                 <rect key="frame" x="51" y="103" width="328" height="517"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="sectionIndexColor" systemColor="systemCyanColor"/>
                                 <prototypes>
@@ -650,29 +649,39 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VK8-1y-dXb">
-                                <rect key="frame" x="132" y="685" width="166" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VK8-1y-dXb">
+                                <rect key="frame" x="0.0" y="685" width="430" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="y32-f3-OpO"/>
+                                </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="tinted" title="Create Group"/>
                                 <connections>
                                     <segue destination="bAD-NT-xZg" kind="show" identifier="CreateGroupSegue" id="Gms-Sl-PHv"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dRo-8l-fT4">
-                                <rect key="frame" x="132" y="743" width="166" height="53"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dRo-8l-fT4">
+                                <rect key="frame" x="0.0" y="735" width="430" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Tv8-M4-QCC"/>
+                                </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Join Group"/>
                                 <connections>
                                     <segue destination="8dK-h4-TBI" kind="show" identifier="JoinGroupSegue" id="4UE-u7-yuH"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zhu-9y-z8u">
-                                <rect key="frame" x="132" y="804" width="166" height="53"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zhu-9y-z8u" colorLabel="IBBuiltInLabel-Green">
+                                <rect key="frame" x="0.0" y="785" width="430" height="50"/>
+                                <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="cEw-D5-RS4"/>
+                                </constraints>
+                                <color key="tintColor" systemColor="systemGreenColor"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Event Schedule" titleAlignment="center"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Event Schedule" titleAlignment="center">
+                                    <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
+                                </buttonConfiguration>
                                 <connections>
                                     <segue destination="PAw-tJ-I6Y" kind="show" id="c8j-LN-TX3"/>
                                 </connections>
@@ -680,6 +689,23 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="CBT-1s-lXs"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="dRo-8l-fT4" firstAttribute="top" secondItem="VK8-1y-dXb" secondAttribute="bottom" id="0cm-dT-nvd"/>
+                            <constraint firstItem="SYj-mY-ngZ" firstAttribute="top" secondItem="CBT-1s-lXs" secondAttribute="top" id="6QS-uh-qjG"/>
+                            <constraint firstItem="zhu-9y-z8u" firstAttribute="trailing" secondItem="CBT-1s-lXs" secondAttribute="trailing" id="Ce4-5M-zEl"/>
+                            <constraint firstItem="VK8-1y-dXb" firstAttribute="centerX" secondItem="dRo-8l-fT4" secondAttribute="centerX" id="NUS-l2-8BZ"/>
+                            <constraint firstItem="CBT-1s-lXs" firstAttribute="trailing" secondItem="SYj-mY-ngZ" secondAttribute="trailing" constant="51" id="R7H-VD-b7Z"/>
+                            <constraint firstItem="zhu-9y-z8u" firstAttribute="top" secondItem="dRo-8l-fT4" secondAttribute="bottom" id="TWe-bQ-z90"/>
+                            <constraint firstItem="VK8-1y-dXb" firstAttribute="leading" secondItem="CBT-1s-lXs" secondAttribute="leading" id="V0p-4D-MuM"/>
+                            <constraint firstItem="CBT-1s-lXs" firstAttribute="trailing" secondItem="zhu-9y-z8u" secondAttribute="trailing" id="eok-j2-xtO"/>
+                            <constraint firstItem="CBT-1s-lXs" firstAttribute="trailing" secondItem="dRo-8l-fT4" secondAttribute="trailing" id="nzg-Hx-ypd"/>
+                            <constraint firstItem="VK8-1y-dXb" firstAttribute="top" secondItem="SYj-mY-ngZ" secondAttribute="bottom" constant="65" id="pHQ-yi-E6u"/>
+                            <constraint firstItem="SYj-mY-ngZ" firstAttribute="leading" secondItem="CBT-1s-lXs" secondAttribute="leading" constant="51" id="tn1-7f-Kve"/>
+                            <constraint firstItem="CBT-1s-lXs" firstAttribute="bottom" secondItem="SYj-mY-ngZ" secondAttribute="bottom" constant="229" id="uRk-0R-YlG"/>
+                            <constraint firstItem="CBT-1s-lXs" firstAttribute="trailing" secondItem="VK8-1y-dXb" secondAttribute="trailing" id="w15-R4-SIr"/>
+                            <constraint firstItem="zhu-9y-z8u" firstAttribute="leading" secondItem="CBT-1s-lXs" secondAttribute="leading" id="zLR-Ql-6th"/>
+                            <constraint firstItem="dRo-8l-fT4" firstAttribute="leading" secondItem="CBT-1s-lXs" secondAttribute="leading" id="zf7-3A-aMO"/>
+                        </constraints>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="GYK-RF-WIx">
