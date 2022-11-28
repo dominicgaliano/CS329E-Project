@@ -178,13 +178,11 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
         controller.addAction(UIAlertAction(
             title: "Yes",
             style: .default,
-            // TODO: Deleting All Checkmarks method goes here. (In handler)
             handler: { action in
-                /*
                 for item in self.shoppingListItems {
                     if item.isChecked {
                         // remove from database
-                        db.collection("groups").document(groupIdentifier!)
+                        self.db.collection("groups").document(self.groupIdentifier!)
                             .collection("shoppingList").document(item.itemName)
                             .delete() { err in
                                 if let err = err {
@@ -195,11 +193,8 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
                             }
                     }
                 }
-                */
                 self.tableView.reloadData()}))
         present(controller, animated: true)
-        
-       
         
         // reload table
         reloadTableData()
@@ -219,8 +214,23 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
             title: "Yes",
             style: .default,
             // TODO: Clearing Shopping List method goes here. (In handler)
-            handler: {action in self.shoppingListItems = []
-                self.tableView.reloadData()}))
+            handler: { action in
+                for item in self.shoppingListItems {
+                    if true {
+                        // remove from database
+                        self.db.collection("groups").document(self.groupIdentifier!)
+                            .collection("shoppingList").document(item.itemName)
+                            .delete() { err in
+                                if let err = err {
+                                    print("Error removing document: \(err)")
+                                } else {
+                                    print("Document removed from database")
+                                    self.reloadTableData()
+                                }
+                            }
+                    }
+                }
+            }))
         present(controller, animated: true)
     }
     
