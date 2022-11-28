@@ -111,7 +111,7 @@ extension ScannerViewController: AVCaptureMetadataOutputObjectsDelegate {
             qrCodeFrameView?.frame = barCodeObject!.bounds
             
             if metadataObj.stringValue != nil {
-                message.text = "Success! Group Code: \(metadataObj.stringValue)"
+                message.text = "Success! Group Code: \(metadataObj.stringValue ?? "")"
                 groupCode = metadataObj.stringValue!
             }
         }

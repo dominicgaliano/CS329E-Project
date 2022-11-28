@@ -30,7 +30,7 @@ class InventoryViewController: UIViewController, UITableViewDelegate, UITableVie
         super.viewWillAppear(animated)
         reloadTableData()
     }
-
+    
     // MARK: - Data manipulation
     
     func reloadTableData() {
@@ -76,8 +76,8 @@ class InventoryViewController: UIViewController, UITableViewDelegate, UITableVie
                 
                 self.inventoryItems.append(newItem!)
                 self.tableView.insertRows(at: [IndexPath(row: self.inventoryItems.count-1,
-                                                    section: 0)],
-                                     with: .automatic)
+                                                         section: 0)],
+                                          with: .automatic)
             }
         }
         alertController.addAction(cancelAction)
@@ -124,7 +124,7 @@ class InventoryViewController: UIViewController, UITableViewDelegate, UITableVie
         
         tableView.deselectRow(at: indexPath, animated: true)
     }
-
+    
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }

@@ -14,7 +14,6 @@
 		B6CFF39F29158B880074167D /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = B6CFF39E29158B880074167D /* FirebaseFirestore */; };
 		B6E7F4C328F333BE0004B6BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E7F4C228F333BE0004B6BF /* AppDelegate.swift */; };
 		B6E7F4C528F333BE0004B6BF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E7F4C428F333BE0004B6BF /* SceneDelegate.swift */; };
-		B6E7F4C728F333BE0004B6BF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E7F4C628F333BE0004B6BF /* ViewController.swift */; };
 		B6E7F4CA28F333BE0004B6BF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6E7F4C828F333BE0004B6BF /* Main.storyboard */; };
 		B6E7F4CD28F333BF0004B6BF /* CS329E_Project.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B6E7F4CB28F333BF0004B6BF /* CS329E_Project.xcdatamodeld */; };
 		B6E7F4CF28F333C30004B6BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6E7F4CE28F333C30004B6BF /* Assets.xcassets */; };
@@ -30,7 +29,6 @@
 		B6E7F4EA28F344CE0004B6BF /* ShoppingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E7F4E928F344CE0004B6BF /* ShoppingListViewController.swift */; };
 		B6E7F4EC28F344FF0004B6BF /* ChoresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E7F4EB28F344FF0004B6BF /* ChoresViewController.swift */; };
 		B6E7F4F028F3452F0004B6BF /* InventoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E7F4EF28F3452F0004B6BF /* InventoryViewController.swift */; };
-		B6E7F4F428F3455E0004B6BF /* ItemStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E7F4F328F3455E0004B6BF /* ItemStatusViewController.swift */; };
 		FE183F7D29180E71001E83FA /* loadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE183F7C29180E71001E83FA /* loadingViewController.swift */; };
 		FEB5599529256231009DE828 /* changePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB5599429256231009DE828 /* changePasswordViewController.swift */; };
 		FEB559BC2925F8FF009DE828 /* EKWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB559BB2925F8FF009DE828 /* EKWrapper.swift */; };
@@ -43,7 +41,6 @@
 		B6E7F4BF28F333BE0004B6BF /* CS329E-Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CS329E-Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6E7F4C228F333BE0004B6BF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B6E7F4C428F333BE0004B6BF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		B6E7F4C628F333BE0004B6BF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B6E7F4C928F333BE0004B6BF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B6E7F4CC28F333BF0004B6BF /* CS329E_Project.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CS329E_Project.xcdatamodel; sourceTree = "<group>"; };
 		B6E7F4CE28F333C30004B6BF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -60,7 +57,6 @@
 		B6E7F4E928F344CE0004B6BF /* ShoppingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListViewController.swift; sourceTree = "<group>"; };
 		B6E7F4EB28F344FF0004B6BF /* ChoresViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoresViewController.swift; sourceTree = "<group>"; };
 		B6E7F4EF28F3452F0004B6BF /* InventoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryViewController.swift; sourceTree = "<group>"; };
-		B6E7F4F328F3455E0004B6BF /* ItemStatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemStatusViewController.swift; sourceTree = "<group>"; };
 		FE183F7C29180E71001E83FA /* loadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loadingViewController.swift; sourceTree = "<group>"; };
 		FEB5599429256231009DE828 /* changePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = changePasswordViewController.swift; sourceTree = "<group>"; };
 		FEB559BB2925F8FF009DE828 /* EKWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKWrapper.swift; sourceTree = "<group>"; };
@@ -103,7 +99,6 @@
 			children = (
 				B6E7F4C228F333BE0004B6BF /* AppDelegate.swift */,
 				B6E7F4C428F333BE0004B6BF /* SceneDelegate.swift */,
-				B6E7F4C628F333BE0004B6BF /* ViewController.swift */,
 				B6E7F4C828F333BE0004B6BF /* Main.storyboard */,
 				FEB5599429256231009DE828 /* changePasswordViewController.swift */,
 				28D2AED02919FCEE0022F654 /* ScannerViewController.swift */,
@@ -120,7 +115,6 @@
 				B6E7F4EB28F344FF0004B6BF /* ChoresViewController.swift */,
 				FEB559BB2925F8FF009DE828 /* EKWrapper.swift */,
 				B6E7F4EF28F3452F0004B6BF /* InventoryViewController.swift */,
-				B6E7F4F328F3455E0004B6BF /* ItemStatusViewController.swift */,
 				B600DC1828F9E6B2003DC276 /* GoogleService-Info.plist */,
 				B6E7F4CE28F333C30004B6BF /* Assets.xcassets */,
 				B6E7F4D028F333C30004B6BF /* LaunchScreen.storyboard */,
@@ -221,7 +215,6 @@
 			files = (
 				FE183F7D29180E71001E83FA /* loadingViewController.swift in Sources */,
 				B6E7F4DC28F343830004B6BF /* CreateAccountViewController.swift in Sources */,
-				B6E7F4C728F333BE0004B6BF /* ViewController.swift in Sources */,
 				B6E7F4C328F333BE0004B6BF /* AppDelegate.swift in Sources */,
 				28D2AED12919FCEE0022F654 /* ScannerViewController.swift in Sources */,
 				FEB5599529256231009DE828 /* changePasswordViewController.swift in Sources */,
@@ -233,7 +226,6 @@
 				B6E7F4CD28F333BF0004B6BF /* CS329E_Project.xcdatamodeld in Sources */,
 				B6E7F4E228F344580004B6BF /* CreateGroupViewController.swift in Sources */,
 				B6E7F4DA28F3436C0004B6BF /* LoginPageViewController.swift in Sources */,
-				B6E7F4F428F3455E0004B6BF /* ItemStatusViewController.swift in Sources */,
 				B6E7F4DE28F343D70004B6BF /* IndividualSettingsViewController.swift in Sources */,
 				B6E7F4EC28F344FF0004B6BF /* ChoresViewController.swift in Sources */,
 				B6E7F4EA28F344CE0004B6BF /* ShoppingListViewController.swift in Sources */,

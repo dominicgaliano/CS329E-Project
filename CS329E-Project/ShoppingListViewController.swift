@@ -51,7 +51,6 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
     // MARK: - Table view data source
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
     
@@ -79,9 +78,7 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
         
         groupRef.collection("shoppingList").getDocuments() { (querySnapshot, err) in
             if let err = err {
-                print("Error getting documents: \(err)")
-                // throw error message?
-                self.navigationController?.popToRootViewController(animated: true)
+                self.displayError(errorMessage: "Error getting documents: \(err)", unwind: true)
             } else {
                 // initialize shoppingLit
                 self.shoppingListItems = []
@@ -102,31 +99,6 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
                 self.tableView.reloadData()
             }
         }
-        
-        // Old method
-        //        groupRef.getDocument { (document, error ) in
-        //            if let document = document, document.exists {
-        //                let groupDescription = document.data()
-        //
-        //                // check if group has shopping list
-        //                if groupDescription!["shoppingList"] != nil {
-        //                    let currShoppingListItems = (groupDescription!["shoppingList"] as? [String])
-        //                    for i in 0..<currShoppingListItems!.count {
-        //                        if !self.shoppingListItems.contains(where: { $0.itemName == currShoppingListItems![i] } ) {
-        //                            print("\(currShoppingListItems![i]) not found in ShoppingListItems, adding")
-        //                            self.shoppingListItems.append(ShoppingListItem(itemName: currShoppingListItems![i]))
-        //                        }
-        //                    }
-        //                } else {
-        //                    // no shopping list, need to add
-        //                    print("Error, group has no shopping list yet")
-        //                }
-        //                self.tableView.reloadData()
-        //            } else {
-        //                print("Document does not exist")
-        //                self.dismiss(animated: true)
-        //            }
-        //        }
     }
     
     @IBAction func addButton(_ sender: Any) {
@@ -144,8 +116,7 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
             docRef.getDocument { (document, error) in
                 if document?.exists ?? false {
                     // item already in list
-                    // TODO: make this an alert
-                    print("item already in list")
+                    self.displayError(errorMessage: "Item already in shopping list.")
                 } else {
                     // item not already in list
                     // add item to database
@@ -186,7 +157,7 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
                             .collection("shoppingList").document(item.itemName)
                             .delete() { err in
                                 if let err = err {
-                                    print("Error removing document: \(err)")
+                                    self.displayError(errorMessage: "Error getting documents: \(err)")
                                 } else {
                                     print("Document removed from database")
                                 }
@@ -200,9 +171,7 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
         reloadTableData()
     }
     
-    // TODO: connect to a button
     @IBAction func deleteAll(_ sender: Any) {
-        // I can implement the functionality
         let controller = UIAlertController (
             title: "Clear Shopping List",
             message: "Would you like to delete all items off the shopping list?",
@@ -213,7 +182,6 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
         controller.addAction(UIAlertAction(
             title: "Yes",
             style: .default,
-            // TODO: Clearing Shopping List method goes here. (In handler)
             handler: { action in
                 for item in self.shoppingListItems {
                     if true {
@@ -222,7 +190,7 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
                             .collection("shoppingList").document(item.itemName)
                             .delete() { err in
                                 if let err = err {
-                                    print("Error removing document: \(err)")
+                                    self.displayError(errorMessage: "Error getting documents: \(err)")
                                 } else {
                                     print("Document removed from database")
                                     self.reloadTableData()
@@ -251,14 +219,14 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
                 .collection("shoppingList").document(item.itemName)
                 .delete() { err in
                     if let err = err {
-                        print("Error removing document: \(err)")
+                        self.displayError(errorMessage: "Error getting documents: \(err)")
                     } else {
                         print("Document removed from database")
                         
                         // update table
                         tableView.deleteRows(at: [indexPath], with: .fade)
                     }
-            }
+                }
         }
     }
     
@@ -272,7 +240,7 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
             "isChecked": !item.isChecked
         ]) { err in
             if let err = err {
-                print("Error updating document: \(err)")
+                self.displayError(errorMessage: "Error getting documents: \(err)")
             } else {
                 print("Document updated sucessfully")
                 // update local copy
@@ -282,5 +250,21 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
                 tableView.reloadRows(at: [indexPath], with: .automatic)
             }
         }
+    }
+    
+    func displayError(errorTitle: String = "Error", errorMessage: String, unwind: Bool = false) {
+        let errorController = UIAlertController (
+            title: errorTitle,
+            message: errorMessage,
+            preferredStyle: .alert)
+        errorController.addAction(UIAlertAction(
+            title: "OK",
+            style: .default,
+            handler: { action in
+                if unwind {
+                    self.navigationController?.popToRootViewController(animated: true)
+                }
+            }))
+        present(errorController, animated: true)
     }
 }

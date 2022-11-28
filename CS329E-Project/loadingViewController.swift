@@ -8,10 +8,10 @@
 import UIKit
 
 class loadingViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
         
         // Add the blurEffectView with the same
@@ -33,8 +33,8 @@ class loadingViewController: UIViewController {
         
         loadingIndicator.color = .white
         loadingIndicator.style = .large
-
-            
+        
+        
         // The indicator should be animating when
         // the view appears.
         loadingIndicator.startAnimating()
@@ -45,7 +45,7 @@ class loadingViewController: UIViewController {
             .flexibleLeftMargin, .flexibleRightMargin,
             .flexibleTopMargin, .flexibleBottomMargin
         ]
-            
+        
         return loadingIndicator
     }()
     var loadingBlurEffect: UIVisualEffectView = {
@@ -63,5 +63,5 @@ class loadingViewController: UIViewController {
         
         return blurEffectView
     }()
-
+    
 }

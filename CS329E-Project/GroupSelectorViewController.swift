@@ -11,7 +11,7 @@ import FirebaseFirestore
 
 
 class GroupSelectorViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
-
+    
     // dark mode
     var darkMode = false
     
@@ -82,7 +82,7 @@ class GroupSelectorViewController: UIViewController, UITableViewDelegate, UITabl
             return
         }
     }
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if self.userGroups == nil {
             print("Table found no groups, 0")
@@ -104,14 +104,14 @@ class GroupSelectorViewController: UIViewController, UITableViewDelegate, UITabl
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "groupIdentifier",
-                             sender: indexPath.row)
+                     sender: indexPath.row)
         tableView.deselectRow(at: indexPath, animated: false)
     }
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "CreateGroupSegue",
-            let nextVC = segue.destination as? CreateGroupViewController{
-                nextVC.delegate = self
+           let nextVC = segue.destination as? CreateGroupViewController{
+            nextVC.delegate = self
         } else if segue.identifier == "groupIdentifier",
                   let nextVC = segue.destination as? GroupViewController {
             nextVC.groupIdentifier = userGroups[(sender as! Int)].0

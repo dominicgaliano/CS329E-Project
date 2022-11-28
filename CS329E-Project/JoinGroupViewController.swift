@@ -29,7 +29,7 @@ class JoinGroupViewController: UIViewController, fillGroupCode {
     
     var delegate: UIViewController!
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         addIcon()
@@ -37,8 +37,8 @@ class JoinGroupViewController: UIViewController, fillGroupCode {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ScannerSegue",
-            let nextVC = segue.destination as? ScannerViewController{
-                nextVC.delegate = self
+           let nextVC = segue.destination as? ScannerViewController{
+            nextVC.delegate = self
         }
     }
     
@@ -58,15 +58,15 @@ class JoinGroupViewController: UIViewController, fillGroupCode {
         else{
             // create group in database
             joinGroup(groupIdentifier: joinGroupID.text!,
-                     currentUserUID: Auth.auth().currentUser!.uid)
+                      currentUserUID: Auth.auth().currentUser!.uid)
         }
     }
     
-
+    
     func updateTextField(code: String) {
         joinGroupID.text = code
-        }
-
+    }
+    
     func joinGroup(groupIdentifier: String, currentUserUID: String) {
         // define variables and db reference
         let groupRef = db.collection("groups").document(groupIdentifier)
@@ -78,7 +78,7 @@ class JoinGroupViewController: UIViewController, fillGroupCode {
                 
                 // get group name
                 let groupName:String = document["groupName"]! as! String
-
+                
                 // check if user already in group
                 self.db.collection("users").document(Auth.auth().currentUser!.uid)
                     .collection("groups").getDocuments() { (querySnapshot, err) in
@@ -136,7 +136,7 @@ class JoinGroupViewController: UIViewController, fillGroupCode {
                 self.dismiss(animated: true, completion: nil)
             }
         }
-
+        
     }
     
     func addIcon(){
