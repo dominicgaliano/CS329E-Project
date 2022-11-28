@@ -23,7 +23,7 @@ Major Elements:
 
 - [X] Use of Core Data/Firebase 
 - (put settings data in core data)
-- [ ] Implementation of user profile path, incl. creation, taking a pic or selecting prexisting, and editing
+- [X] Implementation of user profile path, incl. creation, taking a pic or selecting prexisting, and editing
 
 Minor Elements:  
 
@@ -32,5 +32,5 @@ Minor Elements:
 - [X] Two of the following: Alerts, Popovers, Stack Views, Scroll Views, Haptics, User Defaults
 - [ ] Local notifications
 - [X] Animation
-- [ ] Calendar
+- [X] Calendar
 - [X] QR Code
