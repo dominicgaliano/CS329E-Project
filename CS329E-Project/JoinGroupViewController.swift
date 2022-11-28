@@ -32,6 +32,7 @@ class JoinGroupViewController: UIViewController, fillGroupCode {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        addIcon()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -136,5 +137,16 @@ class JoinGroupViewController: UIViewController, fillGroupCode {
             }
         }
 
+    }
+    
+    func addIcon(){
+        let icon = UIImage(named: "icon.png")
+        let image = UIImageView(image: icon)
+        
+        image.contentMode = .scaleAspectFit
+        let title = UIView(frame:CGRect(x: 0, y: 0, width: 44, height: 44))
+        image.frame = title.bounds
+        title.addSubview(image)
+        navigationItem.titleView = title
     }
 }
