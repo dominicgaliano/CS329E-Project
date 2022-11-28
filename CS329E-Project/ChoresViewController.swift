@@ -21,17 +21,14 @@ final class ChoresViewController: DayViewController, EKEventEditViewDelegate {
         requestAccessToCalendar()
         // Subscribe to notifications to reload the UI when
         subscribeToNotifications()
-        
-
     }
-    
     
     @IBAction func addEventPress(_ sender: Any) {
         let event = EKEvent(eventStore: self.eventStore)
         event.title = "New Event"
         event.startDate = Date()
         presentEditingViewForEvent(event)
-
+        
     }
     private func requestAccessToCalendar() {
         // Request access to the events
@@ -122,7 +119,7 @@ final class ChoresViewController: DayViewController, EKEventEditViewDelegate {
         newEKEvent.startDate = date
         newEKEvent.endDate = endDate
         newEKEvent.title = "New event"
-
+        
         let newEKWrapper = EKWrapper(eventKitEvent: newEKEvent)
         newEKWrapper.editedEvent = newEKWrapper
         return newEKWrapper

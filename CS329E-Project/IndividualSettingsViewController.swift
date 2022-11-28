@@ -14,7 +14,7 @@ import FirebaseStorage
 let imageCache = NSCache<NSString, UIImage>()
 
 class IndividualSettingsViewController: UIViewController {
-
+    
     // Profile picture outlet
     @IBOutlet weak var profilePicture: UIImageView!
     
@@ -131,9 +131,9 @@ class IndividualSettingsViewController: UIViewController {
     // Logout button
     @IBAction func logoutButtonPressed(_ sender: Any) {
         let controller = UIAlertController(
-                        title: "Confirm Log Out",
-                        message: "Are you sure you want to log out?",
-                        preferredStyle: .actionSheet)
+            title: "Confirm Log Out",
+            message: "Are you sure you want to log out?",
+            preferredStyle: .actionSheet)
         controller.addAction(UIAlertAction(title: "Log out", style: .destructive, handler: {
             (action: UIAlertAction!) in (self.performLogout())
         }))
@@ -165,10 +165,10 @@ class IndividualSettingsViewController: UIViewController {
             style: .default))
         self.present(confirmAlertController, animated: true)
     }
-
-                                         
-                                        
-                                         
+    
+    
+    
+    
     // delete account button
     @IBAction func deleteAccountButtonPressed(_ sender: Any) {
         let resignController = UIAlertController(
@@ -190,9 +190,9 @@ class IndividualSettingsViewController: UIViewController {
                 let passField = resignController.textFields![1]
                 Auth.auth().signIn(withEmail: emailField.text!, password: passField.text!)
                 let deleteController = UIAlertController(
-                                title: "Confirm Account Deletion",
-                                message: "Are you sure you want to delete your account? This action cannot be undone",
-                                preferredStyle: .actionSheet)
+                    title: "Confirm Account Deletion",
+                    message: "Are you sure you want to delete your account? This action cannot be undone",
+                    preferredStyle: .actionSheet)
                 deleteController.addAction(UIAlertAction(title: "Delete Account", style: .destructive, handler: {
                     (action: UIAlertAction!) in (self.performAccountDeletion())
                 }))
@@ -203,9 +203,9 @@ class IndividualSettingsViewController: UIViewController {
         resignController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         
         present(resignController,animated: true)
-
-    }
         
+    }
+    
     // deletion account
     func performAccountDeletion() {
         // get user info
@@ -217,11 +217,11 @@ class IndividualSettingsViewController: UIViewController {
         // delete user
         deleteUser()
         
-//        // get users groups
-//        removeAllUserGroups(uid)
-//
-//        // delete users db document
-//        deleteUserDocument(uid)
+        //        // get users groups
+        //        removeAllUserGroups(uid)
+        //
+        //        // delete users db document
+        //        deleteUserDocument(uid)
     }
     
     func deleteUserData(_ uid: String) {
@@ -344,9 +344,9 @@ extension IndividualSettingsViewController: UIImagePickerControllerDelegate, UIN
     
     func presentPhotoActionSheet() {
         let controller = UIAlertController(
-                        title: "Profile Picture",
-                        message: "Take new profile picture or select from library",
-                        preferredStyle: .actionSheet)
+            title: "Profile Picture",
+            message: "Take new profile picture or select from library",
+            preferredStyle: .actionSheet)
         
         controller.addAction(UIAlertAction(title: "Cancel",
                                            style: .cancel,

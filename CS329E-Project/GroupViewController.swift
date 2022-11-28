@@ -129,34 +129,34 @@ class GroupViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == shoppingListSegueIdentifier,
-            let nextVC = segue.destination as? ShoppingListViewController {
+           let nextVC = segue.destination as? ShoppingListViewController {
             nextVC.groupIdentifier = groupIdentifier
         } else if segue.identifier == groupSettingsSegueIdentifier,
-                    let nextVC = segue.destination as? GroupSettingsViewController {
+                  let nextVC = segue.destination as? GroupSettingsViewController {
             nextVC.groupIdentifier = groupIdentifier
-
+            
         } else if segue.identifier == inventorySegueIdentifier,
-                    let nextVC = segue.destination as? InventoryViewController {
+                  let nextVC = segue.destination as? InventoryViewController {
             nextVC.groupIdentifier = groupIdentifier
         }
-
+        
     }
     
     @IBAction func groupSettingsPressed(_ sender: Any) {
         let loadingVC = loadingViewController()
-
-
+        
+        
         loadingVC.modalPresentationStyle = .overCurrentContext
-
-
+        
+        
         loadingVC.modalTransitionStyle = .crossDissolve
-               
+        
         present(loadingVC, animated: true, completion: nil)
         loadingVC.dismiss(animated: true){
             //only perform segue when the dismissal is complete
             self.performSegue(withIdentifier: "groupSettingsSegueIdentifier", sender: nil)
         }
-
+        
     }
     @IBAction func myUnwindAction(unwindSegue: UIStoryboardSegue){
     }
@@ -192,7 +192,6 @@ class GroupViewController: UIViewController, UITableViewDelegate, UITableViewDat
                                     self.groupMessages.insert(newMessage, at: 0)
                                     
                                     // reload tableView
-                                    // TODO: make this an add
                                     self.tableView.reloadData()
                                 }
                             }
@@ -200,7 +199,7 @@ class GroupViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 }
             }
     }
-                
+    
     // MARK: - Table functions
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -21,7 +21,7 @@ class CreateGroupViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationBarPlus()
-
+        
     }
     
     func navigationBarPlus(){
@@ -48,12 +48,12 @@ class CreateGroupViewController: UIViewController{
         }
     }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "CreateGroupSegueBack",
-//            let nextVC = segue.destination as? GroupSelectorViewController{
-//                nextVC.addGroup(newGroup: groupName.text!)
-//        }
-//    }
+    //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    //        if segue.identifier == "CreateGroupSegueBack",
+    //            let nextVC = segue.destination as? GroupSelectorViewController{
+    //                nextVC.addGroup(newGroup: groupName.text!)
+    //        }
+    //    }
     
     // Adds group to database with unique group id
     func addGroup(groupIdentifier: String, groupName: String, currentUserUID: String) {
@@ -71,7 +71,7 @@ class CreateGroupViewController: UIViewController{
                 controller.addAction(UIAlertAction(
                     title: "OK", style: .default))
                 self.present(controller, animated: true)
-
+                
             } else {
                 // group not used, can create group
                 // create group

@@ -21,7 +21,7 @@ class LoginPageViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Make password entry hidden
         passwordField.isSecureTextEntry = true
         
@@ -75,13 +75,13 @@ class LoginPageViewController: UIViewController, UITextFieldDelegate {
     // Login button actions
     @IBAction func loginButtonPressed(_ sender: Any) {
         let loadingVC = loadingViewController()
-
+        
         // Animate loadingVC over the existing views on screen
         loadingVC.modalPresentationStyle = .overCurrentContext
-
+        
         // Animate loadingVC with a fade in animation
         loadingVC.modalTransitionStyle = .crossDissolve
-               
+        
         present(loadingVC, animated: true, completion: nil)
         loadingVC.dismiss(animated: true){
             Auth.auth().signIn(withEmail: self.emailField.text!, password: self.passwordField.text!) {
@@ -93,41 +93,41 @@ class LoginPageViewController: UIViewController, UITextFieldDelegate {
                 }
             }
         }
-
+        
     }
     
-
+    
     
     // Create account button actions
     @IBAction func createAccountButtonPressed(_ sender: Any) {
         //create and present loading animation
         let loadingVC = loadingViewController()
-
-
+        
+        
         loadingVC.modalPresentationStyle = .overCurrentContext
-
-
+        
+        
         loadingVC.modalTransitionStyle = .crossDissolve
-               
+        
         present(loadingVC, animated: true, completion: nil)
         loadingVC.dismiss(animated: true){
             //only perform segue when the dismissal is complete
             self.performSegue(withIdentifier: "createAccountSegue", sender: nil)
         }
-
+        
     }
     
     // Forgot password button actions
     @IBAction func forgotPasswordButtonPressed(_ sender: Any) {
         //create and present loading animation
         let loadingVC = loadingViewController()
-
-
+        
+        
         loadingVC.modalPresentationStyle = .overCurrentContext
-
-
+        
+        
         loadingVC.modalTransitionStyle = .crossDissolve
-               
+        
         present(loadingVC, animated: true, completion: nil)
         loadingVC.dismiss(animated: true){
             //only perform segue when the dismissal is complete
