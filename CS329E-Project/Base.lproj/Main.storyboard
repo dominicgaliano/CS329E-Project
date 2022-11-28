@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_72" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -733,12 +733,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Ygp-PY-zSL">
-                                <rect key="frame" x="20" y="103" width="390" height="500"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Ygp-PY-zSL">
+                                <rect key="frame" x="20" y="103" width="390" height="517"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="textCellIdentifier" id="Ge8-k7-CEZ">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TextCell" id="Ge8-k7-CEZ">
                                         <rect key="frame" x="0.0" y="50" width="390" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ge8-k7-CEZ" id="knM-sr-5r2">
@@ -748,27 +747,33 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F0Z-jT-qJe">
-                                <rect key="frame" x="20" y="611" width="390" height="65"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F0Z-jT-qJe">
+                                <rect key="frame" x="20" y="628" width="390" height="65"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="65" id="kJa-fn-uI8"/>
+                                </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Add Item"/>
                                 <connections>
                                     <action selector="addButton:" destination="Kec-Bv-9AQ" eventType="touchUpInside" id="OgR-xG-8CK"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GSZ-UZ-MO0">
-                                <rect key="frame" x="20" y="684" width="390" height="65"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GSZ-UZ-MO0">
+                                <rect key="frame" x="20" y="701" width="390" height="65"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="65" id="b9n-M4-cfR"/>
+                                </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Remove All Checkmarks"/>
                                 <connections>
                                     <action selector="deleteChecked:" destination="Kec-Bv-9AQ" eventType="touchUpInside" id="WY1-LT-Lfm"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K2u-WI-rNy">
-                                <rect key="frame" x="20" y="757" width="390" height="65"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K2u-WI-rNy">
+                                <rect key="frame" x="20" y="774" width="390" height="65"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="65" id="gdn-Ud-8OM"/>
+                                </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Remove All Items"/>
                                 <connections>
@@ -778,6 +783,21 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="bqM-rG-hhJ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="GSZ-UZ-MO0" firstAttribute="leading" secondItem="K2u-WI-rNy" secondAttribute="leading" id="6aY-AR-YLR"/>
+                            <constraint firstItem="GSZ-UZ-MO0" firstAttribute="top" secondItem="F0Z-jT-qJe" secondAttribute="bottom" constant="8" symbolic="YES" id="9Rt-M2-M0o"/>
+                            <constraint firstItem="F0Z-jT-qJe" firstAttribute="leading" secondItem="GSZ-UZ-MO0" secondAttribute="leading" id="9ad-bg-9IN"/>
+                            <constraint firstItem="F0Z-jT-qJe" firstAttribute="trailing" secondItem="GSZ-UZ-MO0" secondAttribute="trailing" id="DI4-tf-F8t"/>
+                            <constraint firstItem="K2u-WI-rNy" firstAttribute="top" secondItem="GSZ-UZ-MO0" secondAttribute="bottom" constant="8" symbolic="YES" id="EMu-ch-kUX"/>
+                            <constraint firstItem="F0Z-jT-qJe" firstAttribute="top" secondItem="Ygp-PY-zSL" secondAttribute="bottom" constant="8" symbolic="YES" id="IoG-g4-zwc"/>
+                            <constraint firstItem="Ygp-PY-zSL" firstAttribute="top" secondItem="bqM-rG-hhJ" secondAttribute="top" id="Uw8-h7-g40"/>
+                            <constraint firstItem="GSZ-UZ-MO0" firstAttribute="trailing" secondItem="K2u-WI-rNy" secondAttribute="trailing" id="cbt-7p-KwG"/>
+                            <constraint firstItem="bqM-rG-hhJ" firstAttribute="bottom" secondItem="K2u-WI-rNy" secondAttribute="bottom" constant="10" id="dz8-RA-ISr"/>
+                            <constraint firstItem="Ygp-PY-zSL" firstAttribute="leading" secondItem="HFP-Jg-BqL" secondAttribute="leadingMargin" id="h1a-uK-ICO"/>
+                            <constraint firstItem="Ygp-PY-zSL" firstAttribute="trailing" secondItem="HFP-Jg-BqL" secondAttribute="trailingMargin" id="iAp-95-AyB"/>
+                            <constraint firstItem="Ygp-PY-zSL" firstAttribute="leading" secondItem="F0Z-jT-qJe" secondAttribute="leading" id="j8C-eE-fVn"/>
+                            <constraint firstItem="Ygp-PY-zSL" firstAttribute="trailing" secondItem="F0Z-jT-qJe" secondAttribute="trailing" id="jRu-Cj-5lN"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="7oN-d5-fFy"/>
                     <connections>
@@ -796,12 +816,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="yER-sF-I68">
-                                <rect key="frame" x="20" y="103" width="390" height="600"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="yER-sF-I68">
+                                <rect key="frame" x="20" y="103" width="390" height="663"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Mhy-co-I7j">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TextCell" id="Mhy-co-I7j">
                                         <rect key="frame" x="0.0" y="50" width="390" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Mhy-co-I7j" id="G9Z-3F-fs4">
@@ -811,9 +830,11 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6a3-ly-fNq">
-                                <rect key="frame" x="20" y="711" width="390" height="65"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6a3-ly-fNq">
+                                <rect key="frame" x="20" y="774" width="390" height="65"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="65" id="76H-up-vDt"/>
+                                </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Add Item"/>
                                 <connections>
@@ -823,6 +844,15 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="9iV-o4-Cze"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="yER-sF-I68" firstAttribute="leading" secondItem="i6M-Vo-gSS" secondAttribute="leadingMargin" id="2Db-gZ-FT1"/>
+                            <constraint firstItem="6a3-ly-fNq" firstAttribute="top" secondItem="yER-sF-I68" secondAttribute="bottom" constant="8" symbolic="YES" id="KA5-Oz-8NN"/>
+                            <constraint firstItem="yER-sF-I68" firstAttribute="trailing" secondItem="6a3-ly-fNq" secondAttribute="trailing" id="WeT-SB-eC0"/>
+                            <constraint firstItem="yER-sF-I68" firstAttribute="trailing" secondItem="i6M-Vo-gSS" secondAttribute="trailingMargin" id="bI0-zb-lsv"/>
+                            <constraint firstItem="9iV-o4-Cze" firstAttribute="bottom" secondItem="6a3-ly-fNq" secondAttribute="bottom" constant="10" id="c8k-MG-UEg"/>
+                            <constraint firstItem="yER-sF-I68" firstAttribute="leading" secondItem="6a3-ly-fNq" secondAttribute="leading" id="fqS-qu-OJF"/>
+                            <constraint firstItem="yER-sF-I68" firstAttribute="top" secondItem="9iV-o4-Cze" secondAttribute="top" id="lUR-CZ-QE7"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="jgL-pv-s5z"/>
                     <connections>

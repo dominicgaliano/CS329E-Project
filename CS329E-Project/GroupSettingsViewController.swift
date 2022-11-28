@@ -117,6 +117,10 @@ class GroupSettingsViewController: UIViewController, UITableViewDelegate, UITabl
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
+    }
+    
     func makeQrCode(groupName:String){
         qrcodeImage = nil
         if groupName.isEmpty {return}
