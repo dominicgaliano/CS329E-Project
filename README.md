@@ -22,7 +22,6 @@ Features checklist:
 Major Elements:  
 
 - [X] Use of Core Data/Firebase 
-- (put settings data in core data)
 - [X] Implementation of user profile path, incl. creation, taking a pic or selecting prexisting, and editing
 
 Minor Elements:  
@@ -30,7 +29,7 @@ Minor Elements:
 - [X] At least two of text views, sliders, segemented controllers, date or color pickers, steppers, **switches**, search fields, **bars and bar buttons**, etc.
 - [X] Table View
 - [X] Two of the following: Alerts, Popovers, Stack Views, Scroll Views, Haptics, User Defaults
-- [ ] Local notifications
+- [X] Local notifications
 - [X] Animation
 - [X] Calendar
 - [X] QR Code
