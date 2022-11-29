@@ -29,6 +29,7 @@
 		B6E7F4EA28F344CE0004B6BF /* ShoppingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E7F4E928F344CE0004B6BF /* ShoppingListViewController.swift */; };
 		B6E7F4EC28F344FF0004B6BF /* ChoresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E7F4EB28F344FF0004B6BF /* ChoresViewController.swift */; };
 		B6E7F4F028F3452F0004B6BF /* InventoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E7F4EF28F3452F0004B6BF /* InventoryViewController.swift */; };
+		B6E99D112935A305007871A2 /* appIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = B6E99D102935A305007871A2 /* appIcon.png */; };
 		FE183F7D29180E71001E83FA /* loadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE183F7C29180E71001E83FA /* loadingViewController.swift */; };
 		FEB5599529256231009DE828 /* changePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB5599429256231009DE828 /* changePasswordViewController.swift */; };
 		FEB559BC2925F8FF009DE828 /* EKWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB559BB2925F8FF009DE828 /* EKWrapper.swift */; };
@@ -57,6 +58,7 @@
 		B6E7F4E928F344CE0004B6BF /* ShoppingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListViewController.swift; sourceTree = "<group>"; };
 		B6E7F4EB28F344FF0004B6BF /* ChoresViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoresViewController.swift; sourceTree = "<group>"; };
 		B6E7F4EF28F3452F0004B6BF /* InventoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryViewController.swift; sourceTree = "<group>"; };
+		B6E99D102935A305007871A2 /* appIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appIcon.png; sourceTree = "<group>"; };
 		FE183F7C29180E71001E83FA /* loadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loadingViewController.swift; sourceTree = "<group>"; };
 		FEB5599429256231009DE828 /* changePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = changePasswordViewController.swift; sourceTree = "<group>"; };
 		FEB559BB2925F8FF009DE828 /* EKWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKWrapper.swift; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 				B6E7F4DB28F343830004B6BF /* CreateAccountViewController.swift */,
 				B6E7F4DD28F343D70004B6BF /* IndividualSettingsViewController.swift */,
 				B6E7F4DF28F344330004B6BF /* GroupSelectorViewController.swift */,
+				B6E99D102935A305007871A2 /* appIcon.png */,
 				B6E7F4E128F344580004B6BF /* CreateGroupViewController.swift */,
 				B6E7F4E328F3446E0004B6BF /* JoinGroupViewController.swift */,
 				B6E7F4E528F344970004B6BF /* GroupViewController.swift */,
@@ -203,6 +206,7 @@
 				B600DC1928F9E6B2003DC276 /* GoogleService-Info.plist in Resources */,
 				B6E7F4CF28F333C30004B6BF /* Assets.xcassets in Resources */,
 				B6E7F4CA28F333BE0004B6BF /* Main.storyboard in Resources */,
+				B6E99D112935A305007871A2 /* appIcon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -380,14 +384,17 @@
 				DEVELOPMENT_TEAM = 3HXAFU4VU6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "CS329E-Project/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Homebase;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_NSCalendarsUsageDescription = "In order to open the calendar app, you must first give persmission";
-				INFOPLIST_KEY_NSCameraUsageDescription = "Please allow access to take a profile picture";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Please allow Homebase to access the camera.";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Please allow access to select a profile picture";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -411,14 +418,17 @@
 				DEVELOPMENT_TEAM = 3HXAFU4VU6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "CS329E-Project/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Homebase;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_NSCalendarsUsageDescription = "In order to open the calendar app, you must first give persmission";
-				INFOPLIST_KEY_NSCameraUsageDescription = "Please allow access to take a profile picture";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Please allow Homebase to access the camera.";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Please allow access to select a profile picture";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

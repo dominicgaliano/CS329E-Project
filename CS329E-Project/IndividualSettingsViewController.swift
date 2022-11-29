@@ -10,6 +10,7 @@ import FirebaseFirestore
 import FirebaseAuth
 import FirebaseCore
 import FirebaseStorage
+import AVFoundation
 
 let imageCache = NSCache<NSString, UIImage>()
 
@@ -23,6 +24,9 @@ class IndividualSettingsViewController: UIViewController {
     
     // db connection
     let db = Firestore.firestore()
+    
+    // photo picker
+    let picker = UIImagePickerController()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -62,7 +66,6 @@ class IndividualSettingsViewController: UIViewController {
     
     // Change Password Button
     @IBAction func changePasswordButtonPressed(_ sender: Any) {
-        // TODO: Implement
         return
     }
     
@@ -166,9 +169,6 @@ class IndividualSettingsViewController: UIViewController {
         self.present(confirmAlertController, animated: true)
     }
     
-    
-    
-    
     // delete account button
     @IBAction func deleteAccountButtonPressed(_ sender: Any) {
         let resignController = UIAlertController(
@@ -216,12 +216,6 @@ class IndividualSettingsViewController: UIViewController {
         
         // delete user
         deleteUser()
-        
-        //        // get users groups
-        //        removeAllUserGroups(uid)
-        //
-        //        // delete users db document
-        //        deleteUserDocument(uid)
     }
     
     func deleteUserData(_ uid: String) {
@@ -366,11 +360,42 @@ extension IndividualSettingsViewController: UIImagePickerControllerDelegate, UIN
     }
     
     func presentCamera() {
-        let vc = UIImagePickerController()
-        vc.sourceType = .camera
-        vc.delegate = self
-        vc.allowsEditing = true
-        present(vc, animated: true)
+        // see if we can use the rear camera
+        if UIImagePickerController.availableCaptureModes(for: .rear) != nil {
+            // use the rear camera
+            switch AVCaptureDevice.authorizationStatus(for: .video) {
+            case .notDetermined:
+                // we do not know if authorized
+                AVCaptureDevice.requestAccess(for: .video) {
+                    accessGranted in
+                    guard accessGranted == true else {return}
+                }
+            case .authorized:
+                // we are authorized
+                break
+            default:
+                // we are not authorized
+                let alertVC = UIAlertController(title: "Not Authorized To Use Camera", message: "Please authorize Homebase to use camera in privacy settings", preferredStyle: .alert)
+                let cancelAction = UIAlertAction(title: "Cancel", style: .default)
+                let settingsAction = UIAlertAction(title: "Open Settings", style: .default, handler: { _ in
+                    self.openSettings()
+                })
+                alertVC.addAction(cancelAction)
+                present(alertVC, animated:true)
+                return
+            }
+            // allowed to use camera
+            picker.allowsEditing = false
+            picker.sourceType = .camera
+            picker.cameraCaptureMode = .photo
+            present(picker , animated: true)
+        } else {
+            // no rear camera available
+            let alertVC = UIAlertController(title: "No Camera Detected", message: "This device does not have a camera", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default)
+            alertVC.addAction(okAction)
+            present(alertVC, animated:true)
+        }
     }
     
     func presentPhotoPicker() {
@@ -429,5 +454,9 @@ extension IndividualSettingsViewController: UIImagePickerControllerDelegate, UIN
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func openSettings() {
+        UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!, options: [:], completionHandler: nil)
     }
 }
