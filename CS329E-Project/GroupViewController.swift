@@ -10,6 +10,9 @@ import FirebaseFirestore
 import FirebaseAuth
 import Foundation
 
+// define notifications variable
+public var NOTIFICATIONS_PERMITTED:Bool = true
+
 class GroupMessage {
     let displayName: String
     let messageContent: String
@@ -48,6 +51,16 @@ class GroupViewController: UIViewController, UITableViewDelegate, UITableViewDat
         tableView.delegate = self
         tableView.dataSource = self
         addIcon()
+        
+        // request user for permission to send notifications
+        UNUserNotificationCenter.current().requestAuthorization(options: .alert) {
+            granted, error in
+            if granted {
+                print("Alert permission granted")
+            } else if let error = error {
+                print(error.localizedDescription)
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -216,6 +229,9 @@ class GroupViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        showNotificationPrompt(notificationMessage: groupMessages[indexPath.row].messageContent)
+        
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
@@ -228,5 +244,56 @@ class GroupViewController: UIViewController, UITableViewDelegate, UITableViewDat
         image.frame = title.bounds
         title.addSubview(image)
         navigationItem.titleView = title
+    }
+    
+    func showNotificationPrompt(notificationMessage:String) {
+        if !NOTIFICATIONS_PERMITTED {
+            // user has disabled notifications
+            displayError(errorTitle: "Notice", errorMessage: "Notifications disabled from user settings page.")
+            return
+        }
+        
+        // user has not disabled notifications
+        let notificationAlert = UIAlertController(
+            title: "Create notification?",
+            message: "Create notification with text: \"\(notificationMessage)\"?",
+            preferredStyle: .alert)
+        notificationAlert.addAction(UIAlertAction(title: "Confirm", style: .default, handler: { action in
+            self.scheduleNotification(notificationMessage: notificationMessage)
+        }))
+        notificationAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        present(notificationAlert, animated: true)
+    }
+    
+    func scheduleNotification(notificationMessage:String) {
+        // define notification
+        let content = UNMutableNotificationContent()
+        content.title = "Reminder"
+        content.subtitle = "Homebase App"
+        content.body = notificationMessage
+        
+        // define trigger
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: Double(DEFAULT_NOTIFICATION_WAIT_TIME_MINS) * 60, repeats: false)
+        
+        // combine request
+        print("Adding request")
+        let request = UNNotificationRequest(identifier: "myNotification", content: content, trigger: trigger)
+        UNUserNotificationCenter.current().add(request)
+    }
+    
+    func displayError(errorTitle: String = "Error", errorMessage: String, unwind: Bool = false) {
+        let errorController = UIAlertController (
+            title: errorTitle,
+            message: errorMessage,
+            preferredStyle: .alert)
+        errorController.addAction(UIAlertAction(
+            title: "OK",
+            style: .default,
+            handler: { action in
+                if unwind {
+                    self.navigationController?.popToRootViewController(animated: true)
+                }
+            }))
+        present(errorController, animated: true)
     }
 }

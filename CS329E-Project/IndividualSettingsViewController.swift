@@ -12,15 +12,17 @@ import FirebaseCore
 import FirebaseStorage
 import AVFoundation
 
+public var DEFAULT_NOTIFICATION_WAIT_TIME_MINS:UInt64 = 1
+
 let imageCache = NSCache<NSString, UIImage>()
 
 class IndividualSettingsViewController: UIViewController {
     
-    // Profile picture outlet
+    // outlets
     @IBOutlet weak var profilePicture: UIImageView!
-    
-    // switch status outlet
     @IBOutlet weak var darkModeSwitch: UISwitch!
+    @IBOutlet weak var notificationsSwitch: UISwitch!
+    @IBOutlet weak var notificationDelayLabel: UILabel!
     
     // db connection
     let db = Firestore.firestore()
@@ -30,6 +32,9 @@ class IndividualSettingsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        notificationDelayLabel.text = (DEFAULT_NOTIFICATION_WAIT_TIME_MINS > 1 ? "Notification Delay: \(DEFAULT_NOTIFICATION_WAIT_TIME_MINS) mins" : "Notification Delay: \(DEFAULT_NOTIFICATION_WAIT_TIME_MINS) min")
+        
         addIcon()
         getUserProfilePicture()
         
@@ -40,10 +45,12 @@ class IndividualSettingsViewController: UIViewController {
         profilePicture.contentMode = .scaleAspectFill
         profilePicture.clipsToBounds = true
         
-        var defaults = UserDefaults.standard
+        let defaults = UserDefaults.standard
         if defaults.object(forKey: "state") != nil{
             darkModeSwitch.isOn = defaults.bool(forKey: "state")
         }
+        
+        notificationsSwitch.isOn = NOTIFICATIONS_PERMITTED
         
         if #available(iOS 13.0, *) {
             let appDelegate = UIApplication.shared.windows.first
@@ -86,6 +93,20 @@ class IndividualSettingsViewController: UIViewController {
             appDelegate?.overrideUserInterfaceStyle = .light
             return
         }
+    }
+    
+    @IBAction func notificationsSwitchPressed(_ sender: Any) {
+        NOTIFICATIONS_PERMITTED = !NOTIFICATIONS_PERMITTED
+    }
+    
+    // TODO: Implement <- this might need to be stored in user defaults
+    @IBAction func changeNotificationDelayButtonPressed(_ sender: Any) {
+        // First ask the user for a time in minutes somehow, need to validate the input is an positive integer
+        
+        // Set store result in DEFAULT_NOTIFICATION_WAIT_TIME_MINS
+        
+        // change label
+        setNotificationLabel()
     }
     
     // get user profile picture
@@ -458,6 +479,7 @@ extension IndividualSettingsViewController: UIImagePickerControllerDelegate, UIN
     
     func openSettings() {
         UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!, options: [:], completionHandler: nil)
+    }
     
     func addIcon(){
         let icon = UIImage(named: "icon.png")
@@ -468,5 +490,9 @@ extension IndividualSettingsViewController: UIImagePickerControllerDelegate, UIN
         image.frame = title.bounds
         title.addSubview(image)
         navigationItem.titleView = title
+    }
+    
+    func setNotificationLabel() {
+        notificationDelayLabel.text = (DEFAULT_NOTIFICATION_WAIT_TIME_MINS > 1 ? "Notification Delay: \(DEFAULT_NOTIFICATION_WAIT_TIME_MINS) mins" : "Notification Delay: \(DEFAULT_NOTIFICATION_WAIT_TIME_MINS) min")
     }
 }
