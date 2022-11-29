@@ -16,7 +16,6 @@ class LoginPageViewController: UIViewController, UITextFieldDelegate {
     // Define outlets
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
-    // TODO: Remove errorLabel and replace with alert
     @IBOutlet weak var errorLabel: UILabel!
     
     override func viewDidLoad() {
@@ -87,7 +86,7 @@ class LoginPageViewController: UIViewController, UITextFieldDelegate {
             Auth.auth().signIn(withEmail: self.emailField.text!, password: self.passwordField.text!) {
                 authResult, error in
                 if let error = error as NSError? {
-                    self.errorLabel.text = "\(error.localizedDescription)"
+                    self.displayError(errorMessage: "\(error.localizedDescription)")
                 } else {
                     self.errorLabel.text = ""
                 }
@@ -133,5 +132,21 @@ class LoginPageViewController: UIViewController, UITextFieldDelegate {
             //only perform segue when the dismissal is complete
             self.performSegue(withIdentifier: "forgotPasswordSegue", sender: nil)
         }
+    }
+    
+    func displayError(errorTitle: String = "Error", errorMessage: String, unwind: Bool = false) {
+        let errorController = UIAlertController (
+            title: errorTitle,
+            message: errorMessage,
+            preferredStyle: .alert)
+        errorController.addAction(UIAlertAction(
+            title: "OK",
+            style: .default,
+            handler: { action in
+                if unwind {
+                    self.navigationController?.popToRootViewController(animated: true)
+                }
+            }))
+        present(errorController, animated: true)
     }
 }

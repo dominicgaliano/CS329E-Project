@@ -65,7 +65,7 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
     @IBAction func createAccountButtonPressed(_ sender: Any) {
         // check that name fields not empty
         if !firstNameField.hasText || !lastNameField.hasText {
-            errorLabel.text = "Missing name field"
+            displayError(errorMessage: "Missing name field")
         }
         // check if password fields match
         else if passwordField.text! == repeatPasswordField.text! {
@@ -74,7 +74,7 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
                 authResult, error in
                 if let error = error as NSError? {
                     // an error occured, alert the user
-                    self.errorLabel.text = "\(error.localizedDescription)"
+                    self.displayError(errorMessage: "\(error.localizedDescription)")
                 } else {
                     // no error occured, continue
                     self.saveUser(uid: authResult!.user.uid,
@@ -86,7 +86,7 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
                 }
             }
         } else {
-            self.errorLabel.text = "Passwords must match"
+            displayError(errorMessage: "Passwords must match")
         }
     }
     
@@ -105,10 +105,26 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
             "profilePictureURL": "",
         ]) {err in
             if let err = err {
-                print("Error adding documet: \(err)")
+                self.displayError(errorMessage: "Error saving user info: \(err)")
             } else {
                 print("User document added with id \(uid)")
             }
         }
+    }
+    
+    func displayError(errorTitle: String = "Error", errorMessage: String, unwind: Bool = false) {
+        let errorController = UIAlertController (
+            title: errorTitle,
+            message: errorMessage,
+            preferredStyle: .alert)
+        errorController.addAction(UIAlertAction(
+            title: "OK",
+            style: .default,
+            handler: { action in
+                if unwind {
+                    self.navigationController?.popToRootViewController(animated: true)
+                }
+            }))
+        present(errorController, animated: true)
     }
 }
