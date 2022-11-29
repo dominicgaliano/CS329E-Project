@@ -141,8 +141,8 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
     @IBAction func deleteChecked(_ sender: Any) {
         
         let controller = UIAlertController (
-            title: "Remove All Checkmarks",
-            message: "Would you like to remove all checkmarks on the shopping list?",
+            title: "Remove Checked",
+            message: "Would you like to remove all checked items from the shopping list?",
             preferredStyle: .alert)
         controller.addAction(UIAlertAction(
             title: "No",
@@ -161,7 +161,7 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
                                     self.displayError(errorMessage: "Error getting documents: \(err)")
                                 } else {
                                     print("Document removed from database")
-                                    self.tableView.reloadData()
+                                    self.reloadTableData()
                                 }
                             }
                     }
