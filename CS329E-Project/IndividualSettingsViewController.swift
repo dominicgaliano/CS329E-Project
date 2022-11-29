@@ -458,6 +458,7 @@ extension IndividualSettingsViewController: UIImagePickerControllerDelegate, UIN
     
     func openSettings() {
         UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!, options: [:], completionHandler: nil)
+    }
     
     func addIcon(){
         let icon = UIImage(named: "icon.png")

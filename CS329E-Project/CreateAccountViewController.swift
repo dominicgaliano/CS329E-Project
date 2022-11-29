@@ -127,6 +127,7 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
                 }
             }))
         present(errorController, animated: true)
+    }
 
     func addIcon(){
         let icon = UIImage(named: "icon.png")
