@@ -161,8 +161,8 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
                                     self.displayError(errorMessage: "Error getting documents: \(err)")
                                 } else {
                                     print("Document removed from database")
+                                    self.tableView.reloadData()
                                 }
-                                self.tableView.reloadData()
                             }
                     }
                 }
