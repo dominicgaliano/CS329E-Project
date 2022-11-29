@@ -345,27 +345,59 @@
                                     <action selector="changePasswordPressed:" destination="gbD-p3-9Pd" eventType="touchUpInside" id="gU8-Tg-NdN"/>
                                 </connections>
                             </button>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8f7-N8-uZR">
+                                <rect key="frame" x="263" y="478" width="51" height="31"/>
+                                <connections>
+                                    <action selector="notificationsSwitchPressed:" destination="gbD-p3-9Pd" eventType="valueChanged" id="dkB-XZ-I98"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notifications" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tUI-4T-JwC">
+                                <rect key="frame" x="118" y="483" width="96" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notification Delay: 90 mins" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0La-oz-CbN">
+                                <rect key="frame" x="112.66666666666669" y="523" width="205" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xyY-HK-etS">
+                                <rect key="frame" x="104" y="557" width="222" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Change Notification Delay"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="V5L-iP-q7h"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="g3H-gS-kI2" firstAttribute="top" secondItem="z3z-UK-HuT" secondAttribute="bottom" constant="8" symbolic="YES" id="1BP-JI-K06"/>
+                            <constraint firstItem="0La-oz-CbN" firstAttribute="centerX" secondItem="QQC-y3-kw7" secondAttribute="centerX" id="2f9-sx-oqI"/>
+                            <constraint firstItem="8f7-N8-uZR" firstAttribute="top" secondItem="xGC-Ra-Ken" secondAttribute="bottom" constant="7.6666666666666856" id="5Ty-Mf-4nt"/>
                             <constraint firstItem="z3z-UK-HuT" firstAttribute="centerX" secondItem="g3H-gS-kI2" secondAttribute="centerX" id="6aA-2W-19e"/>
                             <constraint firstItem="QQC-y3-kw7" firstAttribute="centerX" secondItem="V5L-iP-q7h" secondAttribute="centerX" id="CR8-C5-4rv"/>
                             <constraint firstItem="FEt-NK-Is3" firstAttribute="top" secondItem="V5L-iP-q7h" secondAttribute="top" constant="10" id="CaI-OM-HqV"/>
                             <constraint firstItem="QQC-y3-kw7" firstAttribute="leading" secondItem="GVl-cV-oGN" secondAttribute="leading" id="DUl-As-ZKN"/>
+                            <constraint firstItem="xyY-HK-etS" firstAttribute="centerX" secondItem="V5L-iP-q7h" secondAttribute="centerX" id="Ds5-jw-ByS"/>
+                            <constraint firstItem="tUI-4T-JwC" firstAttribute="leading" secondItem="GVl-cV-oGN" secondAttribute="leading" id="Lo0-XT-0kJ"/>
                             <constraint firstItem="GVl-cV-oGN" firstAttribute="top" secondItem="QQC-y3-kw7" secondAttribute="bottom" constant="20" id="NPi-va-oGt"/>
+                            <constraint firstItem="8f7-N8-uZR" firstAttribute="leading" secondItem="xGC-Ra-Ken" secondAttribute="leading" id="Ocj-kb-10f"/>
                             <constraint firstItem="V5L-iP-q7h" firstAttribute="bottom" secondItem="g3H-gS-kI2" secondAttribute="bottom" constant="10" id="PSN-as-NA3"/>
                             <constraint firstItem="z3z-UK-HuT" firstAttribute="width" secondItem="g3H-gS-kI2" secondAttribute="width" id="TkG-9Z-51Y"/>
                             <constraint firstItem="GVl-cV-oGN" firstAttribute="centerY" secondItem="xGC-Ra-Ken" secondAttribute="centerY" id="Toc-Hl-G8U"/>
                             <constraint firstItem="FEt-NK-Is3" firstAttribute="centerX" secondItem="V5L-iP-q7h" secondAttribute="centerX" id="W6n-eQ-Um8"/>
                             <constraint firstItem="WKe-wZ-vex" firstAttribute="centerX" secondItem="QQC-y3-kw7" secondAttribute="centerX" id="Wzz-Ah-ZeW"/>
+                            <constraint firstItem="0La-oz-CbN" firstAttribute="centerX" secondItem="V5L-iP-q7h" secondAttribute="centerX" id="atc-FC-h22"/>
+                            <constraint firstItem="tUI-4T-JwC" firstAttribute="centerY" secondItem="8f7-N8-uZR" secondAttribute="centerY" id="bCT-ay-vVp"/>
                             <constraint firstItem="xGC-Ra-Ken" firstAttribute="trailing" secondItem="QQC-y3-kw7" secondAttribute="trailing" id="bKY-Ai-esL"/>
+                            <constraint firstItem="xyY-HK-etS" firstAttribute="top" secondItem="0La-oz-CbN" secondAttribute="bottom" constant="13" id="eOn-u5-vT5"/>
                             <constraint firstItem="QQC-y3-kw7" firstAttribute="width" secondItem="WKe-wZ-vex" secondAttribute="width" id="f7r-rl-0xJ"/>
                             <constraint firstItem="QQC-y3-kw7" firstAttribute="top" secondItem="WKe-wZ-vex" secondAttribute="bottom" constant="20" id="gFC-Tp-Run"/>
                             <constraint firstItem="z3z-UK-HuT" firstAttribute="height" secondItem="g3H-gS-kI2" secondAttribute="height" id="gH0-c3-JbZ"/>
                             <constraint firstItem="WKe-wZ-vex" firstAttribute="centerX" secondItem="V5L-iP-q7h" secondAttribute="centerX" id="mlz-nV-7KP"/>
                             <constraint firstItem="g3H-gS-kI2" firstAttribute="leading" secondItem="V5L-iP-q7h" secondAttribute="leading" constant="20" id="rhM-Uk-AcF"/>
+                            <constraint firstItem="0La-oz-CbN" firstAttribute="top" secondItem="8f7-N8-uZR" secondAttribute="bottom" constant="14" id="ux0-fU-Sj8"/>
                             <constraint firstItem="QQC-y3-kw7" firstAttribute="centerX" secondItem="FEt-NK-Is3" secondAttribute="centerX" id="vjJ-Lc-Zxr"/>
                             <constraint firstItem="V5L-iP-q7h" firstAttribute="trailing" secondItem="g3H-gS-kI2" secondAttribute="trailing" constant="20" id="x5I-3M-0Dm"/>
                             <constraint firstItem="WKe-wZ-vex" firstAttribute="top" secondItem="FEt-NK-Is3" secondAttribute="bottom" constant="20" id="yiS-do-wqK"/>
@@ -374,6 +406,8 @@
                     <navigationItem key="navigationItem" id="nWf-ew-Zvw"/>
                     <connections>
                         <outlet property="darkModeSwitch" destination="xGC-Ra-Ken" id="h7w-fx-p3p"/>
+                        <outlet property="notificationDelayLabel" destination="0La-oz-CbN" id="Hd5-SL-yka"/>
+                        <outlet property="notificationsSwitch" destination="8f7-N8-uZR" id="fyk-1a-KlN"/>
                         <outlet property="profilePicture" destination="FEt-NK-Is3" id="2sU-SD-IkK"/>
                     </connections>
                 </viewController>
@@ -994,7 +1028,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="Dzq-Bk-xHy">
                         <nil key="title"/>
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="Vj6-5E-lEQ">
+                        <barButtonItem key="rightBarButtonItem" id="Vj6-5E-lEQ">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="rlS-Mh-Ctf">
                                 <rect key="frame" x="308.33333333333331" y="5" width="101.66666666666669" height="34.333333333333336"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
