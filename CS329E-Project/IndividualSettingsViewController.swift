@@ -26,7 +26,7 @@ class IndividualSettingsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        addIcon()
         getUserProfilePicture()
         
         profilePicture.layer.masksToBounds = true
@@ -429,5 +429,16 @@ extension IndividualSettingsViewController: UIImagePickerControllerDelegate, UIN
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func addIcon(){
+        let icon = UIImage(named: "icon.png")
+        let image = UIImageView(image: icon)
+        
+        image.contentMode = .scaleAspectFit
+        let title = UIView(frame:CGRect(x: 0, y: 0, width: 44, height: 44))
+        image.frame = title.bounds
+        title.addSubview(image)
+        navigationItem.titleView = title
     }
 }

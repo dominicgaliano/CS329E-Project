@@ -20,21 +20,24 @@ class CreateGroupViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationBarPlus()
+        addIcon()
         
     }
     
-    func navigationBarPlus(){
-        navigationItem.rightBarButtonItem = UIBarButtonItem(
-            title: "Create Group", style: .plain, target: self, action: #selector(createButton))
-    }
-    
-    @objc public func createButton(){
-        // check if groupName is empty
+    @IBAction func createGroupButton(_ sender: Any) {
         if groupName.text == ""{
             let controller = UIAlertController(
                 title: "Error",
                 message: "Please add a group name",
+                preferredStyle: .alert)
+            controller.addAction(UIAlertAction(
+                title: "OK", style: .default))
+            present(controller, animated: true)
+        }
+        else if groupIdentifier.text == ""{
+            let controller = UIAlertController(
+                title: "Error",
+                message: "Please add a group identifier",
                 preferredStyle: .alert)
             controller.addAction(UIAlertAction(
                 title: "OK", style: .default))
@@ -107,5 +110,16 @@ class CreateGroupViewController: UIViewController{
         } else {
             self.dismiss(animated: true, completion: nil)
         }
+    }
+    
+    func addIcon(){
+        let icon = UIImage(named: "icon.png")
+        let image = UIImageView(image: icon)
+        
+        image.contentMode = .scaleAspectFit
+        let title = UIView(frame:CGRect(x: 0, y: 0, width: 44, height: 44))
+        image.frame = title.bounds
+        title.addSubview(image)
+        navigationItem.titleView = title
     }
 }

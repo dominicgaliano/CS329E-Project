@@ -25,6 +25,7 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        addIcon()
         
         // Hide password fields
         passwordField.isSecureTextEntry = true
@@ -110,5 +111,16 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
                 print("User document added with id \(uid)")
             }
         }
+    }
+    
+    func addIcon(){
+        let icon = UIImage(named: "icon.png")
+        let image = UIImageView(image: icon)
+        
+        image.contentMode = .scaleAspectFit
+        let title = UIView(frame:CGRect(x: 0, y: 0, width: 44, height: 44))
+        image.frame = title.bounds
+        title.addSubview(image)
+        navigationItem.titleView = title
     }
 }
