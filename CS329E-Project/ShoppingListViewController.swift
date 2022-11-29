@@ -162,10 +162,11 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
                                 } else {
                                     print("Document removed from database")
                                 }
+                                self.tableView.reloadData()
                             }
                     }
                 }
-                self.tableView.reloadData()}))
+            }))
         present(controller, animated: true)
         
         // reload table
