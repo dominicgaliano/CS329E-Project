@@ -37,6 +37,7 @@ class GroupSettingsViewController: UIViewController, UITableViewDelegate, UITabl
         tableView.dataSource = self
         
         editButton.setImage(UIImage(systemName: "pencil"), for: .normal)
+        addIcon()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -131,6 +132,7 @@ class GroupSettingsViewController: UIViewController, UITableViewDelegate, UITabl
         qrcodeImage = filter.outputImage
         if let qrcodeImage = qrcodeImage{
             qrCode.image = UIImage(ciImage: qrcodeImage)
+            qrCode.layer.magnificationFilter = CALayerContentsFilter.nearest
         }
     }
     
@@ -231,5 +233,16 @@ class GroupSettingsViewController: UIViewController, UITableViewDelegate, UITabl
         } catch let signOutError as NSError {
             print("Error signing out: %@", signOutError)
         }
+    }
+    
+    func addIcon(){
+        let icon = UIImage(named: "icon.png")
+        let image = UIImageView(image: icon)
+        
+        image.contentMode = .scaleAspectFit
+        let title = UIView(frame:CGRect(x: 0, y: 0, width: 44, height: 44))
+        image.frame = title.bounds
+        title.addSubview(image)
+        navigationItem.titleView = title
     }
 }

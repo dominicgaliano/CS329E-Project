@@ -525,6 +525,18 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="33"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L1B-BK-dPZ">
+                                <rect key="frame" x="140" y="473" width="150" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="9AI-57-xDb"/>
+                                    <constraint firstAttribute="height" constant="60" id="R5j-sE-ayY"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Create Group"/>
+                                <connections>
+                                    <action selector="createGroupButton:" destination="bAD-NT-xZg" eventType="touchUpInside" id="ecV-uO-Vc4"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ybK-aZ-VsK"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -534,19 +546,12 @@
                             <constraint firstItem="jKI-hg-75D" firstAttribute="centerX" secondItem="jus-8b-dlL" secondAttribute="centerX" id="Kuw-Ga-b40"/>
                             <constraint firstItem="jKI-hg-75D" firstAttribute="top" secondItem="yIK-vf-9oW" secondAttribute="bottom" constant="22" id="RHG-BC-goY"/>
                             <constraint firstItem="yIK-vf-9oW" firstAttribute="top" secondItem="ybK-aZ-VsK" secondAttribute="top" constant="129" id="ccW-lC-lhq"/>
+                            <constraint firstItem="L1B-BK-dPZ" firstAttribute="top" secondItem="i0x-P2-fLo" secondAttribute="bottom" constant="64.666666666666686" id="hKF-XB-Lk1"/>
                             <constraint firstItem="i0x-P2-fLo" firstAttribute="top" secondItem="jKI-hg-75D" secondAttribute="bottom" constant="19.666666666666657" id="hb9-cR-1q9"/>
+                            <constraint firstItem="L1B-BK-dPZ" firstAttribute="centerX" secondItem="jus-8b-dlL" secondAttribute="centerX" id="uQw-Yl-2QF"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="5Ee-Aa-Jpc">
-                        <barButtonItem key="rightBarButtonItem" title="Create Group" id="ilX-Ij-f7A">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="Yia-yh-Gs1">
-                                <rect key="frame" x="324" y="5" width="86" height="34.333333333333336"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
-                            </button>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="5Ee-Aa-Jpc"/>
                     <connections>
                         <outlet property="groupIdentifier" destination="i0x-P2-fLo" id="Rbo-gq-XHf"/>
                         <outlet property="groupName" destination="jKI-hg-75D" id="rVL-2Y-ifs"/>
