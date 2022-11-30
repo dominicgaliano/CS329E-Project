@@ -1,4 +1,4 @@
-# CS329E-Project
+# CS329E-Project (Homebase App)
 ## Project Team 19 - App for CS329E Mobile Computing
 
 Team Members: Dominic Galiano, Ray Zhang, Hans Wang, Adrian Cruz
@@ -13,11 +13,13 @@ Testing Instructions:
 - Start by creating an account using your first and last name as well as email and chosen password.
 - Initially, you will not be a member of any group. You must first create a new group or join an existing group.
 
+TODO: - COMPLETE TESTING INSTRUCTIONS
+
 Features checklist:  
 
 - [X] Login/register path
 - [X] Settings with three behaviors that can be modified by user
-- [ ] Non-default fonts, colors and styles
+- [X] Non-default fonts, colors and styles
 
 Major Elements:  
 
