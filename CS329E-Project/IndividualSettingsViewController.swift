@@ -125,7 +125,9 @@ class IndividualSettingsViewController: UIViewController {
         }
 
         controller.addTextField { (textField) in
-            textField.placeholder = "Minutes"}
+            textField.placeholder = "Minutes"
+            textField.keyboardType = .asciiCapableNumberPad
+        }
         controller.addAction(UIAlertAction(title: "Cancel", style: .default) { (alertAction) in })
         controller.addAction(save)
         
