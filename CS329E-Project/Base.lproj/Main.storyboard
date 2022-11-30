@@ -736,7 +736,7 @@
                                 </constraints>
                                 <color key="tintColor" systemColor="systemGreenColor"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Event Schedule" titleAlignment="center">
+                                <buttonConfiguration key="configuration" style="filled" title="Event Schedule">
                                     <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
                                 </buttonConfiguration>
                                 <connections>
@@ -760,11 +760,11 @@
                         <constraints>
                             <constraint firstItem="SYj-mY-ngZ" firstAttribute="leading" secondItem="CBT-1s-lXs" secondAttribute="leading" constant="20" id="0F9-5P-fdk"/>
                             <constraint firstItem="VK8-1y-dXb" firstAttribute="leading" secondItem="SYj-mY-ngZ" secondAttribute="leading" id="2OW-iS-c5x"/>
-                            <constraint firstAttribute="bottom" secondItem="VK8-1y-dXb" secondAttribute="bottom" constant="239" id="8ht-Fn-aDx"/>
                             <constraint firstItem="VK8-1y-dXb" firstAttribute="trailing" secondItem="zhu-9y-z8u" secondAttribute="trailing" id="9Qh-NR-ZGQ"/>
                             <constraint firstItem="VK8-1y-dXb" firstAttribute="leading" secondItem="dRo-8l-fT4" secondAttribute="leading" id="9le-gH-Ljk"/>
                             <constraint firstItem="zhu-9y-z8u" firstAttribute="top" secondItem="VK8-1y-dXb" secondAttribute="bottom" constant="8" id="BdB-V6-Nef"/>
                             <constraint firstItem="VK8-1y-dXb" firstAttribute="trailing" secondItem="SYj-mY-ngZ" secondAttribute="trailing" id="ICZ-wU-blT"/>
+                            <constraint firstItem="CBT-1s-lXs" firstAttribute="bottom" secondItem="dRo-8l-fT4" secondAttribute="bottom" constant="10" id="JXZ-CO-IPY"/>
                             <constraint firstItem="VK8-1y-dXb" firstAttribute="top" secondItem="SYj-mY-ngZ" secondAttribute="bottom" constant="8" symbolic="YES" id="OLk-oT-MUy"/>
                             <constraint firstItem="VK8-1y-dXb" firstAttribute="top" secondItem="SYj-mY-ngZ" secondAttribute="bottom" constant="8" id="RGz-ca-tDT"/>
                             <constraint firstItem="SYj-mY-ngZ" firstAttribute="top" secondItem="CBT-1s-lXs" secondAttribute="top" id="SPC-zK-m0L"/>
@@ -814,7 +814,7 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F0Z-jT-qJe">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" role="primary" translatesAutoresizingMaskIntoConstraints="NO" id="F0Z-jT-qJe">
                                 <rect key="frame" x="20" y="628" width="390" height="65"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="65" id="kJa-fn-uI8"/>
@@ -825,7 +825,7 @@
                                     <action selector="addButton:" destination="Kec-Bv-9AQ" eventType="touchUpInside" id="OgR-xG-8CK"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GSZ-UZ-MO0">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" role="destructive" translatesAutoresizingMaskIntoConstraints="NO" id="GSZ-UZ-MO0">
                                 <rect key="frame" x="20" y="701" width="390" height="65"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="65" id="b9n-M4-cfR"/>
@@ -836,7 +836,7 @@
                                     <action selector="deleteChecked:" destination="Kec-Bv-9AQ" eventType="touchUpInside" id="WY1-LT-Lfm"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K2u-WI-rNy">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" role="destructive" translatesAutoresizingMaskIntoConstraints="NO" id="K2u-WI-rNy">
                                 <rect key="frame" x="20" y="774" width="390" height="65"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="65" id="gdn-Ud-8OM"/>
@@ -897,7 +897,7 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6a3-ly-fNq">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" role="primary" translatesAutoresizingMaskIntoConstraints="NO" id="6a3-ly-fNq">
                                 <rect key="frame" x="20" y="774" width="390" height="65"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="65" id="76H-up-vDt"/>
