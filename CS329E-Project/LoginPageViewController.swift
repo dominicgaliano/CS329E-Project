@@ -13,6 +13,9 @@ class LoginPageViewController: UIViewController, UITextFieldDelegate {
     // dark mode
     var darkMode = false
     
+    //image view
+    @IBOutlet weak var imageView: UIImageView!
+    
     // Define outlets
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
