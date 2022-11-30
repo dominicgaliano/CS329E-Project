@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_72" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -22,7 +22,9 @@
                                     <constraint firstAttribute="height" constant="45" id="XBq-XV-Tby"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Create Account"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Create Account">
+                                    <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
+                                </buttonConfiguration>
                                 <connections>
                                     <action selector="createAccountButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GK0-b7-aB2"/>
                                     <segue destination="DY1-Fu-OP6" kind="presentation" identifier="createAccountSegue" animates="NO" modalPresentationStyle="fullScreen" id="uI5-Q2-WbE"/>
@@ -33,7 +35,9 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="aal-2K-otQ"/>
                                 </constraints>
-                                <buttonConfiguration key="configuration" style="gray" title="Forgot Password?"/>
+                                <buttonConfiguration key="configuration" style="gray" title="Forgot Password?">
+                                    <color key="baseForegroundColor" systemColor="systemGreenColor"/>
+                                </buttonConfiguration>
                                 <connections>
                                     <action selector="forgotPasswordButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2Y4-wR-iLr"/>
                                     <segue destination="4fh-Ql-Pbd" kind="presentation" identifier="forgotPasswordSegue" modalPresentationStyle="fullScreen" id="V0s-bJ-qcS"/>
@@ -61,24 +65,33 @@
                                     <constraint firstAttribute="height" constant="45" id="8fd-Yz-ZjQ"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Login"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Login">
+                                    <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
+                                </buttonConfiguration>
                                 <connections>
                                     <action selector="loginButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5LU-nE-eQP"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="aQN-jN-9Ft">
+                                <rect key="frame" x="140" y="74" width="150" height="150"/>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="qrf-s4-fiD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="2Ze-Xr-dwU"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="HCK-hC-OiF" secondAttribute="trailing" constant="20" id="6eo-Ox-25S"/>
+                            <constraint firstItem="aQN-jN-9Ft" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="15" id="Dj3-xl-tNy"/>
                             <constraint firstItem="qrf-s4-fiD" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="183" id="HUb-e3-JN4"/>
+                            <constraint firstItem="aQN-jN-9Ft" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="140" id="IBF-KM-s7h"/>
+                            <constraint firstItem="qrf-s4-fiD" firstAttribute="top" secondItem="aQN-jN-9Ft" secondAttribute="bottom" constant="18" id="LtH-OB-3On"/>
                             <constraint firstItem="f9d-lS-B6e" firstAttribute="top" secondItem="ahZ-NM-v8U" secondAttribute="bottom" constant="20" id="NL7-5f-m5D"/>
                             <constraint firstItem="s7V-AM-GFX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="NwG-ua-7pH"/>
                             <constraint firstItem="s7V-AM-GFX" firstAttribute="top" secondItem="HCK-hC-OiF" secondAttribute="bottom" constant="8" symbolic="YES" id="T5q-Ml-Thh"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="s7V-AM-GFX" secondAttribute="trailing" constant="20" id="Toj-MI-XCr"/>
                             <constraint firstItem="woJ-Bg-bGf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="XAZ-Wb-KZa"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="qrf-s4-fiD" secondAttribute="trailing" constant="20" id="dxz-UR-Lsv"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="aQN-jN-9Ft" secondAttribute="trailing" constant="140" id="fJg-R8-50y"/>
                             <constraint firstItem="ahZ-NM-v8U" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="iDM-Ko-4TS"/>
                             <constraint firstItem="HCK-hC-OiF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="kOP-NO-FAo"/>
                             <constraint firstItem="f9d-lS-B6e" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="rAZ-nN-4Wo"/>
@@ -95,6 +108,7 @@
                     <connections>
                         <outlet property="emailField" destination="qrf-s4-fiD" id="oAi-dc-3eN"/>
                         <outlet property="errorLabel" destination="f9d-lS-B6e" id="u7X-n9-qce"/>
+                        <outlet property="imageView" destination="aQN-jN-9Ft" id="Jd5-oj-8Ub"/>
                         <outlet property="passwordField" destination="HCK-hC-OiF" id="wax-st-1yD"/>
                         <segue destination="gRM-r3-voX" kind="presentation" identifier="loginSegue" animates="NO" modalPresentationStyle="fullScreen" id="SAF-63-Of5"/>
                     </connections>
@@ -132,7 +146,9 @@
                                     <constraint firstAttribute="height" constant="45" id="qxe-wA-K4j"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Create Account"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Create Account">
+                                    <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
+                                </buttonConfiguration>
                                 <connections>
                                     <action selector="createAccountButtonPressed:" destination="DY1-Fu-OP6" eventType="touchUpInside" id="gEB-95-DIc"/>
                                 </connections>
@@ -142,7 +158,9 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="wNl-4g-g5a"/>
                                 </constraints>
-                                <buttonConfiguration key="configuration" style="gray" title="Cancel"/>
+                                <buttonConfiguration key="configuration" style="gray" title="Cancel">
+                                    <color key="baseForegroundColor" systemColor="systemGreenColor"/>
+                                </buttonConfiguration>
                                 <connections>
                                     <action selector="cancelButtonPressed:" destination="DY1-Fu-OP6" eventType="touchUpInside" id="fK1-8l-1dX"/>
                                 </connections>
@@ -163,6 +181,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="P38-je-mck">
+                                <rect key="frame" x="140" y="74" width="150" height="151"/>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Ano-fp-wYf"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -178,15 +199,19 @@
                             <constraint firstItem="pRv-UE-A8z" firstAttribute="leading" secondItem="Ano-fp-wYf" secondAttribute="leading" constant="20" id="P9z-H0-FzC"/>
                             <constraint firstItem="lBh-29-FCy" firstAttribute="leading" secondItem="Ano-fp-wYf" secondAttribute="leading" constant="20" id="S1P-Qk-yka"/>
                             <constraint firstItem="uve-MO-0Rk" firstAttribute="top" secondItem="lBh-29-FCy" secondAttribute="bottom" constant="8" symbolic="YES" id="Sz6-wH-nlf"/>
+                            <constraint firstItem="ROk-xi-rEC" firstAttribute="top" secondItem="P38-je-mck" secondAttribute="bottom" constant="17" id="YuY-VL-45m"/>
                             <constraint firstItem="Ano-fp-wYf" firstAttribute="trailing" secondItem="4PQ-f0-SCb" secondAttribute="trailing" constant="20" id="b93-fx-seR"/>
                             <constraint firstItem="4PQ-f0-SCb" firstAttribute="leading" secondItem="Ano-fp-wYf" secondAttribute="leading" constant="20" id="be3-X4-cDj"/>
                             <constraint firstItem="Kf4-VA-yD1" firstAttribute="leading" secondItem="Ano-fp-wYf" secondAttribute="leading" constant="20" id="byW-9m-x15"/>
+                            <constraint firstItem="Ano-fp-wYf" firstAttribute="trailing" secondItem="P38-je-mck" secondAttribute="trailing" constant="140" id="chW-A4-4rV"/>
+                            <constraint firstItem="P38-je-mck" firstAttribute="top" secondItem="Ano-fp-wYf" secondAttribute="top" constant="15" id="gRS-fb-09g"/>
                             <constraint firstItem="pRv-UE-A8z" firstAttribute="top" secondItem="ROk-xi-rEC" secondAttribute="bottom" constant="8" symbolic="YES" id="gaQ-mh-tHk"/>
                             <constraint firstItem="wD4-cu-cza" firstAttribute="top" secondItem="uve-MO-0Rk" secondAttribute="bottom" constant="37" id="hye-p2-K3D"/>
                             <constraint firstItem="hgX-hf-lze" firstAttribute="leading" secondItem="Ano-fp-wYf" secondAttribute="leading" constant="20" id="iNI-KV-7gz"/>
                             <constraint firstItem="lBh-29-FCy" firstAttribute="top" secondItem="Kf4-VA-yD1" secondAttribute="bottom" constant="8" symbolic="YES" id="jUi-t2-EAJ"/>
                             <constraint firstItem="Kf4-VA-yD1" firstAttribute="top" secondItem="4PQ-f0-SCb" secondAttribute="bottom" constant="8" symbolic="YES" id="kSR-F0-0wc"/>
                             <constraint firstItem="hgX-hf-lze" firstAttribute="top" secondItem="wD4-cu-cza" secondAttribute="bottom" constant="20" id="lFZ-zm-iKY"/>
+                            <constraint firstItem="P38-je-mck" firstAttribute="leading" secondItem="Ano-fp-wYf" secondAttribute="leading" constant="140" id="omz-Nq-3U8"/>
                             <constraint firstItem="Ano-fp-wYf" firstAttribute="trailing" secondItem="hgX-hf-lze" secondAttribute="trailing" constant="20" id="pAl-hU-jkp"/>
                             <constraint firstItem="ROk-xi-rEC" firstAttribute="leading" secondItem="Ano-fp-wYf" secondAttribute="leading" constant="20" id="sYA-l5-K45"/>
                             <constraint firstItem="Ano-fp-wYf" firstAttribute="trailing" secondItem="ROk-xi-rEC" secondAttribute="trailing" constant="20" id="xld-Pm-C9x"/>
@@ -198,6 +223,7 @@
                         <outlet property="emailField" destination="4PQ-f0-SCb" id="VOs-KS-UwM"/>
                         <outlet property="errorLabel" destination="hgX-hf-lze" id="PvE-d2-zDc"/>
                         <outlet property="firstNameField" destination="ROk-xi-rEC" id="2XZ-Kk-k8u"/>
+                        <outlet property="imageView" destination="P38-je-mck" id="gvR-Qx-PNN"/>
                         <outlet property="lastNameField" destination="pRv-UE-A8z" id="CRN-WP-rHg"/>
                         <outlet property="passwordField" destination="Kf4-VA-yD1" id="g6x-wx-T9d"/>
                         <outlet property="repeatPasswordField" destination="lBh-29-FCy" id="7ZC-8g-QvK"/>
@@ -1139,6 +1165,7 @@
         <image name="arrowshape.backward.fill" catalog="system" width="128" height="104"/>
         <image name="camera" catalog="system" width="128" height="93"/>
         <image name="gearshape" catalog="system" width="128" height="123"/>
+        <image name="icon.png" width="500" height="500"/>
         <image name="pencil" catalog="system" width="128" height="113"/>
         <image name="person.2" catalog="system" width="128" height="82"/>
         <image name="person.circle" catalog="system" width="128" height="123"/>
