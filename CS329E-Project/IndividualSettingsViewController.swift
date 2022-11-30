@@ -118,9 +118,20 @@ class IndividualSettingsViewController: UIViewController {
         
         let save = UIAlertAction(title: "Save", style: .default) { (alertAction) in
             let textField = controller.textFields![0] as UITextField
-            if textField.text != ""{
-                DEFAULT_NOTIFICATION_WAIT_TIME_MINS = UInt64(textField.text!)!
-                self.setNotificationLabel()
+            if textField.text != "" {
+                // validate input, only allow numbers
+                let allowedCharacters = "1234567890"
+                let allowedCharacterSet = CharacterSet(charactersIn: allowedCharacters)
+                let typedCharacterSet = CharacterSet(charactersIn: textField.text!)
+                
+                if allowedCharacterSet.isSuperset(of: typedCharacterSet) {
+                    // valid input
+                    DEFAULT_NOTIFICATION_WAIT_TIME_MINS = UInt64(textField.text!)!
+                    self.setNotificationLabel()
+                } else {
+                    // invalid input
+                    self.displayError(errorMessage: "Please enter a valid delay")
+                }
             }
         }
 
@@ -372,6 +383,22 @@ class IndividualSettingsViewController: UIViewController {
                 print("Group documented deleted")
             }
         }
+    }
+        
+    func displayError(errorTitle: String = "Error", errorMessage: String, unwind: Bool = false) {
+        let errorController = UIAlertController (
+            title: errorTitle,
+            message: errorMessage,
+            preferredStyle: .alert)
+        errorController.addAction(UIAlertAction(
+            title: "OK",
+            style: .default,
+            handler: { action in
+                if unwind {
+                    self.navigationController?.popToRootViewController(animated: true)
+                }
+            }))
+        present(errorController, animated: true)
     }
 }
 
