@@ -32,7 +32,11 @@ class GroupSettingsViewController: UIViewController, UITableViewDelegate, UITabl
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        //Adding unique font
+        UILabel.appearance().substituteFontName = "Avenir Next";
+        UITextView.appearance().substituteFontName = "Avenir Next";
+        UITextField.appearance().substituteFontName = "Avenir Next";
+
         tableView.delegate = self
         tableView.dataSource = self
         

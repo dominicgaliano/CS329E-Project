@@ -20,7 +20,10 @@ class LoginPageViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        //Adding unique font
+        UILabel.appearance().substituteFontName = "Avenir Next";
+        UITextView.appearance().substituteFontName = "Avenir Next";
+        UITextField.appearance().substituteFontName = "Avenir Next";
         // Make password entry hidden
         passwordField.isSecureTextEntry = true
         
@@ -150,3 +153,4 @@ class LoginPageViewController: UIViewController, UITextFieldDelegate {
         present(errorController, animated: true)
     }
 }
+

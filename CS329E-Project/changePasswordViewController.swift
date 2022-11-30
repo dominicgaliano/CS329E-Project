@@ -18,6 +18,11 @@ class changePasswordViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //Adding unique font
+        UILabel.appearance().substituteFontName = "Avenir Next";
+        UITextView.appearance().substituteFontName = "Avenir Next";
+        UITextField.appearance().substituteFontName = "Avenir Next";
+        UIButton.appearance().substituteFontName = "Avenir Next";
         
         // Do any additional setup after loading the view.
     }
@@ -65,3 +70,90 @@ class changePasswordViewController: UIViewController {
         }
     }
 }
+extension UILabel {
+    @objc var substituteFontName : String {
+        get {
+            return self.font.fontName;
+        }
+        set {
+            let fontNameToTest = self.font.fontName.lowercased();
+            var fontName = newValue;
+            if fontNameToTest.range(of: "bold") != nil {
+                fontName += "-Bold";
+            } else if fontNameToTest.range(of: "medium") != nil {
+                fontName += "-Medium";
+            } else if fontNameToTest.range(of: "light") != nil {
+                fontName += "-Light";
+            } else if fontNameToTest.range(of: "ultralight") != nil {
+                fontName += "-UltraLight";
+            }
+            self.font = UIFont(name: fontName, size: self.font.pointSize)
+        }
+    }
+}
+
+extension UITextView {
+    @objc var substituteFontName : String {
+        get {
+            return self.font?.fontName ?? "";
+        }
+        set {
+            let fontNameToTest = self.font?.fontName.lowercased() ?? "";
+            var fontName = newValue;
+            if fontNameToTest.range(of: "bold") != nil {
+                fontName += "-Bold";
+            } else if fontNameToTest.range(of: "medium") != nil {
+                fontName += "-Medium";
+            } else if fontNameToTest.range(of: "light") != nil {
+                fontName += "-Light";
+            } else if fontNameToTest.range(of: "ultralight") != nil {
+                fontName += "-UltraLight";
+            }
+            self.font = UIFont(name: fontName, size: self.font?.pointSize ?? 17)
+        }
+    }
+}
+
+extension UITextField {
+    @objc var substituteFontName : String {
+        get {
+            return self.font?.fontName ?? "";
+        }
+        set {
+            let fontNameToTest = self.font?.fontName.lowercased() ?? "";
+            var fontName = newValue;
+            if fontNameToTest.range(of: "bold") != nil {
+                fontName += "-Bold";
+            } else if fontNameToTest.range(of: "medium") != nil {
+                fontName += "-Medium";
+            } else if fontNameToTest.range(of: "light") != nil {
+                fontName += "-Light";
+            } else if fontNameToTest.range(of: "ultralight") != nil {
+                fontName += "-UltraLight";
+            }
+            self.font = UIFont(name: fontName, size: self.font?.pointSize ?? 17)
+        }
+    }
+}
+extension UIButton {
+    @objc var substituteFontName : String {
+        get {
+            return self.titleLabel?.font?.fontName ?? "";
+        }
+        set {
+            let fontNameToTest = self.titleLabel?.font?.fontName ?? "";
+            var fontName = newValue;
+            if fontNameToTest.range(of: "bold") != nil {
+                fontName += "-Bold";
+            } else if fontNameToTest.range(of: "medium") != nil {
+                fontName += "-Medium";
+            } else if fontNameToTest.range(of: "light") != nil {
+                fontName += "-Light";
+            } else if fontNameToTest.range(of: "ultralight") != nil {
+                fontName += "-UltraLight";
+            }
+            self.titleLabel?.font = UIFont(name: fontName, size: self.titleLabel?.font?.pointSize ?? 17)
+        }
+    }
+}
+

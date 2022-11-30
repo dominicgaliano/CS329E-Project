@@ -21,6 +21,10 @@ final class ChoresViewController: DayViewController, EKEventEditViewDelegate {
         requestAccessToCalendar()
         // Subscribe to notifications to reload the UI when
         subscribeToNotifications()
+        //Adding unique font
+        UILabel.appearance().substituteFontName = "Avenir Next";
+        UITextView.appearance().substituteFontName = "Avenir Next";
+        UITextField.appearance().substituteFontName = "Avenir Next";
     }
     
     @IBAction func addEventPress(_ sender: Any) {

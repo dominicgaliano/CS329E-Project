@@ -26,6 +26,10 @@ class GroupSelectorViewController: UIViewController, UITableViewDelegate, UITabl
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        //Adding unique font
+        UILabel.appearance().substituteFontName = "Avenir Next";
+        UITextView.appearance().substituteFontName = "Avenir Next";
+        UITextField.appearance().substituteFontName = "Avenir Next";
         addIcon()
     }
     
@@ -96,7 +100,8 @@ class GroupSelectorViewController: UIViewController, UITableViewDelegate, UITabl
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let row = indexPath.row
         let cell = tableView.dequeueReusableCell(withIdentifier: "GroupCell", for: indexPath)
-        cell.textLabel?.font = UIFont.systemFont(ofSize: 20)
+        cell.accessoryType = .disclosureIndicator
+        cell.textLabel?.font = UIFont.systemFont(ofSize: 25)
         cell.textLabel?.text = userGroups[row].1
         cell.textLabel?.numberOfLines = 0
         return cell

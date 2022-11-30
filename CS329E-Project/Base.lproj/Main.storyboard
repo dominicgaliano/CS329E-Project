@@ -674,24 +674,24 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="SYj-mY-ngZ">
-                                <rect key="frame" x="51" y="103" width="328" height="517"/>
+                                <rect key="frame" x="20" y="103" width="390" height="517"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="sectionIndexColor" systemColor="systemCyanColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="GroupCell" id="TqI-eM-wx0">
-                                        <rect key="frame" x="0.0" y="50" width="328" height="43.666667938232422"/>
+                                        <rect key="frame" x="0.0" y="50" width="390" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="TqI-eM-wx0" id="RDd-Fb-NRN">
-                                            <rect key="frame" x="0.0" y="0.0" width="328" height="43.666667938232422"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="43.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VK8-1y-dXb">
-                                <rect key="frame" x="0.0" y="685" width="430" height="50"/>
+                                <rect key="frame" x="20" y="628" width="390" height="65"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="y32-f3-OpO"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="65" id="xAg-q1-8vG"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="tinted" title="Create Group"/>
@@ -699,22 +699,11 @@
                                     <segue destination="bAD-NT-xZg" kind="show" identifier="CreateGroupSegue" id="Gms-Sl-PHv"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dRo-8l-fT4">
-                                <rect key="frame" x="0.0" y="735" width="430" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="Tv8-M4-QCC"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Join Group"/>
-                                <connections>
-                                    <segue destination="8dK-h4-TBI" kind="show" identifier="JoinGroupSegue" id="4UE-u7-yuH"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zhu-9y-z8u" colorLabel="IBBuiltInLabel-Green">
-                                <rect key="frame" x="0.0" y="785" width="430" height="50"/>
+                                <rect key="frame" x="20" y="701" width="390" height="65"/>
                                 <color key="backgroundColor" systemColor="systemGreenColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="cEw-D5-RS4"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="65" id="gbh-IA-kyg"/>
                                 </constraints>
                                 <color key="tintColor" systemColor="systemGreenColor"/>
                                 <state key="normal" title="Button"/>
@@ -725,25 +714,35 @@
                                     <segue destination="PAw-tJ-I6Y" kind="show" id="c8j-LN-TX3"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dRo-8l-fT4">
+                                <rect key="frame" x="20" y="774" width="390" height="65"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="65" id="pyd-nU-wit"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Join Group"/>
+                                <connections>
+                                    <segue destination="8dK-h4-TBI" kind="show" identifier="JoinGroupSegue" id="4UE-u7-yuH"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="CBT-1s-lXs"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="dRo-8l-fT4" firstAttribute="top" secondItem="VK8-1y-dXb" secondAttribute="bottom" id="0cm-dT-nvd"/>
-                            <constraint firstItem="SYj-mY-ngZ" firstAttribute="top" secondItem="CBT-1s-lXs" secondAttribute="top" id="6QS-uh-qjG"/>
-                            <constraint firstItem="zhu-9y-z8u" firstAttribute="trailing" secondItem="CBT-1s-lXs" secondAttribute="trailing" id="Ce4-5M-zEl"/>
-                            <constraint firstItem="VK8-1y-dXb" firstAttribute="centerX" secondItem="dRo-8l-fT4" secondAttribute="centerX" id="NUS-l2-8BZ"/>
-                            <constraint firstItem="CBT-1s-lXs" firstAttribute="trailing" secondItem="SYj-mY-ngZ" secondAttribute="trailing" constant="51" id="R7H-VD-b7Z"/>
-                            <constraint firstItem="zhu-9y-z8u" firstAttribute="top" secondItem="dRo-8l-fT4" secondAttribute="bottom" id="TWe-bQ-z90"/>
-                            <constraint firstItem="VK8-1y-dXb" firstAttribute="leading" secondItem="CBT-1s-lXs" secondAttribute="leading" id="V0p-4D-MuM"/>
-                            <constraint firstItem="CBT-1s-lXs" firstAttribute="trailing" secondItem="zhu-9y-z8u" secondAttribute="trailing" id="eok-j2-xtO"/>
-                            <constraint firstItem="CBT-1s-lXs" firstAttribute="trailing" secondItem="dRo-8l-fT4" secondAttribute="trailing" id="nzg-Hx-ypd"/>
-                            <constraint firstItem="VK8-1y-dXb" firstAttribute="top" secondItem="SYj-mY-ngZ" secondAttribute="bottom" constant="65" id="pHQ-yi-E6u"/>
-                            <constraint firstItem="SYj-mY-ngZ" firstAttribute="leading" secondItem="CBT-1s-lXs" secondAttribute="leading" constant="51" id="tn1-7f-Kve"/>
-                            <constraint firstItem="CBT-1s-lXs" firstAttribute="bottom" secondItem="SYj-mY-ngZ" secondAttribute="bottom" constant="229" id="uRk-0R-YlG"/>
-                            <constraint firstItem="CBT-1s-lXs" firstAttribute="trailing" secondItem="VK8-1y-dXb" secondAttribute="trailing" id="w15-R4-SIr"/>
-                            <constraint firstItem="zhu-9y-z8u" firstAttribute="leading" secondItem="CBT-1s-lXs" secondAttribute="leading" id="zLR-Ql-6th"/>
-                            <constraint firstItem="dRo-8l-fT4" firstAttribute="leading" secondItem="CBT-1s-lXs" secondAttribute="leading" id="zf7-3A-aMO"/>
+                            <constraint firstItem="SYj-mY-ngZ" firstAttribute="leading" secondItem="CBT-1s-lXs" secondAttribute="leading" constant="20" id="0F9-5P-fdk"/>
+                            <constraint firstItem="VK8-1y-dXb" firstAttribute="leading" secondItem="SYj-mY-ngZ" secondAttribute="leading" id="2OW-iS-c5x"/>
+                            <constraint firstAttribute="bottom" secondItem="VK8-1y-dXb" secondAttribute="bottom" constant="239" id="8ht-Fn-aDx"/>
+                            <constraint firstItem="VK8-1y-dXb" firstAttribute="trailing" secondItem="zhu-9y-z8u" secondAttribute="trailing" id="9Qh-NR-ZGQ"/>
+                            <constraint firstItem="VK8-1y-dXb" firstAttribute="leading" secondItem="dRo-8l-fT4" secondAttribute="leading" id="9le-gH-Ljk"/>
+                            <constraint firstItem="zhu-9y-z8u" firstAttribute="top" secondItem="VK8-1y-dXb" secondAttribute="bottom" constant="8" id="BdB-V6-Nef"/>
+                            <constraint firstItem="VK8-1y-dXb" firstAttribute="trailing" secondItem="SYj-mY-ngZ" secondAttribute="trailing" id="ICZ-wU-blT"/>
+                            <constraint firstItem="VK8-1y-dXb" firstAttribute="top" secondItem="SYj-mY-ngZ" secondAttribute="bottom" constant="8" symbolic="YES" id="OLk-oT-MUy"/>
+                            <constraint firstItem="VK8-1y-dXb" firstAttribute="top" secondItem="SYj-mY-ngZ" secondAttribute="bottom" constant="8" id="RGz-ca-tDT"/>
+                            <constraint firstItem="SYj-mY-ngZ" firstAttribute="top" secondItem="CBT-1s-lXs" secondAttribute="top" id="SPC-zK-m0L"/>
+                            <constraint firstItem="CBT-1s-lXs" firstAttribute="trailing" secondItem="SYj-mY-ngZ" secondAttribute="trailing" constant="20" id="Skg-Fq-xDk"/>
+                            <constraint firstItem="dRo-8l-fT4" firstAttribute="top" secondItem="zhu-9y-z8u" secondAttribute="bottom" constant="8" symbolic="YES" id="fDC-dL-9x7"/>
+                            <constraint firstItem="VK8-1y-dXb" firstAttribute="leading" secondItem="zhu-9y-z8u" secondAttribute="leading" id="fjA-sJ-RS4"/>
+                            <constraint firstItem="VK8-1y-dXb" firstAttribute="trailing" secondItem="dRo-8l-fT4" secondAttribute="trailing" id="kxK-VB-1Gz"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
@@ -1141,7 +1140,7 @@
         <image name="gearshape" catalog="system" width="128" height="123"/>
         <image name="pencil" catalog="system" width="128" height="113"/>
         <image name="person.2" catalog="system" width="128" height="82"/>
-        <image name="person.circle" catalog="system" width="128" height="123"/>
+        <image name="person.circle" catalog="system" width="32" height="32"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
