@@ -107,6 +107,8 @@ class IndividualSettingsViewController: UIViewController {
         NOTIFICATIONS_PERMITTED = !NOTIFICATIONS_PERMITTED
     }
     
+    // TODO - Implement Input Validation
+    // TODO - Make this text entry use the number keyboard
     @IBAction func changeNotificationButton(_ sender: Any) {
         
         let controller = UIAlertController(
