@@ -45,6 +45,7 @@ class ScannerViewController: UIViewController {
         UILabel.appearance().substituteFontName = "Avenir Next";
         UITextView.appearance().substituteFontName = "Avenir Next";
         UITextField.appearance().substituteFontName = "Avenir Next";
+        UIButton.appearance().substituteFontName = "Avenir Next";
         // Get the back-facing camera for capturing videos
         guard let captureDevice = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .back) else {
             print("Failed to get the camera device")

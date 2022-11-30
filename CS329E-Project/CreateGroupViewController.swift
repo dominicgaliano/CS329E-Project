@@ -25,6 +25,7 @@ class CreateGroupViewController: UIViewController{
         UILabel.appearance().substituteFontName = "Avenir Next";
         UITextView.appearance().substituteFontName = "Avenir Next";
         UITextField.appearance().substituteFontName = "Avenir Next";
+        UIButton.appearance().substituteFontName = "Avenir Next";
         
     }
     

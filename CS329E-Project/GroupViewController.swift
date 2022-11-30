@@ -55,6 +55,7 @@ class GroupViewController: UIViewController, UITableViewDelegate, UITableViewDat
         UILabel.appearance().substituteFontName = "Avenir Next";
         UITextView.appearance().substituteFontName = "Avenir Next";
         UITextField.appearance().substituteFontName = "Avenir Next";
+        UIButton.appearance().substituteFontName = "Avenir Next";
         
         // request user for permission to send notifications
         UNUserNotificationCenter.current().requestAuthorization(options: .alert) {

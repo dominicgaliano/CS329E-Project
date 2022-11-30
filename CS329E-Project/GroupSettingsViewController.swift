@@ -36,6 +36,7 @@ class GroupSettingsViewController: UIViewController, UITableViewDelegate, UITabl
         UILabel.appearance().substituteFontName = "Avenir Next";
         UITextView.appearance().substituteFontName = "Avenir Next";
         UITextField.appearance().substituteFontName = "Avenir Next";
+        UIButton.appearance().substituteFontName = "Avenir Next";
 
         tableView.delegate = self
         tableView.dataSource = self

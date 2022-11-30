@@ -30,6 +30,7 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
         UILabel.appearance().substituteFontName = "Avenir Next";
         UITextView.appearance().substituteFontName = "Avenir Next";
         UITextField.appearance().substituteFontName = "Avenir Next";
+        UIButton.appearance().substituteFontName = "Avenir Next";
         // Hide password fields
         passwordField.isSecureTextEntry = true
         repeatPasswordField.isSecureTextEntry = true

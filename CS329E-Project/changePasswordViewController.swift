@@ -70,6 +70,8 @@ class changePasswordViewController: UIViewController {
         }
     }
 }
+
+//Extensions for changing the font size of all view controllers
 extension UILabel {
     @objc var substituteFontName : String {
         get {

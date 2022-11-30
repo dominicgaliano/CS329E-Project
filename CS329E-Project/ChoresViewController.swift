@@ -25,6 +25,7 @@ final class ChoresViewController: DayViewController, EKEventEditViewDelegate {
         UILabel.appearance().substituteFontName = "Avenir Next";
         UITextView.appearance().substituteFontName = "Avenir Next";
         UITextField.appearance().substituteFontName = "Avenir Next";
+        UIButton.appearance().substituteFontName = "Avenir Next";
     }
     
     @IBAction func addEventPress(_ sender: Any) {

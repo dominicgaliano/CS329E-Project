@@ -30,6 +30,7 @@ class GroupSelectorViewController: UIViewController, UITableViewDelegate, UITabl
         UILabel.appearance().substituteFontName = "Avenir Next";
         UITextView.appearance().substituteFontName = "Avenir Next";
         UITextField.appearance().substituteFontName = "Avenir Next";
+        UIButton.appearance().substituteFontName = "Avenir Next";
         addIcon()
     }
     

@@ -37,6 +37,7 @@ class JoinGroupViewController: UIViewController, fillGroupCode {
         UILabel.appearance().substituteFontName = "Avenir Next";
         UITextView.appearance().substituteFontName = "Avenir Next";
         UITextField.appearance().substituteFontName = "Avenir Next";
+        UIButton.appearance().substituteFontName = "Avenir Next";
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
