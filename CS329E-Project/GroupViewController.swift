@@ -23,7 +23,9 @@ class GroupMessage {
         self.displayName = displayName
         self.messageContent = messageContent
         self.messageTimestamp = messageTimestamp
-        dateFormatter.dateFormat = "MMM d, hh:mm"
+        dateFormatter.dateFormat = "MMM d, hh:mm a"
+        dateFormatter.amSymbol = "AM"
+        dateFormatter.pmSymbol = "PM"
     }
     
     func displayAsString() -> String {

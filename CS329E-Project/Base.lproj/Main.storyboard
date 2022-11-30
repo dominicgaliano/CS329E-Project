@@ -728,30 +728,27 @@
                                     <segue destination="bAD-NT-xZg" kind="show" identifier="CreateGroupSegue" id="Gms-Sl-PHv"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zhu-9y-z8u" colorLabel="IBBuiltInLabel-Green">
-                                <rect key="frame" x="20" y="701" width="390" height="65"/>
-                                <color key="backgroundColor" systemColor="systemGreenColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="65" id="gbh-IA-kyg"/>
-                                </constraints>
-                                <color key="tintColor" systemColor="systemGreenColor"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Event Schedule" titleAlignment="center">
-                                    <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <segue destination="PAw-tJ-I6Y" kind="show" id="c8j-LN-TX3"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dRo-8l-fT4">
                                 <rect key="frame" x="20" y="774" width="390" height="65"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="65" id="pyd-nU-wit"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Join Group"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Join Group">
+                                    <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
+                                </buttonConfiguration>
                                 <connections>
                                     <segue destination="8dK-h4-TBI" kind="show" identifier="JoinGroupSegue" id="4UE-u7-yuH"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="baV-Oi-oz3">
+                                <rect key="frame" x="20" y="701" width="390" height="65"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Event Schedule">
+                                    <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <segue destination="PAw-tJ-I6Y" kind="show" id="EyD-I3-FON"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -760,18 +757,19 @@
                         <constraints>
                             <constraint firstItem="SYj-mY-ngZ" firstAttribute="leading" secondItem="CBT-1s-lXs" secondAttribute="leading" constant="20" id="0F9-5P-fdk"/>
                             <constraint firstItem="VK8-1y-dXb" firstAttribute="leading" secondItem="SYj-mY-ngZ" secondAttribute="leading" id="2OW-iS-c5x"/>
-                            <constraint firstAttribute="bottom" secondItem="VK8-1y-dXb" secondAttribute="bottom" constant="239" id="8ht-Fn-aDx"/>
-                            <constraint firstItem="VK8-1y-dXb" firstAttribute="trailing" secondItem="zhu-9y-z8u" secondAttribute="trailing" id="9Qh-NR-ZGQ"/>
+                            <constraint firstItem="baV-Oi-oz3" firstAttribute="top" secondItem="VK8-1y-dXb" secondAttribute="bottom" constant="8" symbolic="YES" id="8eY-gx-mNC"/>
                             <constraint firstItem="VK8-1y-dXb" firstAttribute="leading" secondItem="dRo-8l-fT4" secondAttribute="leading" id="9le-gH-Ljk"/>
-                            <constraint firstItem="zhu-9y-z8u" firstAttribute="top" secondItem="VK8-1y-dXb" secondAttribute="bottom" constant="8" id="BdB-V6-Nef"/>
                             <constraint firstItem="VK8-1y-dXb" firstAttribute="trailing" secondItem="SYj-mY-ngZ" secondAttribute="trailing" id="ICZ-wU-blT"/>
+                            <constraint firstItem="CBT-1s-lXs" firstAttribute="bottom" secondItem="dRo-8l-fT4" secondAttribute="bottom" constant="10" id="JXZ-CO-IPY"/>
                             <constraint firstItem="VK8-1y-dXb" firstAttribute="top" secondItem="SYj-mY-ngZ" secondAttribute="bottom" constant="8" symbolic="YES" id="OLk-oT-MUy"/>
                             <constraint firstItem="VK8-1y-dXb" firstAttribute="top" secondItem="SYj-mY-ngZ" secondAttribute="bottom" constant="8" id="RGz-ca-tDT"/>
+                            <constraint firstItem="baV-Oi-oz3" firstAttribute="width" secondItem="dRo-8l-fT4" secondAttribute="width" id="RTs-CP-Cnf"/>
                             <constraint firstItem="SYj-mY-ngZ" firstAttribute="top" secondItem="CBT-1s-lXs" secondAttribute="top" id="SPC-zK-m0L"/>
                             <constraint firstItem="CBT-1s-lXs" firstAttribute="trailing" secondItem="SYj-mY-ngZ" secondAttribute="trailing" constant="20" id="Skg-Fq-xDk"/>
-                            <constraint firstItem="dRo-8l-fT4" firstAttribute="top" secondItem="zhu-9y-z8u" secondAttribute="bottom" constant="8" symbolic="YES" id="fDC-dL-9x7"/>
-                            <constraint firstItem="VK8-1y-dXb" firstAttribute="leading" secondItem="zhu-9y-z8u" secondAttribute="leading" id="fjA-sJ-RS4"/>
+                            <constraint firstItem="dRo-8l-fT4" firstAttribute="top" secondItem="baV-Oi-oz3" secondAttribute="bottom" constant="8" symbolic="YES" id="ZZL-Rq-f6d"/>
+                            <constraint firstItem="baV-Oi-oz3" firstAttribute="centerX" secondItem="CBT-1s-lXs" secondAttribute="centerX" id="eps-dz-fPq"/>
                             <constraint firstItem="VK8-1y-dXb" firstAttribute="trailing" secondItem="dRo-8l-fT4" secondAttribute="trailing" id="kxK-VB-1Gz"/>
+                            <constraint firstItem="baV-Oi-oz3" firstAttribute="height" secondItem="dRo-8l-fT4" secondAttribute="height" id="lca-ju-VCu"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
@@ -814,7 +812,7 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F0Z-jT-qJe">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" role="primary" translatesAutoresizingMaskIntoConstraints="NO" id="F0Z-jT-qJe">
                                 <rect key="frame" x="20" y="628" width="390" height="65"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="65" id="kJa-fn-uI8"/>
@@ -825,7 +823,7 @@
                                     <action selector="addButton:" destination="Kec-Bv-9AQ" eventType="touchUpInside" id="OgR-xG-8CK"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GSZ-UZ-MO0">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" role="destructive" translatesAutoresizingMaskIntoConstraints="NO" id="GSZ-UZ-MO0">
                                 <rect key="frame" x="20" y="701" width="390" height="65"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="65" id="b9n-M4-cfR"/>
@@ -836,7 +834,7 @@
                                     <action selector="deleteChecked:" destination="Kec-Bv-9AQ" eventType="touchUpInside" id="WY1-LT-Lfm"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K2u-WI-rNy">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" role="destructive" translatesAutoresizingMaskIntoConstraints="NO" id="K2u-WI-rNy">
                                 <rect key="frame" x="20" y="774" width="390" height="65"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="65" id="gdn-Ud-8OM"/>
@@ -897,7 +895,7 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6a3-ly-fNq">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" role="primary" translatesAutoresizingMaskIntoConstraints="NO" id="6a3-ly-fNq">
                                 <rect key="frame" x="20" y="774" width="390" height="65"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="65" id="76H-up-vDt"/>
