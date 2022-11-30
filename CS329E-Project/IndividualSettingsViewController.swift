@@ -107,8 +107,6 @@ class IndividualSettingsViewController: UIViewController {
         NOTIFICATIONS_PERMITTED = !NOTIFICATIONS_PERMITTED
     }
     
-    // TODO - Implement Input Validation
-    // TODO - Make this text entry use the number keyboard
     @IBAction func changeNotificationButton(_ sender: Any) {
         
         let controller = UIAlertController(
@@ -268,11 +266,18 @@ class IndividualSettingsViewController: UIViewController {
         // get user info
         guard let uid = Auth.auth().currentUser?.uid else {return}
         
+        // define queue
+        let queue = DispatchQueue.global()
+        
         // delete user data
-        deleteUserData(uid)
+        queue.sync {
+            deleteUserData(uid)
+        }
         
         // delete user
-        deleteUser()
+        queue.sync {
+            deleteUser()
+        }
     }
     
     func deleteUserData(_ uid: String) {
@@ -403,8 +408,6 @@ class IndividualSettingsViewController: UIViewController {
 }
 
 // User profile picture implemented here
-// TODO: Get profile picture to stay
-// TODO: Connect to user profile via firebase
 extension IndividualSettingsViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func presentPhotoActionSheet() {
