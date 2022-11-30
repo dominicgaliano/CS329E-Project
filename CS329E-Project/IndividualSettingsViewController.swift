@@ -65,6 +65,14 @@ class IndividualSettingsViewController: UIViewController {
         }
         
     }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        //Adding unique font
+        UILabel.appearance().substituteFontName = "Avenir Next";
+        UITextView.appearance().substituteFontName = "Avenir Next";
+        UITextField.appearance().substituteFontName = "Avenir Next";
+        UIButton.appearance().substituteFontName = "Avenir Next";
+    }
     
     // Change Profile Picture Button
     @IBAction func changePictureButtonPressed(_ sender: Any) {
@@ -258,8 +266,6 @@ class IndividualSettingsViewController: UIViewController {
                 }
                 return
             }
-            
-            // logout
             self.performLogout()
         }
     }

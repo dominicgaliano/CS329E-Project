@@ -39,7 +39,14 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
         tableView.delegate = self
         tableView.dataSource = self
         
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+
+        //Adding unique font
+        UILabel.appearance().substituteFontName = "Avenir Next";
+        UITextView.appearance().substituteFontName = "Avenir Next";
+        UITextField.appearance().substituteFontName = "Avenir Next";
+        UIButton.appearance().substituteFontName = "Avenir Next";
+        
+        self.navigationItem.rightBarButtonItem = self.editButtonItem
         self.shoppingListItems = []
         addIcon()
     }
