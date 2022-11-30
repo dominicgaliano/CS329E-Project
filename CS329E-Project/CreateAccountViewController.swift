@@ -19,6 +19,7 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var repeatPasswordField:UITextField!
     // TODO: Replace with alert
     @IBOutlet weak var errorLabel: UILabel!
+    @IBOutlet weak var imageView: UIImageView!
     
     // establish db connection
     let db = Firestore.firestore()

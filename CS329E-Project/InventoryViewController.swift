@@ -23,7 +23,7 @@ class InventoryViewController: UIViewController, UITableViewDelegate, UITableVie
         tableView.delegate = self
         tableView.dataSource = self
         
-        self.navigationItem.rightBarButtonItem = self.editButtonItem
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem
         addIcon()
         //Adding unique font
         UILabel.appearance().substituteFontName = "Avenir Next";

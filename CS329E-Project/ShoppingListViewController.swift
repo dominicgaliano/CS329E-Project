@@ -39,6 +39,7 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
         tableView.delegate = self
         tableView.dataSource = self
         
+
         //Adding unique font
         UILabel.appearance().substituteFontName = "Avenir Next";
         UITextView.appearance().substituteFontName = "Avenir Next";
