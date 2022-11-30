@@ -107,14 +107,27 @@ class IndividualSettingsViewController: UIViewController {
         NOTIFICATIONS_PERMITTED = !NOTIFICATIONS_PERMITTED
     }
     
-    // TODO: Implement <- this might need to be stored in user defaults
-    @IBAction func changeNotificationDelayButtonPressed(_ sender: Any) {
-        // First ask the user for a time in minutes somehow, need to validate the input is an positive integer
+    @IBAction func changeNotificationButton(_ sender: Any) {
         
-        // Set store result in DEFAULT_NOTIFICATION_WAIT_TIME_MINS
+        let controller = UIAlertController(
+            title: "Set Notification Delay",
+            message: "Delay is in minutes",
+            preferredStyle: .alert)
         
-        // change label
-        setNotificationLabel()
+        let save = UIAlertAction(title: "Save", style: .default) { (alertAction) in
+            let textField = controller.textFields![0] as UITextField
+            if textField.text != ""{
+                DEFAULT_NOTIFICATION_WAIT_TIME_MINS = UInt64(textField.text!)!
+                self.setNotificationLabel()
+            }
+        }
+
+        controller.addTextField { (textField) in
+            textField.placeholder = "Minutes"}
+        controller.addAction(UIAlertAction(title: "Cancel", style: .default) { (alertAction) in })
+        controller.addAction(save)
+        
+        self.present(controller, animated:true, completion: nil)
     }
     
     // get user profile picture
