@@ -46,7 +46,6 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
         UITextField.appearance().substituteFontName = "American Typewriter";
         UIButton.appearance().substituteFontName = "American Typewriter";
         
-        self.navigationItem.rightBarButtonItem = self.editButtonItem
         self.shoppingListItems = []
         addIcon()
     }
