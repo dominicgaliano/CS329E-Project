@@ -119,8 +119,7 @@ class GroupViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func reloadMessages(groupIdentifier: String) {
-        let messagesRef = db.collection("groups").document(groupIdentifier).collection("messages")
-        messagesRef.order(by: "time", descending: true).limit(to: 100)
+        let messagesRef = db.collection("groups").document(groupIdentifier).collection("messages").order(by: "time", descending: true).limit(to: 100)
         messagesRef.getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
