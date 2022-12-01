@@ -1125,7 +1125,7 @@
                                     <constraint firstAttribute="height" constant="90" id="iVb-6D-bH6"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.60000002384185791" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No QR code is detected" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iVV-wt-Nyk" userLabel="Message Label">
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.60000002384185791" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No group identifier is detected" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iVV-wt-Nyk" userLabel="Message Label">
                                 <rect key="frame" x="0.0" y="858" width="430" height="40"/>
                                 <color key="backgroundColor" systemColor="systemGray2Color"/>
                                 <constraints>

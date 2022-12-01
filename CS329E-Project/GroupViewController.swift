@@ -280,6 +280,11 @@ class GroupViewController: UIViewController, UITableViewDelegate, UITableViewDat
         content.body = notificationMessage
         
         // define trigger
+        var DEFAULT_NOTIFICATION_WAIT_TIME_MINS:Int  = 1
+        let defaults = UserDefaults.standard
+        if defaults.object(forKey: "delay") != nil{
+            DEFAULT_NOTIFICATION_WAIT_TIME_MINS = defaults.integer(forKey: "delay")
+        }
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: Double(DEFAULT_NOTIFICATION_WAIT_TIME_MINS) * 60, repeats: false)
         
         // combine request

@@ -12,8 +12,6 @@ import FirebaseCore
 import FirebaseStorage
 import AVFoundation
 
-public var DEFAULT_NOTIFICATION_WAIT_TIME_MINS:UInt64 = 1
-
 let imageCache = NSCache<NSString, UIImage>()
 
 class IndividualSettingsViewController: UIViewController {
@@ -23,6 +21,8 @@ class IndividualSettingsViewController: UIViewController {
     @IBOutlet weak var darkModeSwitch: UISwitch!
     @IBOutlet weak var notificationsSwitch: UISwitch!
     @IBOutlet weak var notificationDelayLabel: UILabel!
+    var DEFAULT_NOTIFICATION_WAIT_TIME_MINS:Int  = 1
+
     
     // db connection
     let db = Firestore.firestore()
@@ -32,7 +32,10 @@ class IndividualSettingsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        let defaults = UserDefaults.standard
+        if defaults.object(forKey: "delay") != nil{
+            DEFAULT_NOTIFICATION_WAIT_TIME_MINS = defaults.integer(forKey: "delay")
+        }
         notificationDelayLabel.text = (DEFAULT_NOTIFICATION_WAIT_TIME_MINS > 1 ? "Notification Delay: \(DEFAULT_NOTIFICATION_WAIT_TIME_MINS) mins" : "Notification Delay: \(DEFAULT_NOTIFICATION_WAIT_TIME_MINS) min")
         
         addIcon()
@@ -45,10 +48,11 @@ class IndividualSettingsViewController: UIViewController {
         profilePicture.contentMode = .scaleAspectFill
         profilePicture.clipsToBounds = true
         
-        let defaults = UserDefaults.standard
+       
         if defaults.object(forKey: "state") != nil{
             darkModeSwitch.isOn = defaults.bool(forKey: "state")
         }
+        
         
         notificationsSwitch.isOn = NOTIFICATIONS_PERMITTED
         
@@ -126,7 +130,9 @@ class IndividualSettingsViewController: UIViewController {
                 
                 if allowedCharacterSet.isSuperset(of: typedCharacterSet) {
                     // valid input
-                    DEFAULT_NOTIFICATION_WAIT_TIME_MINS = UInt64(textField.text!)!
+                    var defaults = UserDefaults.standard
+                    defaults.set(UInt64(textField.text!)!, forKey: "delay")
+                    self.DEFAULT_NOTIFICATION_WAIT_TIME_MINS = Int(textField.text!)!
                     self.setNotificationLabel()
                 } else {
                     // invalid input
