@@ -178,8 +178,7 @@ class GroupViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
         
     }
-    @IBAction func myUnwindAction(unwindSegue: UIStoryboardSegue){
-    }
+
     
     // Adds message to database and local copy of messages
     func postMessage(messageContent: String, groupIdentifier: String, uid: String) {

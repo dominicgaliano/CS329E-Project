@@ -78,6 +78,7 @@ class GroupSelectorViewController: UIViewController, UITableViewDelegate, UITabl
             
         }
         
+        
         if #available(iOS 13.0, *) {
             let appDelegate = UIApplication.shared.windows.first
             if darkMode == true {
@@ -129,7 +130,8 @@ class GroupSelectorViewController: UIViewController, UITableViewDelegate, UITabl
             // TODO: can put something here if needed, but might be able to delete this
         }
     }
-    
+    @IBAction func unwindToGroup( _ seg: UIStoryboardSegue) {
+    }
     
     // Perform logout
     func performLogout() {

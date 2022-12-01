@@ -568,7 +568,7 @@
                         <outlet property="groupNameLabel" destination="7u1-2L-1Sy" id="eah-VL-Qm8"/>
                         <outlet property="qrCode" destination="gIR-jU-PzP" id="MxB-cM-9FK"/>
                         <outlet property="tableView" destination="z2r-5k-4Eq" id="pAx-GG-acO"/>
-                        <segue destination="fpX-df-Ncr" kind="unwind" identifier="UnwindSegue" unwindAction="myUnwindActionWithUnwindSegue:" id="IRC-EA-Afh"/>
+                        <segue destination="fpX-df-Ncr" kind="unwind" identifier="unwindToGroupID" unwindAction="unwindToGroup:" id="IRC-EA-Afh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CeE-zM-FdB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1220,7 +1220,7 @@
         <image name="icon.png" width="500" height="500"/>
         <image name="pencil" catalog="system" width="128" height="113"/>
         <image name="person.2" catalog="system" width="128" height="82"/>
-        <image name="person.circle" catalog="system" width="128" height="123"/>
+        <image name="person.circle" catalog="system" width="32" height="32"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

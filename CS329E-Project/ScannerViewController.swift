@@ -41,11 +41,7 @@ class ScannerViewController: UIViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        //Adding unique font
-        UILabel.appearance().substituteFontName = "American Typewriter";
-        UITextView.appearance().substituteFontName = "American Typewriter";
-        UITextField.appearance().substituteFontName = "American Typewriter";
-        UIButton.appearance().substituteFontName = "American Typewriter";
+
     }
     override func viewDidLoad() {
         super.viewDidLoad()

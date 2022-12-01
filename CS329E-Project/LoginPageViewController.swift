@@ -42,11 +42,7 @@ class LoginPageViewController: UIViewController, UITextFieldDelegate {
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        //Adding unique font
-        UILabel.appearance().substituteFontName = "American Typewriter";
-        UITextView.appearance().substituteFontName = "American Typewriter";
-        UITextField.appearance().substituteFontName = "American Typewriter";
-        UIButton.appearance().substituteFontName = "American Typewriter";
+
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -69,6 +65,8 @@ class LoginPageViewController: UIViewController, UITextFieldDelegate {
             appDelegate?.overrideUserInterfaceStyle = .light
             return
         }
+    }
+    @IBAction func unwindToLogin( _ seg: UIStoryboardSegue) {
     }
     
     // Called when 'return' key pressed

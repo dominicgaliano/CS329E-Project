@@ -28,11 +28,7 @@ class changePasswordViewController: UIViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        //Adding unique font
-        UILabel.appearance().substituteFontName = "American Typewriter";
-        UITextView.appearance().substituteFontName = "American Typewriter";
-        UITextField.appearance().substituteFontName = "American Typewriter";
-        UIButton.appearance().substituteFontName = "American Typewriter";
+
     }
     // Called when 'return' key pressed
     func textFieldShouldReturn(_ textField:UITextField) -> Bool {
