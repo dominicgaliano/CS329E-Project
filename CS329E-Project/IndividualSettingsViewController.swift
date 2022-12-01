@@ -238,6 +238,7 @@ class IndividualSettingsViewController: UIViewController {
         }
         resignController.addTextField { (passField) in
             passField.placeholder = "Enter Password"
+            passField.isSecureTextEntry = true
         }
         resignController.addAction(UIAlertAction(
             title: "OK",
