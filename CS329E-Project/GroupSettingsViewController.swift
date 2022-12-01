@@ -157,14 +157,22 @@ class GroupSettingsViewController: UIViewController, UITableViewDelegate, UITabl
     
     // leave group
     func leaveGroup(_ uid: String, _ groupID: String) {
-        // remove user from group doc
-        removeUserFromGroup(uid, groupID)
+        // define queue
+        let queue = DispatchQueue.global()
         
+        // remove user from group doc
+        queue.sync {
+            removeUserFromGroup(uid, groupID)
+        }
+            
         // remove group from user doc
-        removeGroupFromUserDoc(uid, groupID)
+        queue.sync {
+            removeGroupFromUserDoc(uid, groupID)
+        }
     }
     
     func removeUserFromGroup(_ uid: String, _ groupID: String) {
+        
         let groupRef = db.collection("groups").document(groupID)
         
         let newUsersList:[String] = groupUsersIDs!.filter { $0 != uid }
@@ -177,11 +185,7 @@ class GroupSettingsViewController: UIViewController, UITableViewDelegate, UITabl
         } else {
             // user was the last one in the group
             deleteGroup(groupID)
-        }
-        
-        // return to groupSelector page
-        // TODO: go back two VCs somehow, I think unwind segue might work?
-        
+        }        
     }
     
     func removeGroupFromUserDoc(_ uid: String, _ groupID: String) {

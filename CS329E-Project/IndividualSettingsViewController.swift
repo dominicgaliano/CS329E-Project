@@ -463,6 +463,7 @@ extension IndividualSettingsViewController: UIImagePickerControllerDelegate, UIN
                     self.openSettings()
                 })
                 alertVC.addAction(cancelAction)
+                alertVC.addAction(settingsAction)
                 present(alertVC, animated:true)
                 return
             }
