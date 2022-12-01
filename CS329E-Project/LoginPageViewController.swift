@@ -20,14 +20,12 @@ class LoginPageViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var errorLabel: UILabel!
+
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //Adding unique font
-        UILabel.appearance().substituteFontName = "Avenir Next";
-        UITextView.appearance().substituteFontName = "Avenir Next";
-        UITextField.appearance().substituteFontName = "Avenir Next";
-        UIButton.appearance().substituteFontName = "Avenir Next";
+
         // Make password entry hidden
         passwordField.isSecureTextEntry = true
         
@@ -42,10 +40,16 @@ class LoginPageViewController: UIViewController, UITextFieldDelegate {
         }
         
     }
-    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        //Adding unique font
+        UILabel.appearance().substituteFontName = "American Typewriter";
+        UITextView.appearance().substituteFontName = "American Typewriter";
+        UITextField.appearance().substituteFontName = "American Typewriter";
+        UIButton.appearance().substituteFontName = "American Typewriter";
+    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         errorLabel.text = ""
         
         // dark mode

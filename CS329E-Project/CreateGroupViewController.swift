@@ -22,10 +22,10 @@ class CreateGroupViewController: UIViewController{
         super.viewDidLoad()
         addIcon()
         //Adding unique font
-        UILabel.appearance().substituteFontName = "Avenir Next";
-        UITextView.appearance().substituteFontName = "Avenir Next";
-        UITextField.appearance().substituteFontName = "Avenir Next";
-        UIButton.appearance().substituteFontName = "Avenir Next";
+        UILabel.appearance().substituteFontName = "American Typewriter";
+        UITextView.appearance().substituteFontName = "American Typewriter";
+        UITextField.appearance().substituteFontName = "American Typewriter";
+        UIButton.appearance().substituteFontName = "American Typewriter";
         
     }
     

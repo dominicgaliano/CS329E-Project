@@ -22,10 +22,10 @@ final class ChoresViewController: DayViewController, EKEventEditViewDelegate {
         // Subscribe to notifications to reload the UI when
         subscribeToNotifications()
         //Adding unique font
-        UILabel.appearance().substituteFontName = "Avenir Next";
-        UITextView.appearance().substituteFontName = "Avenir Next";
-        UITextField.appearance().substituteFontName = "Avenir Next";
-        UIButton.appearance().substituteFontName = "Avenir Next";
+        UILabel.appearance().substituteFontName = "American Typewriter";
+        UITextView.appearance().substituteFontName = "American Typewriter";
+        UITextField.appearance().substituteFontName = "American Typewriter";
+        UIButton.appearance().substituteFontName = "American Typewriter";
     }
     
     @IBAction func addEventPress(_ sender: Any) {
@@ -44,6 +44,7 @@ final class ChoresViewController: DayViewController, EKEventEditViewDelegate {
                 self.initializeStore()
                 self.subscribeToNotifications()
                 self.reloadData()
+    
             }
         }
     }
@@ -60,7 +61,9 @@ final class ChoresViewController: DayViewController, EKEventEditViewDelegate {
     }
     
     @objc private func storeChanged(_ notification: Notification) {
-        reloadData()
+        DispatchQueue.main.async {
+            self.reloadData()
+        }
     }
     
     // MARK: - DayViewDataSource
@@ -156,7 +159,10 @@ final class ChoresViewController: DayViewController, EKEventEditViewDelegate {
                                      span: .thisEvent)
             }
         }
-        reloadData()
+
+        DispatchQueue.main.async {
+            self.reloadData()
+        }
     }
     
     
@@ -180,7 +186,11 @@ final class ChoresViewController: DayViewController, EKEventEditViewDelegate {
     
     func eventEditViewController(_ controller: EKEventEditViewController, didCompleteWith action: EKEventEditViewAction) {
         endEventEditing()
-        reloadData()
+        
+        DispatchQueue.main.async {
+            self.reloadData()
+        }
+        
         controller.dismiss(animated: true, completion: nil)
     }
 }

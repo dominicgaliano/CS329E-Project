@@ -67,13 +67,15 @@ class IndividualSettingsViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        //Adding unique font
-        UILabel.appearance().substituteFontName = "Avenir Next";
-        UITextView.appearance().substituteFontName = "Avenir Next";
-        UITextField.appearance().substituteFontName = "Avenir Next";
-        UIButton.appearance().substituteFontName = "Avenir Next";
     }
-    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        //Adding unique font
+        UILabel.appearance().substituteFontName = "American Typewriter";
+        UITextView.appearance().substituteFontName = "American Typewriter";
+        UITextField.appearance().substituteFontName = "American Typewriter";
+        UIButton.appearance().substituteFontName = "American Typewriter";
+    }
     // Change Profile Picture Button
     @IBAction func changePictureButtonPressed(_ sender: Any) {
         presentPhotoActionSheet()

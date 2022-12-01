@@ -26,9 +26,10 @@ class InventoryViewController: UIViewController, UITableViewDelegate, UITableVie
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         addIcon()
         //Adding unique font
-        UILabel.appearance().substituteFontName = "Avenir Next";
-        UITextView.appearance().substituteFontName = "Avenir Next";
-        UITextField.appearance().substituteFontName = "Avenir Next";
+        UILabel.appearance().substituteFontName = "American Typewriter";
+        UITextView.appearance().substituteFontName = "American Typewriter";
+        UITextField.appearance().substituteFontName = "American Typewriter";
+        UIButton.appearance().substituteFontName = "American Typewriter";
     }
     
     override func viewWillAppear(_ animated: Bool) {

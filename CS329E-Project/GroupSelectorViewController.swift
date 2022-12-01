@@ -21,24 +21,25 @@ class GroupSelectorViewController: UIViewController, UITableViewDelegate, UITabl
     
     // establish db connection
     let db = Firestore.firestore()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
         //Adding unique font
-        UILabel.appearance().substituteFontName = "Avenir Next";
-        UITextView.appearance().substituteFontName = "Avenir Next";
-        UITextField.appearance().substituteFontName = "Avenir Next";
-        UIButton.appearance().substituteFontName = "Avenir Next";
+        UILabel.appearance().substituteFontName = "American Typewriter";
+        UITextView.appearance().substituteFontName = "American Typewriter";
+        UITextField.appearance().substituteFontName = "American Typewriter";
+        UIButton.appearance().substituteFontName = "American Typewriter";
         addIcon()
     }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationItem.setHidesBackButton(true, animated: true)
         
         // print("User logged in with UID: \(Auth.auth().currentUser!.uid)")
+        
+ 
         
         // Access users groups
         db.collection("users").document(Auth.auth().currentUser!.uid)
@@ -73,6 +74,8 @@ class GroupSelectorViewController: UIViewController, UITableViewDelegate, UITabl
         var defaults = UserDefaults.standard
         if defaults.object(forKey: "state") != nil{
             darkMode = defaults.bool(forKey: "state")
+        
+            
         }
         
         if #available(iOS 13.0, *) {

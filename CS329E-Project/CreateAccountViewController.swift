@@ -27,11 +27,7 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         addIcon()
-        //Adding unique font
-        UILabel.appearance().substituteFontName = "Avenir Next";
-        UITextView.appearance().substituteFontName = "Avenir Next";
-        UITextField.appearance().substituteFontName = "Avenir Next";
-        UIButton.appearance().substituteFontName = "Avenir Next";
+
         // Hide password fields
         passwordField.isSecureTextEntry = true
         repeatPasswordField.isSecureTextEntry = true
@@ -49,7 +45,14 @@ class CreateAccountViewController: UIViewController, UITextFieldDelegate {
             }
         }
     }
-    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        //Adding unique font
+        UILabel.appearance().substituteFontName = "American Typewriter";
+        UITextView.appearance().substituteFontName = "American Typewriter";
+        UITextField.appearance().substituteFontName = "American Typewriter";
+        UIButton.appearance().substituteFontName = "American Typewriter";
+    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
