@@ -49,7 +49,7 @@ Minor Elements:
 Work Distribution Table
 
 | Required Feature      | Description                                                    | Who / Percentage worked on |
------------------------------------------------------------------------------------------------------------------------
+|-----------------------|----------------------------------------------------------------|----------------------------|
 | Login / Register      | Allows user to create account and login. If user forgets their | text here                  |
 |                       | password, they may use the "Forgot Password?" button that      |.                           |
 |                       | button that sends an email for a reset.                        |.                           |
@@ -58,23 +58,38 @@ Work Distribution Table
 |                       | off and notifications on or off. Finally, user may log out of  |.                           |
 |                       | their account or delete their account.                         |.                           |
 |-----------------------|----------------------------------------------------------------|----------------------------|
-| Group Settings        | Allows users of a group to change the group name or leave the  | ..                         |
+| Group Settings        | Allows users of a group to change the group name or leave the  | Adrian (25%)               |
 |                       | group.                                                         |.                           |
 |-----------------------|----------------------------------------------------------------|----------------------------|
-| Join/Create Group     | Allows users to join or create a group using a unique          | ..                         |
+| Join/Create Group     | Allows users to create or join a group using a unique          | ..                         |
 |                       | indentifier or QR code.                                        |.                           |
 |-----------------------|----------------------------------------------------------------|----------------------------|
-| QR Code Function      | indentifier or QR code.                                        |.                           |
+| QR Code Function      | Groups generate a random QR Code. Others can use that code with|.                           |
+|                       | their camera to input the group identifier easily.             |.                           |
 |-----------------------|----------------------------------------------------------------|----------------------------|
-| Shopping List         | indentifier or QR code.                                        |.                           |
+| Shopping List         | Users are able to view the household's shopping list, add items| Adrian (50%)               |
+|                       | to the shopping list, checkmark items on the shooping list,    |.                           |
+|                       | and delete items from the shooping list.                       |.                           |
 |-----------------------|----------------------------------------------------------------|----------------------------|
-| Inventory             | Allows users to join or create a group                         | ..                         |
+| Inventory             | Users are able to view the household's inventory, add items to | Adrian (50%)               |
+|                       | the inventory, delete items from the inventory, and send items |.                           |
+|                       | to the shared shopping list.                                   |.                           |
 |-----------------------|----------------------------------------------------------------|----------------------------|
-| Event Schedule        | Allows users to join or create a group                         | ..                         |
+| Event Schedule        | .....                                                          | ..                         |
 |-----------------------|----------------------------------------------------------------|----------------------------|
-| Message Board         | Allows users to join or create a group                         | ..                         |
+| Message Board         | Allows users to post messages for the household that shows the | ..                         |
+|                       | person who posted it and the time and date posted. Users can   |.                           |
+|                       | then click on a message and set up a reminder notification     |.                           |
 |-----------------------|----------------------------------------------------------------|----------------------------|
-| Firebase              | Allows users to join or create a group                         | ..                         |
+| Firebase              | Set up firebase to store all shared information for a user and | ..                         |
+|                       | their shared groups. This allows the app to save and extract   |.                           |
+|                       | information.                                                   |.                           |
 |-----------------------|----------------------------------------------------------------|----------------------------|
-| Formatting            | Allows users to join or create a group                         | ..                         |
+| Formatting            | Formatting the app in a well-designed manner that conforms to  | Adrian (25%)               |
+|                       | the colors and style of the app's logo.                        |.                           |
+|-----------------------|----------------------------------------------------------------|----------------------------|
+| App Idea and Design   | The team shared equally in brainstorming and designing the app.| Adrian (25%)               |
+|                       |                                                                | Ray (25%)                  |
+|                       |                                                                | Dom (25%)                  |
+|                       |                                                                | Hans (25%)                 |
 |-----------------------|----------------------------------------------------------------|----------------------------|
