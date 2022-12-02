@@ -32,7 +32,7 @@ class IndividualSettingsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        var defaults = UserDefaults.standard
+        let defaults = UserDefaults.standard
         if defaults.object(forKey: "delay") != nil{
             DEFAULT_NOTIFICATION_WAIT_TIME_MINS = defaults.integer(forKey: "delay")
         }
@@ -48,13 +48,11 @@ class IndividualSettingsViewController: UIViewController {
         profilePicture.contentMode = .scaleAspectFill
         profilePicture.clipsToBounds = true
         
+       
         if defaults.object(forKey: "state") != nil{
             darkModeSwitch.isOn = defaults.bool(forKey: "state")
         }
         
-        if defaults.object(forKey: "noti") != nil{
-            NOTIFICATIONS_PERMITTED =  defaults.bool(forKey: "noti")
-        }
         
         notificationsSwitch.isOn = NOTIFICATIONS_PERMITTED
         
@@ -111,17 +109,8 @@ class IndividualSettingsViewController: UIViewController {
         }
     }
     
-    @IBAction func notificationSwitchPressed(_ sender: UISwitch) {
-        var defaults = UserDefaults.standard
-        
-        if sender.isOn {
-            defaults.set(true, forKey: "noti")
-            NOTIFICATIONS_PERMITTED = true
-        }
-        else {
-            defaults.set(false, forKey: "noti")
-            NOTIFICATIONS_PERMITTED = false
-        }
+    @IBAction func notificationsSwitchPressed(_ sender: Any) {
+        NOTIFICATIONS_PERMITTED = !NOTIFICATIONS_PERMITTED
     }
     
     @IBAction func changeNotificationButton(_ sender: Any) {
