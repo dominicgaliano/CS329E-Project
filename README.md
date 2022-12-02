@@ -48,8 +48,37 @@ Minor Elements:
 
 Work Distribution Table
 
-| Required Feature | Description | Who / Percentage worked on |
-|------------------|-------------|----------------------------|
-| text here        | text here   | text here                  |
-| ..               | ..          | ..                         |
-| ..               | ..          | ..                         |
+| Required Feature      | Description                            | Who / Percentage worked on |
+|-----------------------|----------------------------------------|----------------------------|
+| Login / Register      | Allows user to create account and      | text here                  |
+|                       | login. If user forgets their password, |.                           |
+|                       | they may use the "Forgot Password?"    |.                           |
+|                       | button that sends an email for a reset.|.                           |
+|-----------------------|----------------------------------------|----------------------------|
+| Individual Settings   | Allows a user to change their profile  |.                           |
+|                       | picture, password, and notification    |.                           |
+|                       | delay. User may switch dark mode on or |.                           |
+|                       | off and notifications on or off.       |.                           |
+|                       | Finally, user may log out of their     |.                           |
+|                       | account or delete their account.       |.                           |
+|-----------------------|----------------------------------------|----------------------------|
+| Group Settings        | Allows users of a group to change      | ..                         |
+|                       | the group name or leave the group.     |.                           |
+|-----------------------|----------------------------------------|----------------------------|
+| Join/Create Group     | Allows users to join or create a group | ..                         |
+|                       | using a unique identifier or QR code.  |.                           |
+|-----------------------|----------------------------------------|----------------------------|
+| QR Code Function      | Allows users to join or create a group | ..                         |
+|-----------------------|----------------------------------------|----------------------------|
+| Shopping List         | Allows users to join or create a group | ..                         |
+|-----------------------|----------------------------------------|----------------------------|
+| Inventory             | Allows users to join or create a group | ..                         |
+|-----------------------|----------------------------------------|----------------------------|
+| Event Schedule        | Allows users to join or create a group | ..                         |
+|-----------------------|----------------------------------------|----------------------------|
+| Message Board         | Allows users to join or create a group | ..                         |
+|-----------------------|----------------------------------------|----------------------------|
+| Firebase              | Allows users to join or create a group | ..                         |
+|-----------------------|----------------------------------------|----------------------------|
+| Formatting            | Allows users to join or create a group | ..                         |
+|-----------------------|----------------------------------------|----------------------------|
