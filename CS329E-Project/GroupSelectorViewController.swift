@@ -75,6 +75,9 @@ class GroupSelectorViewController: UIViewController, UITableViewDelegate, UITabl
         if defaults.object(forKey: "state") != nil{
             darkMode = defaults.bool(forKey: "state")
         
+        if defaults.object(forKey: "notifications") != nil{
+            NOTIFICATIONS_PERMITTED = defaults.bool(forKey: "notifications")
+        }
             
         }
         

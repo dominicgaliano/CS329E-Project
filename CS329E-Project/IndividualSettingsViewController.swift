@@ -53,7 +53,9 @@ class IndividualSettingsViewController: UIViewController {
             darkModeSwitch.isOn = defaults.bool(forKey: "state")
         }
         
-        
+        if defaults.object(forKey: "notifications") != nil{
+            NOTIFICATIONS_PERMITTED = defaults.bool(forKey: "notifications")
+        }
         notificationsSwitch.isOn = NOTIFICATIONS_PERMITTED
         
         if #available(iOS 13.0, *) {
@@ -108,10 +110,17 @@ class IndividualSettingsViewController: UIViewController {
             return
         }
     }
-    
-    @IBAction func notificationsSwitchPressed(_ sender: Any) {
-        NOTIFICATIONS_PERMITTED = !NOTIFICATIONS_PERMITTED
+    @IBAction func notificationSwitchPressed(_ sender: UISwitch) {
+        var defaults = UserDefaults.standard
+        if sender.isOn{
+            defaults.set(true, forKey: "notifications")
+            NOTIFICATIONS_PERMITTED = true
+        } else{
+            defaults.set(false, forKey: "notifications")
+            NOTIFICATIONS_PERMITTED = false
+        }
     }
+    
     
     @IBAction func changeNotificationButton(_ sender: Any) {
         
