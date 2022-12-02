@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_72" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -394,7 +394,7 @@
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8f7-N8-uZR">
                                 <rect key="frame" x="268.66666666666669" y="475.66666666666669" width="51" height="31"/>
                                 <connections>
-                                    <action selector="notificationSwitchPressed:" destination="gbD-p3-9Pd" eventType="valueChanged" id="uMv-t1-PdJ"/>
+                                    <action selector="notificationsSwitchPressed:" destination="gbD-p3-9Pd" eventType="valueChanged" id="dkB-XZ-I98"/>
                                 </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notifications" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tUI-4T-JwC">
@@ -459,7 +459,7 @@
                     <connections>
                         <outlet property="darkModeSwitch" destination="xGC-Ra-Ken" id="h7w-fx-p3p"/>
                         <outlet property="notificationDelayLabel" destination="0La-oz-CbN" id="Hd5-SL-yka"/>
-                        <outlet property="notificationsSwitch" destination="8f7-N8-uZR" id="c9U-Kg-VMa"/>
+                        <outlet property="notificationsSwitch" destination="8f7-N8-uZR" id="fyk-1a-KlN"/>
                         <outlet property="profilePicture" destination="FEt-NK-Is3" id="2sU-SD-IkK"/>
                     </connections>
                 </viewController>

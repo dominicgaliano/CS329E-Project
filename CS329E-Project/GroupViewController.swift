@@ -47,7 +47,6 @@ class GroupViewController: UIViewController, UITableViewDelegate, UITableViewDat
     var groupIdentifier:String!
     let db = Firestore.firestore()
     var groupMessages:[GroupMessage] = []
-    var darkMode = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,22 +73,6 @@ class GroupViewController: UIViewController, UITableViewDelegate, UITableViewDat
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        var defaults = UserDefaults.standard
-        if defaults.object(forKey: "state") != nil{
-            darkMode = defaults.bool(forKey: "state")
-        }
-        
-        if #available(iOS 13.0, *) {
-            let appDelegate = UIApplication.shared.windows.first
-            if darkMode == true {
-                appDelegate?.overrideUserInterfaceStyle = .dark
-                return
-            } else {
-                appDelegate?.overrideUserInterfaceStyle = .light
-            }
-            appDelegate?.overrideUserInterfaceStyle = .light
-            return
-        }
         // guard against no group selected
         if groupIdentifier == nil {
             print("Must select a group, cannot use shortcut anymore")
