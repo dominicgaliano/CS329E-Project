@@ -49,7 +49,7 @@ Minor Elements:
 Work Distribution Table
 
 | Required Feature      | Description                                                    | Who / Percentage worked on |
-|-----------------------|----------------------------------------------------------------|----------------------------|
+-----------------------------------------------------------------------------------------------------------------------
 | Login / Register      | Allows user to create account and login. If user forgets their | text here                  |
 |                       | password, they may use the "Forgot Password?" button that      |.                           |
 |                       | button that sends an email for a reset.                        |.                           |
