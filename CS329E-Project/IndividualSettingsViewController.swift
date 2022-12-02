@@ -30,6 +30,11 @@ class IndividualSettingsViewController: UIViewController {
     // photo picker
     let picker = UIImagePickerController()
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        picker.delegate = self
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let defaults = UserDefaults.standard
@@ -69,11 +74,8 @@ class IndividualSettingsViewController: UIViewController {
             appDelegate?.overrideUserInterfaceStyle = .light
             return
         }
-        
     }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         //Adding unique font
@@ -82,6 +84,7 @@ class IndividualSettingsViewController: UIViewController {
         UITextField.appearance().substituteFontName = "American Typewriter";
         UIButton.appearance().substituteFontName = "American Typewriter";
     }
+    
     // Change Profile Picture Button
     @IBAction func changePictureButtonPressed(_ sender: Any) {
         presentPhotoActionSheet()
@@ -478,7 +481,7 @@ extension IndividualSettingsViewController: UIImagePickerControllerDelegate, UIN
                 return
             }
             // allowed to use camera
-            picker.allowsEditing = false
+            picker.allowsEditing = true
             picker.sourceType = .camera
             picker.cameraCaptureMode = .photo
             present(picker , animated: true)
@@ -492,15 +495,15 @@ extension IndividualSettingsViewController: UIImagePickerControllerDelegate, UIN
     }
     
     func presentPhotoPicker() {
-        let vc = UIImagePickerController()
-        vc.sourceType = .photoLibrary
-        vc.delegate = self
-        vc.allowsEditing = true
-        present(vc, animated: true)
+        picker.sourceType = .photoLibrary
+        picker.delegate = self
+        picker.allowsEditing = true
+        present(picker, animated: true)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        picker.dismiss(animated: true, completion: nil)
+        
+        print("Debug message: did finish picking media with info")
         
         // save selected image
         guard let selectedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage else {
@@ -533,6 +536,7 @@ extension IndividualSettingsViewController: UIImagePickerControllerDelegate, UIN
                             print("Document successfully updated")
                             // finally, change image to newly selected image
                             self.profilePicture.image = selectedImage
+                            picker.dismiss(animated: true, completion: nil)
                         }
                     }
                 }
