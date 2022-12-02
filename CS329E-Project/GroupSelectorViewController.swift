@@ -106,7 +106,7 @@ class GroupSelectorViewController: UIViewController, UITableViewDelegate, UITabl
         let row = indexPath.row
         let cell = tableView.dequeueReusableCell(withIdentifier: "GroupCell", for: indexPath)
         cell.accessoryType = .disclosureIndicator
-        cell.textLabel?.font = UIFont.systemFont(ofSize: 25)
+        cell.textLabel?.font = UIFont(name: "American Typewriter", size: 25)
         cell.textLabel?.text = userGroups[row].1
         cell.textLabel?.numberOfLines = 0
         return cell
