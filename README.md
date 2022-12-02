@@ -5,7 +5,7 @@ Team Members: Dominic Galiano, Ray Zhang, Hans Wang, Adrian Cruz
 
 Swift Version: 5.7  
 Xcode Version: 14.0.1 (14A400)  
-Dependencies: Firebase 9.0.0  
+Dependencies: Firebase 9.6.0, CalendarKit 1.1.6
 iPhone Model: iPhone 14 Pro Max  
 
 Testing Instructions:
@@ -25,10 +25,10 @@ Testing Instructions:
 - From the group page, if you tap the gear icon you will go to the group settings page. From here you can see your group members, group ID, group ID QR code, and also leave the group. You can also change the group name.
 
 
-Features checklist:  
+Required Features Checklist:  
 
 - [X] Login/register path
-- [X] Settings with three behaviors that can be modified by user
+- [X] Settings with three behaviors that can be modified by user. We implemented: Dark Mode, Notifications, and Notification Delay settings
 - [X] Non-default fonts, colors and styles
 
 Major Elements:  
@@ -38,10 +38,18 @@ Major Elements:
 
 Minor Elements:  
 
-- [X] At least two of text views, sliders, segemented controllers, date or color pickers, steppers, **switches**, search fields, **bars and bar buttons**, etc.
+- [X] At least two of text views, sliders, segemented controllers, date or color pickers, steppers, **switches**, search fields, **bars and bar buttons**, etc. We used switches and bars/bar buttons
 - [X] Table View
 - [X] Two of the following: Alerts, Popovers, Stack Views, Scroll Views, Haptics, User Defaults
 - [X] Local notifications
 - [X] Animation
 - [X] Calendar
 - [X] QR Code
+
+Work Distribution Table
+
+| Required Feature | Description | Who / Percentage worked on |
+|------------------|-------------|----------------------------|
+| text here        | text here   | text here                  |
+| ..               | ..          | ..                         |
+| ..               | ..          | ..                         |
