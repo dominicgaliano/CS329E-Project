@@ -334,7 +334,7 @@
                                     <action selector="logoutButtonPressed:" destination="gbD-p3-9Pd" eventType="touchUpInside" id="MrQ-Dz-oTy"/>
                                 </connections>
                             </button>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xGC-Ra-Ken">
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="xGC-Ra-Ken">
                                 <rect key="frame" x="268.66666666666669" y="437" width="51" height="31"/>
                                 <connections>
                                     <action selector="darkModeSlider:" destination="gbD-p3-9Pd" eventType="valueChanged" id="tWf-AP-WJm"/>
