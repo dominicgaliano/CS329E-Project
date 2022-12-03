@@ -81,26 +81,26 @@ final class EKWrapper: EventDescriptor {
         (editedEvent != nil) ? applyEditingColors() : applyStandardColors()
     }
     
-    /// Colors used when event is not in editing mode
+
     private func applyStandardColors() {
         backgroundColor = dynamicStandardBackgroundColor()
         textColor = dynamicStandardTextColor()
     }
     
-    /// Colors used in editing mode
+
     private func applyEditingColors() {
         backgroundColor = color.withAlphaComponent(0.95)
         textColor = .white
     }
     
-    /// Dynamic color that changes depending on the user interface style (dark / light)
+
     private func dynamicStandardBackgroundColor() -> UIColor {
         let light = backgroundColorForLightTheme(baseColor: color)
         let dark = backgroundColorForDarkTheme(baseColor: color)
         return dynamicColor(light: light, dark: dark)
     }
     
-    /// Dynamic color that changes depending on the user interface style (dark / light)
+
     private func dynamicStandardTextColor() -> UIColor {
         let light = textColorForLightTheme(baseColor: color)
         return dynamicColor(light: light, dark: color)

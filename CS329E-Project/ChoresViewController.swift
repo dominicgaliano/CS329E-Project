@@ -18,7 +18,7 @@ final class ChoresViewController: DayViewController, EKEventEditViewDelegate {
         super.viewDidLoad()
         title = "Chores Calendar"
         // The app must have access to the user's calendar to show the events on the timeline
-        requestAccessToCalendar()
+        calendarAccess()
         // Subscribe to notifications to reload the UI when
         subscribeToNotifications()
         //Adding unique font
@@ -35,7 +35,7 @@ final class ChoresViewController: DayViewController, EKEventEditViewDelegate {
         presentEditingViewForEvent(event)
         
     }
-    private func requestAccessToCalendar() {
+    private func calendarAccess() {
         // Request access to the events
         eventStore.requestAccess(to: .event) { [weak self] granted, error in
             // Handle the response to the request.
@@ -66,19 +66,19 @@ final class ChoresViewController: DayViewController, EKEventEditViewDelegate {
         }
     }
     
-    // MARK: - DayViewDataSource
+
     
-    // This is the `DayViewDataSource` method that the client app has to implement in order to display events with CalendarKit
+
     override func eventsForDate(_ date: Date) -> [EventDescriptor] {
         // The `date` always has it's Time components set to 00:00:00 of the day requested
-        let startDate = date
+        let startDay = date
         var oneDayComponents = DateComponents()
         oneDayComponents.day = 1
         // By adding one full `day` to the `startDate`, we're getting to the 00:00:00 of the *next* day
-        let endDate = calendar.date(byAdding: oneDayComponents, to: startDate)!
+        let endDay = calendar.date(byAdding: oneDayComponents, to: startDay)!
         
-        let predicate = eventStore.predicateForEvents(withStart: startDate, // Start of the current day
-                                                      end: endDate, // Start of the next day
+        let predicate = eventStore.predicateForEvents(withStart: startDay, // Start of the current day
+                                                      end: endDay, // Start of the next day
                                                       calendars: nil) // Search in all calendars
         
         let eventKitEvents = eventStore.events(matching: predicate) // All events happening on a given day
@@ -87,18 +87,15 @@ final class ChoresViewController: DayViewController, EKEventEditViewDelegate {
         return calendarKitEvents
     }
     
-    // MARK: - DayViewDelegate
-    
-    // MARK: Event Selection
     
     override func dayViewDidSelectEventView(_ eventView: EventView) {
-        guard let ckEvent = eventView.descriptor as? EKWrapper else {
+        guard let calendarKitEvent = eventView.descriptor as? EKWrapper else {
             return
         }
-        presentDetailViewForEvent(ckEvent.ekEvent)
+        presentEventDetailView(calendarKitEvent.ekEvent)
     }
     
-    private func presentDetailViewForEvent(_ ekEvent: EKEvent) {
+    private func presentEventDetailView(_ ekEvent: EKEvent) {
         let eventController = EKEventViewController()
         eventController.event = ekEvent
         eventController.allowsCalendarPreview = true
@@ -107,16 +104,16 @@ final class ChoresViewController: DayViewController, EKEventEditViewDelegate {
                                                  animated: true)
     }
     
-    // MARK: Event Editing
+
     
     override func dayView(dayView: DayView, didLongPressTimelineAt date: Date) {
         // Cancel editing current event and start creating a new one
         endEventEditing()
-        let newEKWrapper = createNewEvent(at: date)
+        let newEKWrapper = makeNewEvent(at: date)
         create(event: newEKWrapper, animated: true)
     }
     
-    private func createNewEvent(at date: Date) -> EKWrapper {
+    private func makeNewEvent(at date: Date) -> EKWrapper {
         let newEKEvent = EKEvent(eventStore: eventStore)
         newEKEvent.calendar = eventStore.defaultCalendarForNewEvents
         
@@ -182,7 +179,6 @@ final class ChoresViewController: DayViewController, EKEventEditViewDelegate {
         endEventEditing()
     }
     
-    // MARK: - EKEventEditViewDelegate
     
     func eventEditViewController(_ controller: EKEventEditViewController, didCompleteWith action: EKEventEditViewAction) {
         endEventEditing()
