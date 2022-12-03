@@ -50,9 +50,9 @@ Work Distribution Table
 
 | Required Feature | Description | Who / Percentage worked on |
 |-|-|-|
-| Login / Register | Allows user to create account and login. If user forgets their password, they may use the "Forgot Password?" button that button that sends an email for a reset. | Dominic (50%) Ray (50%) |
+| Login / Register | Allows user to create account and login. If user forgets their password, they may use the "Forgot Password?" button that button that sends an email for a reset. | Dominic (50%), Ray (50%) |
 | Individual Settings | Allows a user to change their profile picture, password, and off and notifications on or off. Finally, user may log out of their account or delete their account. | Dominic (100%) |
-| Group Settings | Allows users of a group to change the group name or leave the group. | Adrian (25%), Dom (25%) Ray (50%)|
+| Group Settings | Allows users of a group to change the group name or leave the group. | Adrian (25%), Dom (25%), Ray (50%)|
 | Join/Create Group | Allows users to create or join a group using a unique indentifier or QR code. | text here |
 | QR Code Function | Groups generate a random QR Code. Others can use that code with their camera to input the group identifier easily.| Hans (100%) |
 | Shopping List | Users are able to view the household's shopping list, add items to the shopping list, checkmark items on the shooping list, and delete items from the shooping list. | Adrian (50%), Dominic (50%) |
