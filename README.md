@@ -48,51 +48,17 @@ Minor Elements:
 
 Work Distribution Table
 
-| Required Feature      | Description                                                    | Who / Percentage worked on |
-|-----------------------|----------------------------------------------------------------|----------------------------|
-| Login / Register      | Allows user to create account and login. If user forgets their | text here                  |
-|                       | password, they may use the "Forgot Password?" button that      |.                           |
-|                       | button that sends an email for a reset.                        |.                           |
-|-----------------------|----------------------------------------------------------------|----------------------------|
-| Individual Settings   | Allows a user to change their profile picture, password, and   |.                           |
-|                       | off and notifications on or off. Finally, user may log out of  |.                           |
-|                       | their account or delete their account.                         |.                           |
-|-----------------------|----------------------------------------------------------------|----------------------------|
-| Group Settings        | Allows users of a group to change the group name or leave the  | Adrian (25%)               |
-|                       | group.                                                         |.                           |
-|-----------------------|----------------------------------------------------------------|----------------------------|
-| Join/Create Group     | Allows users to create or join a group using a unique          | ..                         |
-|                       | indentifier or QR code.                                        |.                           |
-|-----------------------|----------------------------------------------------------------|----------------------------|
-| QR Code Function      | Groups generate a random QR Code. Others can use that code with|.                           |
-|                       | their camera to input the group identifier easily.             |.                           |
-|-----------------------|----------------------------------------------------------------|----------------------------|
-| Shopping List         | Users are able to view the household's shopping list, add items| Adrian (50%)               |
-|                       | to the shopping list, checkmark items on the shooping list,    |.                           |
-|                       | and delete items from the shooping list.                       |.                           |
-|-----------------------|----------------------------------------------------------------|----------------------------|
-| Inventory             | Users are able to view the household's inventory, add items to | Adrian (50%)               |
-|                       | the inventory, delete items from the inventory, and send items |.                           |
-|                       | to the shared shopping list.                                   |.                           |
-|-----------------------|----------------------------------------------------------------|----------------------------|
-| Event Schedule        | Users are able to create new events that can be edited and     | Ray (100%)                 |
-|                       | adjusted based on the needs of the group members. Events are   |                            |
-                        |  created using a long tap on the calendar or by clicking the   |                            |
-                        |  add events button on the top right.                           |                            |
-|-----------------------|----------------------------------------------------------------|----------------------------|
-| Message Board         | Allows users to post messages for the household that shows the | ..                         |
-|                       | person who posted it and the time and date posted. Users can   |.                           |
-|                       | then click on a message and set up a reminder notification     |.                           |
-|-----------------------|----------------------------------------------------------------|----------------------------|
-| Firebase              | Set up firebase to store all shared information for a user and | ..                         |
-|                       | their shared groups. This allows the app to save and extract   |.                           |
-|                       | information.                                                   |.                           |
-|-----------------------|----------------------------------------------------------------|----------------------------|
-| Formatting            | Formatting the app in a well-designed manner that conforms to  | Adrian (25%)               |
-|                       | the colors and style of the app's logo.                        |.                           |
-|-----------------------|----------------------------------------------------------------|----------------------------|
-| App Idea and Design   | The team shared equally in brainstorming and designing the app.| Adrian (25%)               |
-|                       |                                                                | Ray (25%)                  |
-|                       |                                                                | Dom (25%)                  |
-|                       |                                                                | Hans (25%)                 |
-|-----------------------|----------------------------------------------------------------|----------------------------|
+| Required Feature | Description | Who / Percentage worked on |
+|-|-|-|
+| Login / Register | Allows user to create account and login. If user forgets their password, they may use the "Forgot Password?" button that button that sends an email for a reset. | Dominic (50%) |
+| Individual Settings | Allows a user to change their profile picture, password, and off and notifications on or off. Finally, user may log out of their account or delete their account. | Dominic (100%) |
+| Group Settings | Allows users of a group to change the group name or leave the group. | Adrian (25%), Dom (25%) |
+| Join/Create Group | Allows users to create or join a group using a unique indentifier or QR code. | text here |
+| QR Code Function | Groups generate a random QR Code. Others can use that code with their camera to input the group identifier easily.| Hans (100%) |
+| Shopping List | Users are able to view the household's shopping list, add items to the shopping list, checkmark items on the shooping list, and delete items from the shooping list. | Adrian (50%), Dominic (50%) |
+| Inventory | Users are able to view the household's inventory, add items to the inventory, delete items from the inventory, and send items to the shared shopping list. | Adrian (50%), Dominic (50%) |
+| Event Schedule | Users are able to create new events that can be edited and adjusted based on the needs of the group members. Events are created using a long tap on the calendar or by clicking the add events button on the top right. | Ray (100%) |
+| Message Board | Allows users to post messages for the household that shows the person who posted it and the time and date posted. Users can then click on a message and set up a reminder notification | Dominic (100%) |
+| Firebase | Set up firebase to store all shared information for a user and their shared groups. This allows the app to save and extract information. | Dominic (100%) |
+| Formatting            | Formatting the app in a well-designed manner that conforms to the colors and style of the app's logo. | Adrian (25%), Ray (25%), Dom (25%), Hans (25%) |           
+| App Idea and Design   | The team shared equally in brainstorming and designing the app.| Adrian (25%), Ray (25%), Dom (25%), Hans (25%) |
