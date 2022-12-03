@@ -11,25 +11,25 @@ iPhone Model: iPhone 14 Pro Max
 Testing Instructions:
 
 - Start by creating an account using your first and last name as well as email and chosen password.
-- If you already have an account, you can also just sign in.
-- Or if you have an account and forgot the password, you can reset your password from the first screen. This button will send you an email to reset your password.
+- If you already have an account, you can just sign in.
+- If you have an account and forgot the password, you can reset your password from the first screen. This button will send you an email to reset your password.
 - Initially, you will not be a member of any group. You must first create a new group or join an existing group.
-- To create a new group, select “Create Group” and input a group name and identifier. This identifier can be shared with other users to allow them to join your group Then press “Create Group”
-- You can also access your event schedule from the previous screen. You will need to give permission for Homebase to use your calendar. Long press or select “Add Event” to create a new event. You can edit if you tap on it.
-- You can also join an existing group by selecting the “Join Group” button. Enter the group identifier of the group you want to join if you have it, or use the scanner to scan the group QR code.
-- If you are already in a group, you can just select it from the main screen.
-- The settings icon will take you to the individual settings page. From here you can change your profile picture using your camera or photo library. You can also request that a change password email is sent to you. Additionally, there are settings to toggle dark mode, notifications, and notification delay. Finally, you can log out or delete your account entirely from this screen.
-- From the group page, you can add a message to the group members. This message can be tapped on to create a notification for yourself. You will need to give notification permission for this functionality to work.
-- From the shopping list page, you can add items to a collective shopping list. “Add item” will add an item to the shopping list. You can check off items by tapping on them. You can then delete all checked items or all items or individual items by swiping left on them.
+- To create a new group, select “Create Group” and input a group name and identifier. This identifier can be shared with other users to allow them to join your group. After you have input the desired group name and identifier, press “Create Group”
+- From the Group Selector View Controller, you are also able to access the Event Schedule. You will need to give permission for Homebase to use your calendar. Long press or select “Add Event” to create a new event. Tap edit or delete an event, tap on it. An alternative method of creating an event is using the "Add Event" button on the top right. 
+- To join an existing group, select the “Join Group” button. Enter the group identifier of the group you want to join if you have it, or use the scanner to scan the group QR code.
+- If you are already in a group, you can select it from the main screen.
+- The icon on the top right of the "Group Selector" view controller will take you to the "Individual Settings" page. From here you can change your profile picture using your camera or photo library. You can also request that a change password email is sent to you. Additionally, there are settings to toggle dark mode, notifications, and notification delay. Finally, you can log out or delete your account entirely from this screen.
+- From the group page, you can send a message to the other members in your group. This message can be tapped on to create a notification for yourself. You will need to give notification permission for this functionality to work.
+- From the shopping list page, you can add items to a collective shopping list. “Add item” will add an item to the shopping list. You can check off items by tapping on them. You can then delete all checked items using the "Remove all Checkmarks" button. To remove all items use the "Remove all items" button. To remove individual items, use a left swipe on the item to be deleted.  
 - From the inventory page, you can keep track of commonly purchased items. Add an item using the “add item” button. You can then add the inventory item to the shopping list by tapping on it. You can also delete inventory items by swiping left on them.
-- From the group page, if you tap the gear icon you will go to the group settings page. From here you can see your group members, group ID, group ID QR code, and also leave the group. You can also change the group name.
+- From the group page, if you tap the gear icon you will go to the group settings page. From here you can see your group members, group ID, group ID QR code, and also leave the group. You can change the group name by tapping on the pencil icon near the top and inputting the name you want to change your group to. 
 
 
 Required Features Checklist:  
 
 - [X] Login/register path
 - [X] Settings with three behaviors that can be modified by user. We implemented: Dark Mode, Notifications, and Notification Delay settings
-- [X] Non-default fonts, colors and styles
+- [X] Non-default fonts, colors and styles. For the font, we used "American Typewriter". We used System Green for the color of our buttons. 
 
 Major Elements:  
 
@@ -42,8 +42,8 @@ Minor Elements:
 - [X] Table View
 - [X] Two of the following: Alerts, Popovers, Stack Views, Scroll Views, Haptics, User Defaults
 - [X] Local notifications
-- [X] Animation
-- [X] Calendar
+- [X] Animation - The animation is displayed whenever certain view controllers are taking a longer period of time to load. The animation has a loading symbol that spins. 
+- [X] Calendar - The calendar is implemented as an event scheduler that can be used to plan certain events or chores that must be done as a group. 
 - [X] QR Code
 
 Work Distribution Table
@@ -75,7 +75,10 @@ Work Distribution Table
 |                       | the inventory, delete items from the inventory, and send items |.                           |
 |                       | to the shared shopping list.                                   |.                           |
 |-----------------------|----------------------------------------------------------------|----------------------------|
-| Event Schedule        | .....                                                          | ..                         |
+| Event Schedule        | Users are able to create new events that can be edited and     | Ray (100%)                 |
+|                       | adjusted based on the needs of the group members. Events are   |                            |
+                        |  created using a long tap on the calendar or by clicking the   |                            |
+                        |  add events button on the top right.                           |                            |
 |-----------------------|----------------------------------------------------------------|----------------------------|
 | Message Board         | Allows users to post messages for the household that shows the | ..                         |
 |                       | person who posted it and the time and date posted. Users can   |.                           |
